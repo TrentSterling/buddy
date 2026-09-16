@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
 }).listen(8090);
 const base = process.argv[2] || 'http://127.0.0.1:8090/';
 const out = path.join(root, 'tools', 'out'); fs.mkdirSync(out, {recursive: true});
-const state = p => p.eval(`({role:__buddy.role,id:__buddy.id,host:__buddy.hostId,room:__buddy.room,connected:__buddy.connected,peers:window.__peers,hash:location.hash,n:__buddy.renderState&&__buddy.renderState.n.slice(0,13).map(n=>[n[1]|0,n[2]|0])})`);
+const state = p => p.eval(`(!window.__buddy?{}:{role:__buddy.role,id:__buddy.id,host:__buddy.hostId,room:__buddy.room,connected:__buddy.connected,peers:window.__peers,hash:location.hash,n:__buddy.renderState&&__buddy.renderState.n.slice(0,13).map(n=>[n[1]|0,n[2]|0])})`);
 let fails = 0; const check = (ok, msg) => { console.log((ok ? 'PASS ' : 'FAIL ') + msg); if (!ok) fails++; };
 
 const A = await launch({port: 9411, width: 1280, height: 800});
