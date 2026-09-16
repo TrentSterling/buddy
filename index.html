@@ -112,7 +112,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   <div class="roomstate"><span id="roleLabel">Host</span><span id="netLabel">Starting…</span><span class="roomstamp">Room <b id="roomCode">—</b></span></div><div id="roster" class="roster"></div>
   <label for="nameInput">Your name</label><div class="inputrow"><input id="nameInput" maxlength="20" autocomplete="nickname"><button id="saveName">Save</button></div>
   <label for="inviteInput">Invite link</label><div class="inputrow"><input id="inviteInput" readonly><button id="copyLink">Copy</button></div>
-  <p class="small">Share this invite to join the same room. Keep the host window open and visible.</p>
+  <p class="small">Anyone who opens the plain link lands in the same public lobby. This invite pins your exact room and host. Keep the host window open and visible.</p>
   <div class="dialogbuttons"><button id="newRoomBtn">New room ↗</button><button id="testTabBtn" title="Open a separate player window">Test 2P ↗</button></div>
   <details id="networkDetails" class="menu-more"><summary>Connection help &amp; diagnostics</summary>
    <p id="connectionDetail" class="small">Starting discovery…</p><div class="dialogbuttons"><button id="retryBtn">Retry discovery</button><button id="debugBtn">Diagnostics (D)</button></div>
@@ -1041,8 +1041,8 @@ const SnapshotCodec={
    Direct-code fallback: native WebRTC without a signaling service.
    Native state channel is unordered/unreliable; controls are ordered/reliable. */
 class BuddyNet {
- constructor({room,hostId,id,offline=false,localSignal=true,onData,onOpen,onClose,onStatus,onMode}){
-  Object.assign(this,{room,hostId,id,offline,localSignal,onData,onOpen,onClose,onStatus,onMode});
+ constructor({room,hostId,id,offline=false,localSignal=true,auto=false,onData,onOpen,onClose,onStatus,onMode}){
+  Object.assign(this,{room,hostId,id,offline,localSignal,auto,onData,onOpen,onClose,onStatus,onMode});this.avoid=new Set();this.guestCount=()=>0;
   this.links=new Map();this.onlineLinks=new Map();this.onlineIds=new Map();this.pendingIce=new Map();
   this.tx=0;this.rx=0;this.txByKind={};this.binaryPackets=0;this.binaryBytes=0;this.jsonSnapshotBytes=0;this.drops=0;this.messages=0;this.publicState='Not started';this.publicError='';this.relayCount=0;
   this.bc=null;this.tryRoom=null;this.generation=0;this.manualPending=new Map();this.onlineBusy=new Set();this.disposed=false;
@@ -1050,6 +1050,11 @@ class BuddyNet {
   if(!offline)this.startOnline();else this.setStatus('Local / direct WebRTC only');
  }
  get isHost(){return this.hostId===this.id;}
+ /* Auto lobby: two hosts met in the same public room. The one with guests keeps them; on a tie the lower id keeps hosting. */
+ shouldAdopt(m){return this.auto&&this.isHost&&m.isHost&&!this.avoid.has(m.id)&&this.guestCount()===0&&((m.n|0)>0||m.id<this.id);}
+ adopt(hostId){this.hostId=hostId;this.onMode?.({room:this.room,hostId});}
+ /* Auto lobby: our host vanished. Become the host again; hello tie-breaks collapse duplicates. */
+ rehost(){if(!this.auto||this.isHost)return;this.avoid.clear();this.adopt(this.id);for(const peer of Object.keys(this.tryRoom?.getPeers?.()||{}))this.helloAction?.send({id:this.id,host:this.hostId,room:this.room,isHost:true,n:0,v:BB.VERSION},{target:peer}).catch(e=>this.noteError(e));this.announce();}
  setStatus(s){this.publicState=s;this.onStatus?.(s);}
  peers(){return [...new Set([...this.links].filter(([,l])=>l.control?.readyState==='open').map(([id])=>id).concat([...this.onlineLinks.keys()]))];}
  route(id){const l=this.links.get(id);return l?.control?.readyState==='open'?(window.__BB_TEST_ICE?'WebRTC / test TURN-TCP':l.mode==='local'?'local WebRTC':'direct WebRTC'):this.onlineLinks.has(id)?'Trystero / WebRTC':null;}
@@ -1058,10 +1063,11 @@ class BuddyNet {
   try{this.bc=new BroadcastChannel('buddy-bay-signal-v4:'+this.room);this.bc.onmessage=e=>{this.localMessage(e.data).catch(e=>this.noteError(e));};}catch(e){this.bc=null;}
  }
  signal(data){try{this.bc?.postMessage({...data,from:this.id,room:this.room,host:this.hostId});}catch{}}
- announce(){if(this.disposed)return;this.signal({type:'presence',isHost:this.isHost});}
+ announce(){if(this.disposed)return;this.signal({type:'presence',isHost:this.isHost,n:this.guestCount()});}
  async localMessage(m){
   if(!m||m.room!==this.room||m.from===this.id||(m.to&&m.to!==this.id)||typeof m.from!=='string')return;
   if(m.type==='presence'){
+   if(this.shouldAdopt({id:m.from,isHost:m.isHost,n:m.n})){this.adopt(m.from);this.announce();return;}
    if(this.links.size<12&&this.isHost&&!m.isHost&&m.host===this.id&&!this.links.has(m.from)&&this.peers().length<3){
     const l=this.createLink(m.from,true,'local');await l.pc.setLocalDescription(await l.pc.createOffer());this.signal({type:'offer',to:m.from,sdp:l.pc.localDescription});
    }return;
@@ -1156,10 +1162,11 @@ class BuddyNet {
    this.tryModule=mod;
    this.tryRoom=mod.joinRoom({appId:'xyz.tront.buddybay.prototype.v4',password:this.room,relayConfig:{redundancy:3,warnOnRelayFailure:false}},this.room,{onJoinError:e=>{this.noteError(e.error||e);this.setStatus('Peer connection failed; try direct codes.');}});
    const r=this.tryRoom;this.helloAction=r.makeAction('bbhello');this.ctrlAction=r.makeAction('bbctrl');this.snapAction=r.makeAction('bbstate');
-   const hello=peer=>this.helloAction.send({id:this.id,host:this.hostId,room:this.room,isHost:this.isHost,v:BB.VERSION},{target:peer}).catch(e=>this.noteError(e));
+   const hello=peer=>this.helloAction.send({id:this.id,host:this.hostId,room:this.room,isHost:this.isHost,n:this.guestCount(),v:BB.VERSION},{target:peer}).catch(e=>this.noteError(e));
    r.onPeerJoin=peer=>hello(peer);
    this.helloAction.onMessage=(m,{peerId})=>{
     if(!m||m.v!==BB.VERSION||m.room!==this.room||typeof m.id!=='string'||m.id.length>80||m.id===this.id)return;
+    if(this.shouldAdopt(m))this.adopt(m.id);
     if(this.isHost?(m.host!==this.id||m.isHost):(m.id!==this.hostId||!m.isHost))return;
     if(!this.onlineLinks.has(m.id)&&this.isHost&&this.peers().length>=3)return;
     const first=!this.onlineLinks.has(m.id);this.onlineIds.set(peerId,m.id);this.onlineLinks.set(m.id,peerId);
@@ -1896,7 +1903,9 @@ const newRoom=()=>Array.from(crypto.getRandomValues(new Uint8Array(4)),x=>x.toSt
 const uid=()=>crypto.randomUUID?.()||Array.from(crypto.getRandomValues(new Uint8Array(12)),x=>x.toString(16).padStart(2,'0')).join('');
 const readStore=(k,fallback)=>{try{return localStorage.getItem(k)||fallback;}catch{return fallback;}};
 const saveStore=(k,v)=>{try{localStorage.setItem(k,v);}catch{}};
-let roomCode=(hash.get('room')||newRoom()).replace(/[^A-Za-z0-9-]/g,'').slice(0,32)||newRoom();
+/* No room in the link: everyone lands in one shared public room. First arrival hosts; later arrivals fold in. */
+const autoLobby=!hash.get('room');
+let roomCode=(hash.get('room')||'LOBBY').replace(/[^A-Za-z0-9-]/g,'').slice(0,32)||'LOBBY';
 const myId=uid();let hostId=(hash.get('host')||myId).replace(/[^A-Za-z0-9-]/g,'').slice(0,80)||myId;
 let isHost=hostId===myId;
 const local={id:myId,name:readStore('buddybay-name',isHost?'Captain Grab':'Helping Hand'),color:isHost?PALETTE[0]:PALETTE[1],x:447,y:399,down:false,tool:'grab',grip:null,seq:0};
@@ -1983,8 +1992,8 @@ function receiveEvent(d){
 world=new BuddyWorld(emit);if(query.get('test')!=='1'){try{world.loadWorkshop(JSON.parse(readStore('buddybay-workshop-v3','null')));}catch{}}world.upsertHand(myId,local.name,local.color);
 world.input(myId,{x:local.x,y:local.y,s:++local.seq,down:false,tool:local.tool});
 latest=world.snapshot();renderState=latest;
-function writeLocation(){try{const u=new URL(location.href);u.hash=new URLSearchParams(isHost?{room:roomCode}:{room:roomCode,host:hostId}).toString();history.replaceState(null,'',u);}catch{}$('roomCode').textContent=roomCode;}
-function inviteURL(){const u=new URL(location.href);u.searchParams.delete('pair');u.searchParams.delete('test');u.hash=new URLSearchParams({room:roomCode,host:hostId}).toString();return u.toString();}
+function writeLocation(){try{const u=new URL(location.href);u.hash=autoLobby?'':new URLSearchParams(isHost?{room:roomCode}:{room:roomCode,host:hostId}).toString();history.replaceState(null,'',u);}catch{}$('roomCode').textContent=roomCode;}
+function inviteURL(){const u=new URL(location.href);u.searchParams.delete('pair');u.searchParams.delete('test');u.hash=autoLobby?'':new URLSearchParams({room:roomCode,host:hostId}).toString();return u.toString();}
 writeLocation();
 function admit(id){
  if(!isHost||world.hands.has(id))return true;
@@ -2001,9 +2010,10 @@ function onOpen(id,route){
 function onClose(id){
  sentChatTimes.delete(id);
  if(isHost){const h=world.hands.get(id);if(h){toast(h.name+' DISCONNECTED');world.removeHand(id);}sendSnapshot(true);}
- else if(id===hostId){hostGone=true;welcomed=false;local.down=false;local.grip=null;toast('The host disconnected. This session has ended.');}
+ else if(id===hostId){hostGone=true;welcomed=false;local.down=false;local.grip=null;if(autoLobby){toast('The host left. You are hosting now.');rehostSoon();}else toast('The host disconnected. This session has ended.');}
  updateUI();
 }
+let rehostTimer=0;function rehostSoon(){clearTimeout(rehostTimer);rehostTimer=setTimeout(()=>{if(!isHost&&hostGone&&autoLobby){releasePointer();world.reset();renderer.resetEffects();net.rehost();}},400+Math.random()*600);}
 function validSnapshot(s){
  const tuples=(a,max,len)=>Array.isArray(a)&&a.length<=max&&a.every(v=>Array.isArray(v)&&v.length===len&&v.every(finite));
  return !!s&&Number.isInteger(s.hat)&&s.hat>=0&&s.hat<HATS.length&&Number.isInteger(s.theme)&&s.theme>=0&&s.theme<THEMES.length&&
@@ -2047,14 +2057,15 @@ function onData(id,k,d){
   if(k==='event'&&welcomed){receiveEvent(d);return;}
   if(k==='events'&&welcomed){if(Array.isArray(d)&&d.length<=32)for(const e of d)receiveEvent(e);return;}
   if(k==='pong'&&finite(d?.at)){rtt=performance.now()-d.at;return;}
-  if(k==='reject'){welcomed=false;hostGone=true;toast(d?.reason||'Playroom is full.');return;}
-  if(k==='end'){hostGone=true;welcomed=false;local.down=false;local.grip=null;updateUI();return;}
+  if(k==='reject'){welcomed=false;hostGone=true;toast(d?.reason||'Playroom is full.');if(autoLobby){net.avoid.add(id);rehostSoon();}return;}
+  if(k==='end'){hostGone=true;welcomed=false;local.down=false;local.grip=null;if(autoLobby){toast('The host left. You are hosting now.');rehostSoon();}updateUI();return;}
  }
 }
 function onMode({room,hostId:h}){
- roomCode=room;hostId=h;isHost=hostId===myId;welcomed=isHost;hostGone=false;buffer=[];lastAuthorityTick=-1;lastSnapshotSequence=-1;authoritativeGen=-1;local.down=false;local.grip=null;writeLocation();updateUI();
+ const wasHost=isHost;roomCode=room;hostId=h;isHost=hostId===myId;if(wasHost&&!isHost){releasePointer();for(const id of [...world.hands.keys()])if(id!==myId)world.removeHand(id);toast('Joined the lobby host.');}welcomed=isHost;hostGone=false;buffer=[];lastAuthorityTick=-1;lastSnapshotSequence=-1;authoritativeGen=-1;local.down=false;local.grip=null;writeLocation();updateUI();
 }
-net=new BuddyNet({room:roomCode,hostId,id:myId,offline:query.get('local')==='1',localSignal:!query.get('pair'),onData,onOpen,onClose,onStatus:()=>updateUI(),onMode});
+net=new BuddyNet({room:roomCode,hostId,id:myId,offline:query.get('local')==='1',localSignal:!query.get('pair'),auto:autoLobby,onData,onOpen,onClose,onStatus:()=>updateUI(),onMode});
+net.guestCount=()=>isHost?Math.max(0,world.hands.size-1):0;
 function sendInput(reliable=false,cancel=false){
  const d={x:round(local.x),y:round(local.y),s:++local.seq,down:local.down,tool:local.tool,g:local.grip,gen:isHost?world.gen:latest.gen,...(cancel?{cancel:true}:{})};lastInput=performance.now();
  if(isHost)world.input(myId,d);else if(welcomed&&!hostGone)net.send(hostId,'input',d,!reliable);
@@ -2064,7 +2075,7 @@ function pickRendered(x,y){
  for(let i=nodes.length-1;i>=0;i--){const n=nodes[i];if(Math.hypot(x-n[1],y-n[2])<=n[5]+10)return {a:n[0],b:n[0],t:0};}
  let best=null,bd=Infinity;for(const [a,b,r] of [...LIMBS,[0,1,17],[1,2,27],[3,6,20]]){if(!by.has(a)||!by.has(b))continue;const q=segmentPoint(x,y,by.get(a),by.get(b)),d=Math.hypot(q.x-x,q.y-y);if(d<r+10&&d<bd){bd=d;best={a,b,t:q.t};}}return best;
 }
-function canAct(){if(!isHost&&!welcomed){toast(hostGone?'This session ended. Start a new playroom.':'Waiting for the host. Invite links must match.');return false;}if(!isHost&&remotePaused){toast('The host tab is paused. Ask them to return.');return false;}return true;}
+function canAct(){if(!isHost&&!welcomed){toast(hostGone?(autoLobby?'Reconnecting to the lobby…':'This session ended. Start a new playroom.'):'Waiting for the host. Invite links must match.');return false;}if(!isHost&&remotePaused){toast('The host tab is paused. Ask them to return.');return false;}return true;}
 function markInteraction(){if(!interacted){interacted=true;$('welcome').classList.add('dim');}}
 // Input is deliberately not captured by the canvas and never pointer-locked.
 // System cursor is the default. An optional game cursor is scoped to a real
