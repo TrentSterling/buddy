@@ -27,7 +27,7 @@ Consequences:
 
 ## Discovery gotcha (cost a day once)
 
-Trystero seeds its relay subset from the `appId`. Renaming the appId to `prototype.v7` picked three dead relays and discovery never opened ("Discovery waiting for a public relay"). Keep `xyz.tront.buddybay.prototype.v4`; protocol isolation rides on the Trystero room id (`room + '#p' + BB.VERSION`) and the BroadcastChannel name. Even v4 usually has one relay open of three. Pinning an explicit `relayUrls` list of measured-healthy relays would be a real robustness win; measure before choosing.
+Trystero seeds its relay subset from the `appId`. Renaming the appId to `prototype.v7` picked three dead relays and discovery never opened ("Discovery waiting for a public relay"). Keep `xyz.tront.buddybay.prototype.v4`; protocol isolation rides on the Trystero room id (`room + '#p' + BB.VERSION`) and the BroadcastChannel name. v0.8.1 pins six measured relays via `relayConfig.urls` (see `PUBLIC_RELAYS`), which sidesteps the hash draw entirely. Re-audit with `node tools/probe-relays.mjs <list>` and then an in-game run with `warnOnRelayFailure:true` if discovery ever degrades; a relay can answer subscribes and still reject publishes (damus rate-limits, purplerelay ran out of disk).
 
 ## Verify before shipping
 
@@ -43,6 +43,4 @@ The canned swing (wind-up, downswing, strike-face contact, hold, recoil, recover
 
 - Daver 2.0's "can't aim on Firefox, right click just does grab" (2026-09-16) never reproduced in Playwright Firefox. Another Firefox user reported it fine. The D panel logs the last six pointer decisions; ask for that.
 - Add the game to the games page on tront.xyz.
-- Both lobby players default to "Captain Grab"; random names wanted.
 - Contraption mode (Daver's Rube Goldberg idea) is parked in the README.
-- Relay robustness (see above).

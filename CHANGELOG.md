@@ -2,6 +2,13 @@
 
 Behavior changes on the live line. Protocol stays 06 unless noted.
 
+## v0.8.1, 2026-09-17
+
+- Public discovery pins six measured relays (nos.lol, relay.primal.net, bucket.coracle.social, nostr.mom, nostr-relay.corb.net, nostr.sathoarder.com) instead of three hash-picked ones. Probe over forty relays, then an in-game run with relay warnings on; damus rate-limited and purplerelay was out of disk, so both were dropped. Six open instead of one, lobby pairs in about two seconds.
+- Diagnostics panel lists every relay with its socket state.
+- First visit draws a hand name from a pool of twenty-four and saves it, so a room is no longer four Captain Grabs. Settings still lets you rename.
+- `tools/probe-relays.mjs` checked in for the next relay audit.
+
 ## v0.8.0, 2026-09-17
 
 - Merged the ChatGPT catalogue package onto the live line. 31 tools (adds SMG, burst rifle, double-barrel shotgun, minigun, grenade launcher, shuriken, frying pan, water pistol), the Toybox catalogue with Weapons, Toys, Buddy, Your hand and Room departments, six Buddy bodies, fourteen hats, six hand styles, six room themes, Sweep and More cleanup, shared gun magazine and reload logic, spears that embed, water that extinguishes and washes.

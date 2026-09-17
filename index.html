@@ -165,7 +165,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
    <p id="connectionDetail" class="small">Starting discovery…</p><div class="dialogbuttons"><button id="retryBtn">Retry discovery</button><button id="debugBtn">Diagnostics (D)</button></div>
    <details id="advanced"><summary>Direct connection codes</summary><p class="small">When discovery fails: the host sends an offer; the guest sends an answer back. Some networks still need a TURN relay.</p><button id="offerBtn">1. Host: make offer</button><label for="signalOut">Outgoing code</label><textarea id="signalOut" rows="3" readonly placeholder="Your offer or answer appears here."></textarea><button id="copySignal">Copy code</button><label for="signalIn">Received code</label><textarea id="signalIn" rows="3" spellcheck="false" placeholder="Paste the other player’s code."></textarea><div class="dialogbuttons"><button id="answerBtn">2. Guest: answer</button><button id="finishBtn">3. Host: finish</button></div><p id="signalStatus" class="small"></p></details>
   </details>
-  <p class="fineprint">Buddy Bonk v0.8.0 · Protocol 07. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
+  <p class="fineprint">Buddy Bonk v0.8.1 · Protocol 07. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
   <div class="dialogbuttons"><button id="roomCreditsBtn">Credits</button><a href="https://tront.xyz/discord/" target="_blank" rel="noopener noreferrer">Feedback ↗</a></div>
  </div>
 </dialog>
@@ -202,7 +202,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   </section>
   <details class="creditsdetails"><summary>Controls</summary><p><b>E</b> tools · <b>U</b> hide controls · <b>1 to 0</b> toys · <b>Q / W / F / X / T</b> heavy tools · <b>Z / S / I / P / N</b> revolver, SMG, burst rifle, double barrel, minigun · <b>;</b> grenades · <b>,</b> spear · <b>Y</b> shuriken · <b>.</b> frying pan · <b>]</b> water pistol · <b>J</b> tether · <b>V</b> bumper · <b>C</b> workshop · <b>H</b> repair Buddy · <b>M</b> wash room · <b>B</b> basketball · <b>R</b> stand · <b>G</b> gravity · <b>Enter</b> chat · <b>D</b> diagnostics.</p><p>The host can switch to <b>Sandbox</b> in the workshop to open every tool. Purchases are shared with everyone in the room. On touch screens, tap your current tool to open the rack. Blood, sound, and screen shake are local preferences.</p></details>
   <details class="creditsdetails"><summary>Credits and tech</summary><p>Inspired by <a href="https://www.newgrounds.com/portal/view/218014" target="_blank" rel="noopener noreferrer">Interactive Buddy</a> by Shock-Value. Buddy Bonk is an independent multiplayer sandbox, not an official sequel.</p><p>Networking uses <a href="https://github.com/dmotz/trystero" target="_blank" rel="noopener noreferrer">Trystero 0.25.4</a> by Dan Motzenbecker, under the <a href="https://github.com/dmotz/trystero/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Canvas 2D artwork, synthesized audio, and host-authoritative physics run in your browser. No server, no account, no analytics, no ads.</p><p>Workshop progress, player name, and local preferences are saved in this browser. Public discovery contacts third-party relays; room messages travel directly between players. If the host leaves a lobby, someone else takes over hosting.</p></details>
-  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.8.0 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
+  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.8.1 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
  </div>
 </dialog>
 <noscript><section style="position:fixed;inset:0;z-index:100;background:#202932;color:#f2e9cf;padding:40px;font:18px/1.5 Arial"><h1>Buddy Bonk by Tront</h1><p>This multiplayer ragdoll sandbox needs JavaScript to play.</p><p><a href="https://tront.xyz/" style="color:#f6ca55">Trent Sterling (Tront)</a> · <a href="https://tront.xyz/games/" style="color:#f6ca55">More games</a></p></section></noscript>
@@ -272,6 +272,10 @@ const GUNS={
 };
 const TOY_SET=new Set(['grab','magnet','ball','balloon','spring','air','duck','bowling','tether','bumper','water']);
 const MELEE=new Set(['poke','pan']);
+// Trystero would otherwise pick 3 relays by hashing the appId; that draw once landed on three dead
+// ones and public discovery silently died. These six answered a subscribe probe fast and accepted
+// signaling publishes without rate limits or write errors (measured 2026-09-17, tools/probe-relays.mjs).
+const PUBLIC_RELAYS=Object.freeze(['wss://nos.lol','wss://relay.primal.net','wss://bucket.coracle.social','wss://nostr.mom','wss://nostr-relay.corb.net','wss://nostr.sathoarder.com']);
 const ONE_SHOT=new Set(['grab','balloon','ball','bomb','spring','duck','bowling','tether','bumper','spear']);
 
 // These are game tools, not independent client-side effects. The host executes all uses.
@@ -1443,7 +1447,7 @@ class BuddyNet {
    this.tryModule=mod;
    // Trystero seeds its relay picks from the appId; the v4 name lands on live relays where a fresh name did not.
    // Protocol isolation rides on the room id instead, so stale-tab v0.7 clients never meet protocol 7 peers.
-   this.tryRoom=mod.joinRoom({appId:'xyz.tront.buddybay.prototype.v4',password:this.room,relayConfig:{redundancy:3,warnOnRelayFailure:false}},this.room+'#p'+BB.VERSION,{onJoinError:e=>{this.noteError(e.error||e);this.setStatus('Peer connection failed; try direct codes.');}});
+   this.tryRoom=mod.joinRoom({appId:'xyz.tront.buddybay.prototype.v4',password:this.room,relayConfig:{urls:PUBLIC_RELAYS,redundancy:PUBLIC_RELAYS.length,warnOnRelayFailure:false}},this.room+'#p'+BB.VERSION,{onJoinError:e=>{this.noteError(e.error||e);this.setStatus('Peer connection failed; try direct codes.');}});
    const r=this.tryRoom;this.helloAction=r.makeAction('bbhello');this.ctrlAction=r.makeAction('bbctrl');this.snapAction=r.makeAction('bbstate');
    const hello=peer=>this.helloAction.send({id:this.id,host:this.hostId,room:this.room,isHost:this.isHost,n:this.guestCount(),v:BB.VERSION},{target:peer}).catch(e=>this.noteError(e));
    r.onPeerJoin=peer=>hello(peer);
@@ -1472,6 +1476,7 @@ class BuddyNet {
    clearInterval(this.relayTimer);this.relayTimer=setInterval(()=>{
     if(generation!==this.generation)return;
     try{const sockets=mod.getRelaySockets?.()||{};this.relayCount=Object.values(sockets).filter(s=>s.readyState===1).length;
+     this.relayState=Object.entries(sockets).map(([u,w])=>u.replace(/^wss:\/\//,'').replace(/\/$/,'')+' '+(['connecting','open','closing','closed'][w.readyState]||'?'));
      if(this.relayCount)this.setStatus(`Public discovery · ${this.relayCount} relay${this.relayCount===1?'':'s'} open`);
      else this.setStatus('Discovery waiting for a public relay…');
      for(const peer of Object.keys(r.getPeers()))if(!this.onlineIds.has(peer))hello(peer);
@@ -1516,7 +1521,7 @@ class BuddyNet {
  }
  drop(id){const l=this.links.get(id);if(l)this.closeLink(l);const peer=this.onlineLinks.get(id);if(peer){this.onlineLinks.delete(id);this.onlineIds.delete(peer);try{this.tryRoom?.getPeers()[peer]?.close();}catch{}this.onClose?.(id);}}
  async rtcStats(){const out=[];for(const [id,l] of this.links){const st=await l.pc.getStats();out.push({id,connection:l.pc.connectionState,channels:[l.control,l.state].filter(Boolean).map(c=>({label:c.label,state:c.readyState,ordered:c.ordered,maxRetransmits:c.maxRetransmits})),reports:[...st.values()].filter(s=>['candidate-pair','local-candidate','remote-candidate','data-channel'].includes(s.type))});}return out;}
- stats(){return {peers:this.peers().length,routes:this.peers().map(id=>({id,route:this.route(id)})),tx:this.tx,rx:this.rx,txByKind:{...this.txByKind},binaryPackets:this.binaryPackets,binaryBytes:this.binaryBytes,jsonSnapshotBytes:this.jsonSnapshotBytes,dropped:this.drops,received:this.messages,public:this.publicState,relayCount:this.relayCount,error:this.publicError};}
+ stats(){return {peers:this.peers().length,routes:this.peers().map(id=>({id,route:this.route(id)})),tx:this.tx,rx:this.rx,txByKind:{...this.txByKind},binaryPackets:this.binaryPackets,binaryBytes:this.binaryBytes,jsonSnapshotBytes:this.jsonSnapshotBytes,dropped:this.drops,received:this.messages,public:this.publicState,relayCount:this.relayCount,relays:(this.relayState||[]).slice(),error:this.publicError};}
  dispose(){
   if(this.disposed)return;
   // Best effort graceful leave: let the reliable goodbye drain before closing SCTP.
@@ -2517,7 +2522,10 @@ const autoLobby=!hash.get('room');
 let roomCode=(hash.get('room')||'LOBBY').replace(/[^A-Za-z0-9-]/g,'').slice(0,32)||'LOBBY';
 const myId=uid();let hostId=(hash.get('host')||myId).replace(/[^A-Za-z0-9-]/g,'').slice(0,80)||myId;
 let isHost=hostId===myId;
-const local={style:0,id:myId,name:readStore('buddybay-name',isHost?'Captain Grab':'Helping Hand'),color:isHost?PALETTE[0]:PALETTE[1],x:447,y:399,down:false,tool:'grab',grip:null,seq:0};
+const HAND_NAMES=['Captain Grab','Doctor Yeet','Sir Bonksalot','Lil Mallet','Big Nudge','Professor Ouch','Auntie Anvil','Duke of Yoink','Marshal Mittens','Rocket Ronnie','Balloon Betty','Tesla Ted','Bowling Bob','Gravy Hands','Nurse Bandaid','Count Wallop','Major Whack','Lady Launch','Spring Steve','Dart Vader','Mister Tickle','Baron von Bonk','Pinata Pete','Chef Clobber'];
+// Four 'Captain Grab's in one room is unreadable. First visit draws a name and keeps it.
+const pickHandName=()=>{const n=HAND_NAMES[Math.floor(Math.random()*HAND_NAMES.length)];saveStore('buddybay-name',n);return n;};
+const local={style:0,id:myId,name:readStore('buddybay-name','')||pickHandName(),color:isHost?PALETTE[0]:PALETTE[1],x:447,y:399,down:false,tool:'grab',grip:null,seq:0};
 const renderer=new BuddyRenderer($('game'));
 let bloodLevel=Number(readStore('buddybay-blood','1'));if(![0,1,2].includes(bloodLevel))bloodLevel=1;renderer.blood.setLevel(bloodLevel);
 renderer.motion=readStore('buddybay-motion',matchMedia('(prefers-reduced-motion: reduce)').matches?'off':'on')==='on';
@@ -2993,7 +3001,7 @@ function updateUI(){
  $('pauseNotice').hidden=!notice;$('pauseNotice').textContent=notice;
  const players=isHost?world.snapshot().h:welcomed?s.h:[[myId,local.name,local.color,0,0,false,null,'grab']];
  const key=players.map(h=>h[0]+h[1]+h[2]).join('|');if(key!==rosterKey){rosterKey=key;$('roster').replaceChildren();for(const h of players){const el=document.createElement('div');el.className='person';el.style.setProperty('--color',h[2]);const dot=document.createElement('i');el.append(dot,document.createTextNode(h[1]));const small=document.createElement('small');small.textContent=h[0]===hostId?'HOST':h[0]===myId?'YOU':'FRIEND';el.append(small);$('roster').append(el);}}
- if(debugVisible){const ns=net.stats();$('diagnostics').textContent=[`BUDDY BONK / ${isHost?'AUTHORITY':'GUEST'}`,`render     ${Math.round(renderer.fps)} fps`,`simulation ${isHost?'120 Hz · local':'host snapshots only'}`,`snapshots  ${receivedSnapshots} received`,`players    ${count} / 4`,`bodies     ${s?.n.length||0} / ${BB.MAX_NODES}`,`candy      ${s?.c.length||0} / ${BB.MAX_CANDY}`,`rockets    ${s?.p.length||0} / ${BB.MAX_ROCKETS}`,`springs    ${s?.pads.length||0} / ${BB.MAX_PADS}`,`snapshotHz ${(stats.snapshotHz||30).toFixed(1)} target`, `grabs      ${s?.h.filter(h=>h[6]).length||0}`,`ping       ${Math.round(rtt)} ms`,`received   ${(ns.rx/1024).toFixed(1)} KiB`,`sent       ${(ns.tx/1024).toFixed(1)} KiB`,`wire/peer  ${(stats.txRate/Math.max(1,net.peers().length)/1024).toFixed(1)} KiB/s out`,`receive    ${(stats.rxRate/1024).toFixed(1)} KiB/s in`,`snapshot   ${stats.snapBytes} B · binary`,`local FX   ${renderer.particles.length+renderer.blood.drops.length} particles`,`stain cues ${renderer.blood.marks.length} / 96`,`skipped    ${ns.dropped} queued updates`,`pointer    ${pointerType} · ${pointerInside?'in room':'out'} · ${activePointer===null?'idle':'held'}${waitForRelease?' · waiting':''}`,...inputTrace.map(t=>'  '+t),...ns.routes.map(r=>r.route),`${ns.public}`].join('\n');}
+ if(debugVisible){const ns=net.stats();$('diagnostics').textContent=[`BUDDY BONK / ${isHost?'AUTHORITY':'GUEST'}`,`render     ${Math.round(renderer.fps)} fps`,`simulation ${isHost?'120 Hz · local':'host snapshots only'}`,`snapshots  ${receivedSnapshots} received`,`players    ${count} / 4`,`bodies     ${s?.n.length||0} / ${BB.MAX_NODES}`,`candy      ${s?.c.length||0} / ${BB.MAX_CANDY}`,`rockets    ${s?.p.length||0} / ${BB.MAX_ROCKETS}`,`springs    ${s?.pads.length||0} / ${BB.MAX_PADS}`,`snapshotHz ${(stats.snapshotHz||30).toFixed(1)} target`, `grabs      ${s?.h.filter(h=>h[6]).length||0}`,`ping       ${Math.round(rtt)} ms`,`received   ${(ns.rx/1024).toFixed(1)} KiB`,`sent       ${(ns.tx/1024).toFixed(1)} KiB`,`wire/peer  ${(stats.txRate/Math.max(1,net.peers().length)/1024).toFixed(1)} KiB/s out`,`receive    ${(stats.rxRate/1024).toFixed(1)} KiB/s in`,`snapshot   ${stats.snapBytes} B · binary`,`local FX   ${renderer.particles.length+renderer.blood.drops.length} particles`,`stain cues ${renderer.blood.marks.length} / 96`,`skipped    ${ns.dropped} queued updates`,`pointer    ${pointerType} · ${pointerInside?'in room':'out'} · ${activePointer===null?'idle':'held'}${waitForRelease?' · waiting':''}`,...inputTrace.map(t=>'  '+t),...ns.routes.map(r=>r.route),`${ns.public}`,...ns.relays.map(r=>'  relay '+r)].join('\n');}
 }
 let lastStateSend=-Infinity,nextStateSend=0;
 function sendSnapshot(force=false){
@@ -3043,7 +3051,7 @@ initCatalogue();requestAnimationFrame(frame);updateUI();
 window.addEventListener('beforeunload',()=>{releasePointer();if(isHost)net.broadcast('end',{});else net.send(hostId,'goodbye',{});net.dispose();clearInterval(simTimer);clearInterval(snapshotTimer);clearInterval(uiTimer);});
 // Read-only observability plus deliberate harness controls. These are not network APIs.
 window.__buddy={
- title:'Buddy Bonk',version:'0.8.0',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
+ title:'Buddy Bonk',version:'0.8.1',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
  get state(){return isHost?world.snapshot(paused):latest;},get renderState(){return renderState;},get hand(){return {...local};},get connected(){return welcomed&&!hostGone;},
  get pointer(){return {inside:pointerInside,activeId:activePointer,waiting:waitForRelease,mode:cursorMode,type:pointerType,cursor:getComputedStyle(canvas).cursor,capture:activePointer!==null&&canvas.hasPointerCapture(activePointer),localHandVisible:renderer.localHandVisible,trace:inputTrace.slice()};},
  get ui(){return {quiet:uiQuiet,drawerOpen:$('shopDialog').open,catalogue:{...catState},scale:uiFactor};},
