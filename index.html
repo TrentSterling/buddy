@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#202932">
-<meta name="description" content="Buddy Bonk is a browser ragdoll sandbox for up to four players. One room, one Buddy, 21 tools from mallets to rockets. No signup. Open the link and you are in.">
+<meta name="description" content="Buddy Bonk is a browser ragdoll sandbox for up to four players. One room, one Buddy, 23 tools from mallets to rockets. No signup. Open the link and you are in.">
 <meta name="author" content="Trent Sterling (Tront)">
 <meta name="application-name" content="Buddy Bonk">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tront">
 <meta property="og:title" content="Buddy Bonk by Tront">
-<meta property="og:description" content="Grab a limb, wind up, let go. A browser ragdoll sandbox for up to four players, 21 tools, and one Buddy who never learns. Open the link and your friends land in the same room.">
+<meta property="og:description" content="Grab a limb, wind up, let go. A browser ragdoll sandbox for up to four players, 23 tools, and one Buddy who never learns. Open the link and your friends land in the same room.">
 <meta property="og:url" content="https://tront.xyz/buddy/">
 <meta property="og:image" content="https://tront.xyz/buddy/og-image.png?v=2">
 <meta property="og:image:type" content="image/png">
@@ -23,11 +23,11 @@
 <meta property="og:image:alt" content="Buddy Bonk by Tront: a real in-game view of the multiplayer ragdoll toybox.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Buddy Bonk by Tront">
-<meta name="twitter:description" content="Grab a limb, wind up, let go. Four players, 21 tools, one Buddy who never learns. Runs in your browser, no signup.">
+<meta name="twitter:description" content="Grab a limb, wind up, let go. Four players, 23 tools, one Buddy who never learns. Runs in your browser, no signup.">
 <meta name="twitter:image" content="https://tront.xyz/buddy/og-image.png?v=2">
 <meta name="twitter:image:alt" content="Buddy Bonk multiplayer ragdoll sandbox, actual gameplay.">
 <title>Buddy Bonk: Multiplayer Ragdoll Sandbox by Tront</title>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Buddy Bonk","url":"https://tront.xyz/buddy/","description":"A browser ragdoll sandbox by Tront for up to four players. One shared room, 21 tools, one Buddy who never learns.","author":{"@type":"Person","name":"Trent Sterling","alternateName":"Tront","url":"https://tront.xyz/"},"genre":["Physics sandbox","Multiplayer"],"gamePlatform":"Web browser","inLanguage":"en","softwareVersion":"0.5.0","numberOfPlayers":{"@type":"QuantitativeValue","minValue":1,"maxValue":4},"image":"https://tront.xyz/buddy/og-image.png?v=2"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Buddy Bonk","url":"https://tront.xyz/buddy/","description":"A browser ragdoll sandbox by Tront for up to four players. One shared room, 23 tools, one Buddy who never learns.","author":{"@type":"Person","name":"Trent Sterling","alternateName":"Tront","url":"https://tront.xyz/"},"genre":["Physics sandbox","Multiplayer"],"gamePlatform":"Web browser","inLanguage":"en","softwareVersion":"0.5.0","numberOfPlayers":{"@type":"QuantitativeValue","minValue":1,"maxValue":4},"image":"https://tront.xyz/buddy/og-image.png?v=2"}</script>
 <style>/* Buddy Bonk 0.3.2: the room first. No mini-dashboard, no global cursor hiding.
    CSS pixels/rem typography are independent of the Canvas world and its zoom. */
 :root{color-scheme:dark;--ink:#202f38;--deep:#13242d;--steel:#405c68;--paper:#f3e9ce;--yellow:#f6ca55;--red:#d85640;--muted:#bccbc9;--line:#152932;--dock-gap:1rem;font-size:clamp(16px,calc(12px + .45vw),26px)}
@@ -118,7 +118,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
    <p id="connectionDetail" class="small">Starting discovery…</p><div class="dialogbuttons"><button id="retryBtn">Retry discovery</button><button id="debugBtn">Diagnostics (D)</button></div>
    <details id="advanced"><summary>Direct connection codes</summary><p class="small">When discovery fails: the host sends an offer; the guest sends an answer back. Some networks still need a TURN relay.</p><button id="offerBtn">1. Host: make offer</button><label for="signalOut">Outgoing code</label><textarea id="signalOut" rows="3" readonly placeholder="Your offer or answer appears here."></textarea><button id="copySignal">Copy code</button><label for="signalIn">Received code</label><textarea id="signalIn" rows="3" spellcheck="false" placeholder="Paste the other player’s code."></textarea><div class="dialogbuttons"><button id="answerBtn">2. Guest: answer</button><button id="finishBtn">3. Host: finish</button></div><p id="signalStatus" class="small"></p></details>
   </details>
-  <p class="fineprint">Buddy Bonk v0.7.0 · Protocol 06. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
+  <p class="fineprint">Buddy Bonk v0.7.1 · Protocol 06. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
   <div class="dialogbuttons"><button id="roomCreditsBtn">Credits</button><a href="https://tront.xyz/discord/" target="_blank" rel="noopener noreferrer">Feedback ↗</a></div>
  </div>
 </dialog>
@@ -139,7 +139,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   <p class="creditstagline">Grab a limb. Wind up. Let go.</p>
   <div class="quickgrid">
    <div><b>Drag</b><span>Grab any part of Buddy, swing, release to throw. Right-drag always grabs.</span></div>
-   <div><b>21 tools</b><span>Mallet, rockets, bombs, tethers, more. Earn them or flip on sandbox.</span></div>
+   <div><b>23 tools</b><span>Mallet, rockets, bombs, tethers, more. Earn them or flip on sandbox.</span></div>
    <div><b>4 players</b><span>Send the plain link. Anyone who opens it lands in your room.</span></div>
   </div>
   <div class="playrow"><button id="backToGame" class="bigplay">PLAY</button><button id="creditsInvite" class="softplay">Copy invite link</button></div>
@@ -149,7 +149,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   </section>
   <details class="creditsdetails"><summary>Controls</summary><p><b>E</b> tools · <b>U</b> hide controls · <b>1 to 0</b> toys · <b>Q / W / F / X / T</b> heavy tools · <b>J</b> tether · <b>V</b> bumper · <b>C</b> workshop · <b>H</b> repair Buddy · <b>M</b> wash room · <b>B</b> basketball · <b>R</b> stand · <b>G</b> gravity · <b>Enter</b> chat · <b>D</b> diagnostics.</p><p>The host can switch to <b>Sandbox</b> in the workshop to open every tool. Purchases are shared with everyone in the room. On touch screens, tap your current tool to open the rack. Blood, sound, and screen shake are local preferences.</p></details>
   <details class="creditsdetails"><summary>Credits and tech</summary><p>Inspired by <a href="https://www.newgrounds.com/portal/view/218014" target="_blank" rel="noopener noreferrer">Interactive Buddy</a> by Shock-Value. Buddy Bonk is an independent multiplayer sandbox, not an official sequel.</p><p>Networking uses <a href="https://github.com/dmotz/trystero" target="_blank" rel="noopener noreferrer">Trystero 0.25.4</a> by Dan Motzenbecker, under the <a href="https://github.com/dmotz/trystero/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Canvas 2D artwork, synthesized audio, and host-authoritative physics run in your browser. No server, no account, no analytics, no ads.</p><p>Workshop progress, player name, and local preferences are saved in this browser. Public discovery contacts third-party relays; room messages travel directly between players. If the host leaves a lobby, someone else takes over hosting.</p></details>
-  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.7.0 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
+  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.7.1 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
  </div>
 </dialog>
 <noscript><section style="position:fixed;inset:0;z-index:100;background:#202932;color:#f2e9cf;padding:40px;font:18px/1.5 Arial"><h1>Buddy Bonk by Tront</h1><p>This multiplayer ragdoll sandbox needs JavaScript to play.</p><p><a href="https://tront.xyz/" style="color:#f6ca55">Trent Sterling (Tront)</a> · <a href="https://tront.xyz/games/" style="color:#f6ca55">More games</a></p></section></noscript>
@@ -434,7 +434,8 @@ class BuddyWorld {
  swingHit(h,hit,speed){
   const n=this.node(hit.t<.5?hit.a:hit.b);if(!n||this.time-(n.swungAt??-10)<SWING.COOLDOWN)return false;
   n.swungAt=this.time;const who=h.id,dx=h.svx/speed,dy=h.svy/speed,power=clamp((speed-SWING.MIN)/(SWING.MAX-SWING.MIN),0,1),boost=this.power();
-  this.lastTouch=this.time;this.onEvent({type:'poke',who,x:hit.x,y:hit.y,hit:true,buddy:hit.kind===0,kind:hit.kind,swing:1});
+  this.lastTouch=this.time;// Tick-stamped like the canned swing, so guests show the hit when their rendered mallet gets there.
+  this.onEvent({type:'poke',who,x:hit.x,y:hit.y,hit:true,buddy:hit.kind===0,kind:hit.kind,swing:1,mallet:1,at:this.tick});
   if(hit.kind===3){this.popBalloon(n,who);return true;}
   const a=this.node(hit.a),b=this.node(hit.b),u=1-hit.t,t=hit.t,w=hit.a===hit.b?a.im:a.im*u*u+b.im*t*t,impulse=lerp(380,1500,power)*boost;
   if(a===b){a.vx+=dx*impulse;a.vy+=dy*impulse;}
@@ -2510,7 +2511,7 @@ requestAnimationFrame(frame);updateUI();
 window.addEventListener('beforeunload',()=>{releasePointer();if(isHost)net.broadcast('end',{});else net.send(hostId,'goodbye',{});net.dispose();clearInterval(simTimer);clearInterval(snapshotTimer);clearInterval(uiTimer);});
 // Read-only observability plus deliberate harness controls. These are not network APIs.
 window.__buddy={
- title:'Buddy Bonk',version:'0.7.0',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
+ title:'Buddy Bonk',version:'0.7.1',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
  get state(){return isHost?world.snapshot(paused):latest;},get renderState(){return renderState;},get hand(){return {...local};},get connected(){return welcomed&&!hostGone;},
  get pointer(){return {inside:pointerInside,activeId:activePointer,waiting:waitForRelease,mode:cursorMode,type:pointerType,cursor:getComputedStyle(canvas).cursor,capture:activePointer!==null&&canvas.hasPointerCapture(activePointer),localHandVisible:renderer.localHandVisible,trace:inputTrace.slice()};},
  get ui(){return {quiet:uiQuiet,drawerOpen:!$('toolDrawer').hidden,scale:uiFactor};},
