@@ -1,0 +1,32 @@
+PASS Two isolated browsers connect over real WebRTC 
+PASS hit: start has no contact damage 
+PASS hit: one contact only [{'type': 'poke', 'who': '22e797e9f89ef9476dd0ee2a', 'x': 640.5690751314812, 'y': 315.87497334451854, 'hit': True, 'buddy': True, 'kind': 0, 'sid': 1, 'at': 622, 'ct': 183, 'mallet': 1, 'tick': 622}]
+PASS Host damage starts during downswing, not button-down {'hit_tick': 622}
+PASS Guest injury and head stars do not lead rendered contact 
+PASS Guest receives confirmed hit effect 
+PASS hit: guest matches host injury state 
+PASS miss: start has no contact damage 
+PASS miss: no phantom contact 
+PASS miss: no Buddy wound or daze 
+PASS miss: guest matches host injury state 
+PASS near-miss: start has no contact damage 
+PASS near-miss: no phantom contact 
+PASS near-miss: no Buddy wound or daze 
+PASS near-miss: guest matches host injury state 
+PASS ball: start has no contact damage 
+PASS ball: one contact only [{'type': 'poke', 'who': '22e797e9f89ef9476dd0ee2a', 'x': 400.48111710317323, 'y': 512.4627050154893, 'hit': True, 'buddy': False, 'kind': 1, 'sid': 1, 'at': 622, 'ct': 183, 'mallet': 1, 'tick': 622}]
+PASS ball: no Buddy wound or daze 
+PASS ball: guest matches host injury state 
+PASS Guest crossing UI cancels pending host mallet [{'type': 'swing', 'who': '22e797e9f89ef9476dd0ee2a', 'sid': 1, 'x': 640, 'y': 309, 'side': 1, 'tool': 'poke', 'at': 621, 'tick': 621}, {'type': 'swingCancel', 'who': '22e797e9f89ef9476dd0ee2a', 'sid': 1, 'at': 621, 'tick': 621}, {'type': 'bounce', 'x': 967, 'y': 646, 's': 0.21696636851537343, 'ball': True, 'tick': 641}, {'type': 'bounce', 'x': 865, 'y': 646, 's': 0.2848449382050733, 'ball': True, 'tick': 652}, {'type': 'bounce', 'x': 401, 'y': 646, 's': 0.3091597791474799, 'ball': True, 'tick': 656}, {'type': 'bounce', 'x': 597.7065440489945, 'y': 646, 's': 0.24451377753076875, 'ball': False, 'tick': 665}, {'type': 'bounce', 'x': 683.1392735207351, 'y': 646, 's': 0.24780882803990412, 'ball': False, 'tick': 665}]
+PASS UI hover restores OS cursor and releases input 
+PASS Four isolated clients join authoritative room 
+PASS Late join restores the in-flight swing 
+PASS Late join sees one resolved hit, not a replayed start 
+PASS Concurrent hands have distinct swing ids 
+PASS Simultaneous misses do not stun Buddy on any client 
+PASS Guest mallet hits while another real peer holds Buddy 
+PASS 80ms delayed receiver still never shows injury before its contact tick 
+PASS All four clients agree on injuries after held-hit with delay 
+PASS Removed peer cannot leave a delayed mallet hit [{'type': 'swing', 'who': '12ce0af4ef51f04d3afd849d', 'sid': 1, 'x': 640, 'y': 309, 'side': 1, 'tool': 'poke', 'at': 600, 'tick': 600}, {'type': 'swingCancel', 'who': '12ce0af4ef51f04d3afd849d', 'sid': 1, 'at': 600, 'tick': 600}]
+PASS No page JavaScript errors 
+CHECKS 31 FAILURES 0

@@ -1,0 +1,316 @@
+{
+  "checks": [
+    {
+      "name": "Host and guest connected via actual WebRTC",
+      "pass": true,
+      "details": [
+        {
+          "id": "20610f4b519d9872093c5cce",
+          "route": "WebRTC / test TURN-TCP"
+        }
+      ]
+    },
+    {
+      "name": "Guest can buy and equip a revolver through catalogue",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest hat preview is local until applied",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest cosmetic purchase updates shared hat and cash once",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest wears robot hand without changing host hand",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Room action clearly disabled for guest",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Host room and Buddy skin propagate to guest",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Four isolated contexts are connected",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Late join restores exact cosmetics and purchases",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest held charge creates no premature spear",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest release creates one host-owned spear",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Spear and wounds match on late-joined client",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Repeated guest spear throws recycle down to two",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Recycled spear IDs agree across all clients",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest Sweep preserves held ball and shared setup",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Sweep removals synchronise on every peer",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest clear-all is rejected by authority",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Four-client mixed cosmetics render without errors",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "Two simultaneous grabs survive new UI and cosmetics",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Explicit disconnect releases and removes grabbing peer",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Explosion stress renderer stays in capped pools",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Abrupt page close removes guest lease",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "No JS errors during multiplayer run",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "errors": [],
+  "records": {
+    "active_before": {
+      "peers": 3,
+      "routes": [
+        {
+          "id": "8b458836cd3b9aefd75e33ed",
+          "route": "WebRTC / test TURN-TCP"
+        },
+        {
+          "id": "d0c9edd368f22778eb929e2e",
+          "route": "WebRTC / test TURN-TCP"
+        },
+        {
+          "id": "53772097370239b0a93fed58",
+          "route": "WebRTC / test TURN-TCP"
+        }
+      ],
+      "tx": 436739,
+      "rx": 46530,
+      "txByKind": {
+        "welcome": 8294,
+        "snapshot": 413578,
+        "pong": 1895,
+        "events": 12972
+      },
+      "binaryPackets": 0,
+      "binaryBytes": 413578,
+      "jsonSnapshotBytes": 915874,
+      "dropped": 0,
+      "received": 324,
+      "public": "Local / direct WebRTC only",
+      "relayCount": 0,
+      "error": ""
+    },
+    "active_after": {
+      "peers": 3,
+      "routes": [
+        {
+          "id": "8b458836cd3b9aefd75e33ed",
+          "route": "WebRTC / test TURN-TCP"
+        },
+        {
+          "id": "d0c9edd368f22778eb929e2e",
+          "route": "WebRTC / test TURN-TCP"
+        },
+        {
+          "id": "53772097370239b0a93fed58",
+          "route": "WebRTC / test TURN-TCP"
+        }
+      ],
+      "tx": 582799,
+      "rx": 58609,
+      "txByKind": {
+        "welcome": 8294,
+        "snapshot": 527434,
+        "pong": 2275,
+        "events": 44796
+      },
+      "binaryPackets": 0,
+      "binaryBytes": 527434,
+      "jsonSnapshotBytes": 1172434,
+      "dropped": 0,
+      "received": 402,
+      "public": "Local / direct WebRTC only",
+      "relayCount": 0,
+      "error": ""
+    },
+    "durationSeconds": 2,
+    "snapshotBytes": 646,
+    "rtc": [
+      {
+        "id": "20610f4b519d9872093c5cce",
+        "connection": "connected",
+        "channels": [
+          {
+            "label": "bb-control",
+            "state": "open",
+            "ordered": true,
+            "maxRetransmits": null
+          },
+          {
+            "label": "bb-state",
+            "state": "open",
+            "ordered": false,
+            "maxRetransmits": 0
+          }
+        ],
+        "reports": [
+          {
+            "id": "CPopZBsUlu_75rwkmy0",
+            "timestamp": 1789626610737.668,
+            "type": "candidate-pair",
+            "bytesDiscardedOnSend": 0,
+            "bytesReceived": 175658,
+            "bytesSent": 29085,
+            "consentRequestsSent": 5,
+            "currentRoundTripTime": 0.001,
+            "lastPacketReceivedTimestamp": 1789626610716,
+            "lastPacketSentTimestamp": 1789626610716,
+            "localCandidateId": "IopZBsUlu",
+            "nominated": true,
+            "packetsDiscardedOnSend": 0,
+            "packetsReceived": 306,
+            "packetsSent": 240,
+            "priority": 72092774148620290,
+            "remoteCandidateId": "I75rwkmy0",
+            "requestsReceived": 6,
+            "requestsSent": 8,
+            "responsesReceived": 6,
+            "responsesSent": 6,
+            "state": "succeeded",
+            "totalRoundTripTime": 0.005,
+            "transportId": "T01",
+            "writable": true
+          },
+          {
+            "id": "D1",
+            "timestamp": 1789626610737.668,
+            "type": "data-channel",
+            "bytesReceived": 28385,
+            "bytesSent": 1593,
+            "dataChannelIdentifier": 1,
+            "label": "bb-control",
+            "messagesReceived": 79,
+            "messagesSent": 13,
+            "protocol": "",
+            "state": "open"
+          },
+          {
+            "id": "D2",
+            "timestamp": 1789626610737.668,
+            "type": "data-channel",
+            "bytesReceived": 128490,
+            "bytesSent": 12812,
+            "dataChannelIdentifier": 3,
+            "label": "bb-state",
+            "messagesReceived": 208,
+            "messagesSent": 86,
+            "protocol": "",
+            "state": "open"
+          },
+          {
+            "id": "I75rwkmy0",
+            "timestamp": 1789626610737.668,
+            "type": "remote-candidate",
+            "address": "127.0.0.1",
+            "candidateType": "relay",
+            "foundation": "1797656238",
+            "ip": "127.0.0.1",
+            "isRemote": true,
+            "port": 64956,
+            "priority": 16785407,
+            "protocol": "udp",
+            "transportId": "T01",
+            "usernameFragment": "S36M"
+          },
+          {
+            "id": "IopZBsUlu",
+            "timestamp": 1789626610737.668,
+            "type": "local-candidate",
+            "address": "127.0.0.1",
+            "candidateType": "relay",
+            "foundation": "1797656238",
+            "ip": "127.0.0.1",
+            "isRemote": false,
+            "networkType": "unknown",
+            "port": 56175,
+            "priority": 16785407,
+            "protocol": "udp",
+            "relayProtocol": "tcp",
+            "transportId": "T01",
+            "url": "turn:127.0.0.1:34780?transport=tcp",
+            "usernameFragment": "poKy"
+          }
+        ]
+      }
+    ],
+    "relay": {
+      "allocations": 6,
+      "tcp_clients": 6,
+      "forwarded_packets": 2550,
+      "forwarded_bytes": 908371,
+      "requests": {
+        "0x3": 12,
+        "0x8": 6,
+        "0x16": 36,
+        "0x9": 6,
+        "0x4": 3
+      }
+    }
+  }
+}

@@ -1,0 +1,7919 @@
+{
+  "checks": [
+    {
+      "name": "Two isolated browsers connect over real WebRTC",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "hit: start has no contact damage",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "hit: one contact only",
+      "pass": true,
+      "details": [
+        {
+          "type": "poke",
+          "who": "335f56e22ada04b8957cfe0a",
+          "x": 640.5690751314812,
+          "y": 315.87497334451854,
+          "hit": true,
+          "buddy": true,
+          "kind": 0,
+          "sid": 1,
+          "at": 622,
+          "ct": 183,
+          "mallet": 1,
+          "tick": 622
+        }
+      ]
+    },
+    {
+      "name": "Host damage starts during downswing, not button-down",
+      "pass": true,
+      "details": {
+        "hit_tick": 622
+      }
+    },
+    {
+      "name": "Guest injury and head stars do not lead rendered contact",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "Guest receives confirmed hit effect",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "hit: guest matches host injury state",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "miss: start has no contact damage",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "miss: no phantom contact",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "miss: no Buddy wound or daze",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "miss: guest matches host injury state",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "near-miss: start has no contact damage",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "near-miss: no phantom contact",
+      "pass": true,
+      "details": []
+    },
+    {
+      "name": "near-miss: no Buddy wound or daze",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "near-miss: guest matches host injury state",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "ball: start has no contact damage",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "ball: one contact only",
+      "pass": true,
+      "details": [
+        {
+          "type": "poke",
+          "who": "335f56e22ada04b8957cfe0a",
+          "x": 400.48111710317323,
+          "y": 512.4627050154893,
+          "hit": true,
+          "buddy": false,
+          "kind": 1,
+          "sid": 1,
+          "at": 622,
+          "ct": 183,
+          "mallet": 1,
+          "tick": 622
+        }
+      ]
+    },
+    {
+      "name": "ball: no Buddy wound or daze",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "ball: guest matches host injury state",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest crossing UI cancels pending host mallet",
+      "pass": true,
+      "details": [
+        {
+          "type": "swing",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "x": 640,
+          "y": 309,
+          "side": 1,
+          "tool": "poke",
+          "at": 627,
+          "tick": 627
+        },
+        {
+          "type": "swingCancel",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "at": 627,
+          "tick": 627
+        },
+        {
+          "type": "bounce",
+          "x": 967,
+          "y": 646,
+          "s": 0.21696636851537343,
+          "ball": true,
+          "tick": 641
+        },
+        {
+          "type": "bounce",
+          "x": 865,
+          "y": 646,
+          "s": 0.2848449382050733,
+          "ball": true,
+          "tick": 652
+        },
+        {
+          "type": "bounce",
+          "x": 401,
+          "y": 646,
+          "s": 0.3091597791474799,
+          "ball": true,
+          "tick": 656
+        },
+        {
+          "type": "bounce",
+          "x": 597.7065440489945,
+          "y": 646,
+          "s": 0.24451377753076875,
+          "ball": false,
+          "tick": 665
+        },
+        {
+          "type": "bounce",
+          "x": 683.1392735207351,
+          "y": 646,
+          "s": 0.24780882803990412,
+          "ball": false,
+          "tick": 665
+        }
+      ]
+    },
+    {
+      "name": "UI hover restores OS cursor and releases input",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Four isolated clients join authoritative room",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Late join restores the in-flight swing",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Late join sees one resolved hit, not a replayed start",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Concurrent hands have distinct swing ids",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Simultaneous misses do not stun Buddy on any client",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest mallet hits while another real peer holds Buddy",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "80ms delayed receiver still never shows injury before its contact tick",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "All four clients agree on injuries after held-hit with delay",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Removed peer cannot leave a delayed mallet hit",
+      "pass": true,
+      "details": [
+        {
+          "type": "swing",
+          "who": "227a6c9a2720496390bb64c2",
+          "sid": 1,
+          "x": 640,
+          "y": 309,
+          "side": 1,
+          "tool": "poke",
+          "at": 600,
+          "tick": 600
+        },
+        {
+          "type": "swingCancel",
+          "who": "227a6c9a2720496390bb64c2",
+          "sid": 1,
+          "at": 600,
+          "tick": 600
+        }
+      ]
+    },
+    {
+      "name": "No page JavaScript errors",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "errors": [],
+  "records": {
+    "hit": {
+      "events": [
+        {
+          "type": "swing",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "x": 640,
+          "y": 309,
+          "side": 1,
+          "tool": "poke",
+          "at": 600,
+          "tick": 600
+        },
+        {
+          "type": "poke",
+          "who": "335f56e22ada04b8957cfe0a",
+          "x": 640.5690751314812,
+          "y": 315.87497334451854,
+          "hit": true,
+          "buddy": true,
+          "kind": 0,
+          "sid": 1,
+          "at": 622,
+          "ct": 183,
+          "mallet": 1,
+          "tick": 622
+        },
+        {
+          "type": "hurt",
+          "m": [
+            1,
+            641,
+            316,
+            -21,
+            98,
+            96,
+            2,
+            2572687847,
+            0
+          ],
+          "epoch": 0,
+          "sid": 1,
+          "at": 622,
+          "ct": 183,
+          "mallet": 1,
+          "tick": 622
+        },
+        {
+          "type": "collect",
+          "x": 640.5690751314812,
+          "y": 315.87497334451854,
+          "value": 1,
+          "who": "335f56e22ada04b8957cfe0a",
+          "tick": 622
+        },
+        {
+          "type": "bounce",
+          "x": 967,
+          "y": 646,
+          "s": 0.21696636851537343,
+          "ball": true,
+          "tick": 641
+        },
+        {
+          "type": "bounce",
+          "x": 865,
+          "y": 646,
+          "s": 0.2848449382050733,
+          "ball": true,
+          "tick": 652
+        },
+        {
+          "type": "bounce",
+          "x": 401,
+          "y": 646,
+          "s": 0.3091597791474799,
+          "ball": true,
+          "tick": 656
+        },
+        {
+          "type": "bounce",
+          "x": 710.2144360807602,
+          "y": 646,
+          "s": 0.27137140419523414,
+          "ball": false,
+          "tick": 666
+        },
+        {
+          "type": "bounce",
+          "x": 580.6745364472763,
+          "y": 646,
+          "s": 0.2825275672240163,
+          "ball": false,
+          "tick": 668
+        },
+        {
+          "type": "bounce",
+          "x": 647.0125972431169,
+          "y": 646,
+          "s": 0.3161434531386638,
+          "ball": false,
+          "tick": 672
+        }
+      ],
+      "trace": [
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 600.2033898298007,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.0016949152483389796,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 602.0903954792005,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.01741996232667109,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 603.9661016935739,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.03305084744644926,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 605.9701492523079,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.0497512437692329,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 607.9522388045467,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.06626865670455562,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 609.9343283567856,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.08278606963988011,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 611.9283582075318,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.09940298506276513,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 614.068965516763,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1172413793063587,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1
+          }
+        },
+        {
+          "tick": 616.2284482764933,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.13523706897077759,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1
+          }
+        },
+        {
+          "tick": 618.2960526326973,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.15246710527247753,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1
+          }
+        },
+        {
+          "tick": 619.9440789481637,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1662006579013644,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1
+          }
+        },
+        {
+          "tick": 621.7788778882692,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.18149064906890988,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1
+          }
+        },
+        {
+          "tick": 623.983498349448,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.19986248624539993,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1
+          }
+        },
+        {
+          "tick": 626.0397196259063,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.9,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.21699766354921923,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1
+          }
+        },
+        {
+          "tick": 627.9906542061606,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.9,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.233255451718005,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1
+          }
+        },
+        {
+          "tick": 629.941588786415,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.9,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.24951323988679164,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1
+          }
+        },
+        {
+          "tick": 631.9343283596323,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.26611940299693604,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1
+          }
+        },
+        {
+          "tick": 633.9164179118711,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.28263681593225964,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 1
+          }
+        },
+        {
+          "tick": 636.237762237564,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3019813519797001,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 1
+          }
+        },
+        {
+          "tick": 638.4350132614722,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.32029177717893553,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 1
+          }
+        },
+        {
+          "tick": 640.1962864715782,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3349690539298189,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 1
+          }
+        },
+        {
+          "tick": 641.9681697612631,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3497347480105253,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 1
+          }
+        },
+        {
+          "tick": 643.929411764706,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.36607843137254914,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 1
+          }
+        },
+        {
+          "tick": 645.8823529411765,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3823529411764701,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 647.9204892973362,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3993374108111345,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 649.9510703378319,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4162589194819324,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 651.9701492551548,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4330845771262899,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 653.940298508886,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4495024875740503,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 655.9815384630057,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4665128205250477,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 658.0517799368082,
+          "mood": [
+            1,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.48376483280673543,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 2
+          }
+        },
+        {
+          "tick": 660.2006472503095,
+          "mood": [
+            1,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5016720604192466,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 662.280000000596,
+          "mood": [
+            0,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5190000000049668,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 663.940000000596,
+          "mood": [
+            0,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5328333333383002,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 665.762500000745,
+          "mood": [
+            0,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5480208333395415,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 667.8375000007451,
+          "mood": [
+            0,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5653125000062094,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 669.9250000007451,
+          "mood": [
+            0,
+            0.9,
+            0,
+            0
+          ],
+          "impact": 0.5,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.582708333339542,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 671.9339339339575,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5994494494496463,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 673.9279279272378,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6160660660603146,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0.8,
+            0,
+            0
+          ],
+          "impact": 0.4,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 1,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        }
+      ]
+    },
+    "miss": {
+      "events": [
+        {
+          "type": "swing",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "x": 850,
+          "y": 250,
+          "side": 1,
+          "tool": "poke",
+          "at": 600,
+          "tick": 600
+        },
+        {
+          "type": "bounce",
+          "x": 967,
+          "y": 646,
+          "s": 0.21696636851537343,
+          "ball": true,
+          "tick": 641
+        },
+        {
+          "type": "bounce",
+          "x": 865,
+          "y": 646,
+          "s": 0.2848449382050733,
+          "ball": true,
+          "tick": 652
+        },
+        {
+          "type": "bounce",
+          "x": 401,
+          "y": 646,
+          "s": 0.3091597791474799,
+          "ball": true,
+          "tick": 656
+        },
+        {
+          "type": "bounce",
+          "x": 597.7065440489945,
+          "y": 646,
+          "s": 0.24451377753076875,
+          "ball": false,
+          "tick": 665
+        },
+        {
+          "type": "bounce",
+          "x": 683.1392735207351,
+          "y": 646,
+          "s": 0.24780882803990412,
+          "ball": false,
+          "tick": 665
+        }
+      ],
+      "trace": [
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 601.8764845609231,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.015637371341026274,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 603.8598574814151,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.0321654790117929,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 605.8888888873752,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.04907407406146014,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 608.0222222207085,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.06685185183923714,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 609.8668831162253,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.08222402596854383,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 611.4837662340472,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.09569805195039294,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 613.5099337752265,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.11258278146022072,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 615.7218543044457,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1310154525370475,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 617.933774833665,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.14944812361387516,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 619.9281437115169,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.16606786426264097,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 621.92814371116,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.18273453092633396,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 623.6494845351914,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1970790377932614,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 625.4784053149173,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.21232004429097717,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 627.6976744183468,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.2308139534862228,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 629.8395061728395,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.24866255144032934,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 631.9012345679013,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.26584362139917683,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 633.9629629629629,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.2830246913580243,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 3
+          }
+        },
+        {
+          "tick": 635.9640718559369,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.2997005987994745,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 4
+          }
+        },
+        {
+          "tick": 637.952095807678,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.3162674650639836,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 4
+          }
+        },
+        {
+          "tick": 640.0123456779063,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.3334362139825524,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 4
+          }
+        },
+        {
+          "tick": 642.0528169001935,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.35044014083494623,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 4
+          }
+        },
+        {
+          "tick": 643.8063380284261,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.3650528169035514,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 4
+          }
+        },
+        {
+          "tick": 645.6940874050249,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.38078406170854073,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 5
+          }
+        },
+        {
+          "tick": 647.8534704381129,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.398778920317608,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 5
+          }
+        },
+        {
+          "tick": 649.9871465303311,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4165595544194254,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 5
+          }
+        },
+        {
+          "tick": 651.9761904772506,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4331349206437549,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 5
+          }
+        },
+        {
+          "tick": 653.9642857156985,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4497023809641538,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 5
+          }
+        },
+        {
+          "tick": 655.9697885196592,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4664149043304935,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 5
+          }
+        },
+        {
+          "tick": 657.9879154064231,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4832326283868591,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 660.1019108281029,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5008492569008576,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 662.1850649361545,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5182088744679545,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 663.8019480524117,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5316829004367642,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 665.578947368421,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5464912280701757,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 667.7631578947369,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5646929824561404,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 669.9473684210527,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.582894736842106,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 671.9759036151672,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.59979919679306,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 673.9759036158854,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6164658634657112,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        }
+      ]
+    },
+    "near-miss": {
+      "events": [
+        {
+          "type": "swing",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "x": 738,
+          "y": 333,
+          "side": 1,
+          "tool": "poke",
+          "at": 600,
+          "tick": 600
+        },
+        {
+          "type": "bounce",
+          "x": 967,
+          "y": 646,
+          "s": 0.21696636851537343,
+          "ball": true,
+          "tick": 641
+        },
+        {
+          "type": "bounce",
+          "x": 865,
+          "y": 646,
+          "s": 0.2848449382050733,
+          "ball": true,
+          "tick": 652
+        },
+        {
+          "type": "bounce",
+          "x": 401,
+          "y": 646,
+          "s": 0.3091597791474799,
+          "ball": true,
+          "tick": 656
+        },
+        {
+          "type": "bounce",
+          "x": 597.7065440489945,
+          "y": 646,
+          "s": 0.24451377753076875,
+          "ball": false,
+          "tick": 665
+        },
+        {
+          "type": "bounce",
+          "x": 683.1392735207351,
+          "y": 646,
+          "s": 0.24780882803990412,
+          "ball": false,
+          "tick": 665
+        }
+      ],
+      "trace": [
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 2,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 601.3744075819142,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.01145339651595112,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 603.3412322270195,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.02784360189182955,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 605.3301587301588,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.044417989417990356,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 607.4507936507937,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.062089947089947195,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 609.4536082475156,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.07878006872929699,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 611.1855670107569,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.09321305842297445,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 613.2196261687202,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.11016355140600176,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 615.5607476633952,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.12967289719496033,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 617.9158878496552,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.14929906541379356,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 619.8991097922491,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1658259149354091,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 621.8694362024416,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.18224530168701403,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 623.5704697986295,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.19642058165524556,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 625.3047619040051,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.21087301586670915,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 627.4380952373384,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.22865079364448704,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 629.5672823210242,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.2463940193418681,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 631.7704485475906,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.26475373789658807,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 633.9604221620219,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.28300351801684975,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 6
+          }
+        },
+        {
+          "tick": 635.9582089538004,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.2996517412816697,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 7
+          }
+        },
+        {
+          "tick": 637.9402985060393,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.3161691542169942,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 7
+          }
+        },
+        {
+          "tick": 639.9228486639537,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.33269040553294715,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 7
+          }
+        },
+        {
+          "tick": 641.9050445103521,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.34920870425293415,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 7
+          }
+        },
+        {
+          "tick": 643.4999999994377,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.3624999999953138,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 7
+          }
+        },
+        {
+          "tick": 645.0897435882496,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.3757478632354134,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 647.2307692300932,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.39358974358411025,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 649.3612903225807,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4113440860215052,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 651.516129032258,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.42930107526881667,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 653.6632653063241,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4471938775527011,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 655.7933673477883,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.46494472789823593,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 657.9107142872076,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4825892857267302,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 8
+          }
+        },
+        {
+          "tick": 659.9393939408388,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.4994949495069907,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 661.9515151529602,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5162626262746679,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 663.9351032459042,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5327925270492013,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 665.8938053104565,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5491150442538046,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 667.4858934172107,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.562382445143423,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 669.06493506491,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5755411255409166,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 671.2337662329016,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.5936147186075136,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 673.3550295848889,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.6112919132074079,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 675,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.625,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        }
+      ]
+    },
+    "ball": {
+      "events": [
+        {
+          "type": "swing",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "x": 401,
+          "y": 507,
+          "side": -1,
+          "tool": "poke",
+          "at": 600,
+          "tick": 600
+        },
+        {
+          "type": "poke",
+          "who": "335f56e22ada04b8957cfe0a",
+          "x": 400.48111710317323,
+          "y": 512.4627050154893,
+          "hit": true,
+          "buddy": false,
+          "kind": 1,
+          "sid": 1,
+          "at": 622,
+          "ct": 183,
+          "mallet": 1,
+          "tick": 622
+        },
+        {
+          "type": "bounce",
+          "x": 417.02318834401507,
+          "y": 646,
+          "s": 0.8483431131651352,
+          "ball": true,
+          "tick": 630
+        },
+        {
+          "type": "bounce",
+          "x": 967,
+          "y": 646,
+          "s": 0.21696636851537343,
+          "ball": true,
+          "tick": 641
+        },
+        {
+          "type": "bounce",
+          "x": 865,
+          "y": 646,
+          "s": 0.2848449382050733,
+          "ball": true,
+          "tick": 652
+        },
+        {
+          "type": "bounce",
+          "x": 597.7065440489945,
+          "y": 646,
+          "s": 0.24451377753076875,
+          "ball": false,
+          "tick": 665
+        },
+        {
+          "type": "bounce",
+          "x": 683.1392735207351,
+          "y": 646,
+          "s": 0.24780882803990412,
+          "ball": false,
+          "tick": 665
+        }
+      ],
+      "trace": [
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 3,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 601.2018140596588,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.010015117163822751,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 603.1065759633909,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.025888133028257876,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 604.9886621301738,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.041572184418114944,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 607.235690234982,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.06029741862485061,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 609.36,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.07800000000000029,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 611.02,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.09183333333333277,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 612.837378641019,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.10697815534182453,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 614.8640776707316,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.12386731392276307,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 616.8786407781106,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.14065533981758804,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 618.9030303044752,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.15752525253729388,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 620.9151515165964,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1742929293049702,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 1,
+            "hurt": 1,
+            "bounce": 9
+          }
+        },
+        {
+          "tick": 623.078431372488,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.19232026143740022,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 10
+          }
+        },
+        {
+          "tick": 625.2555910529356,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.21046325877446392,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 10
+          }
+        },
+        {
+          "tick": 627.3897763576693,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.22824813631391105,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 10
+          }
+        },
+        {
+          "tick": 629.3993506497766,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.2449945887481384,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 10
+          }
+        },
+        {
+          "tick": 631.016233766034,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.25846861471694993,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 10
+          }
+        },
+        {
+          "tick": 632.7801418435969,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.2731678486966409,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 10
+          }
+        },
+        {
+          "tick": 634.7541371162989,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.2896178093024906,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 11
+          }
+        },
+        {
+          "tick": 636.7163120580268,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.305969267150223,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 11
+          }
+        },
+        {
+          "tick": 638.8216560521282,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3235138004344016,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 11
+          }
+        },
+        {
+          "tick": 640.9490445867563,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.34124203822296906,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 11
+          }
+        },
+        {
+          "tick": 643.144736842469,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.35953947368724126,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 11
+          }
+        },
+        {
+          "tick": 645.2840909091872,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3773674242432268,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 647.1818181825571,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.3931818181879754,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 649.0729166678782,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.40894097223231807,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 650.8020833338292,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4233506944485761,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 652.6666666666666,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4388888888888882,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 654.7948717948718,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4566239316239322,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 656.9358974358975,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4744658119658123,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 12
+          }
+        },
+        {
+          "tick": 658.9459459452493,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.4912162162104101,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 660.9399399385295,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5078328328210793,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 662.9401197604363,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5245009980036359,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 664.9281437139513,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.541067864282927,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 667.0124223606117,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5584368530050972,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 669.1066666658719,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5758888888822655,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 671.306666665872,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.5942222222156,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 673.2499999996274,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.3,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6104166666635624,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        },
+        {
+          "tick": 674,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0.2,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 183,
+              "age": 0.6166666666666663,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 4,
+            "collect": 1,
+            "poke": 2,
+            "hurt": 1,
+            "bounce": 13
+          }
+        }
+      ]
+    },
+    "ui-abort": [
+      {
+        "type": "swing",
+        "who": "335f56e22ada04b8957cfe0a",
+        "sid": 1,
+        "x": 640,
+        "y": 309,
+        "side": 1,
+        "tool": "poke",
+        "at": 627,
+        "tick": 627
+      },
+      {
+        "type": "swingCancel",
+        "who": "335f56e22ada04b8957cfe0a",
+        "sid": 1,
+        "at": 627,
+        "tick": 627
+      },
+      {
+        "type": "bounce",
+        "x": 967,
+        "y": 646,
+        "s": 0.21696636851537343,
+        "ball": true,
+        "tick": 641
+      },
+      {
+        "type": "bounce",
+        "x": 865,
+        "y": 646,
+        "s": 0.2848449382050733,
+        "ball": true,
+        "tick": 652
+      },
+      {
+        "type": "bounce",
+        "x": 401,
+        "y": 646,
+        "s": 0.3091597791474799,
+        "ball": true,
+        "tick": 656
+      },
+      {
+        "type": "bounce",
+        "x": 597.7065440489945,
+        "y": 646,
+        "s": 0.24451377753076875,
+        "ball": false,
+        "tick": 665
+      },
+      {
+        "type": "bounce",
+        "x": 683.1392735207351,
+        "y": 646,
+        "s": 0.24780882803990412,
+        "ball": false,
+        "tick": 665
+      }
+    ],
+    "delayed-held-hit": {
+      "events": [
+        {
+          "type": "grab",
+          "x": 640,
+          "y": 341,
+          "who": "227a6c9a2720496390bb64c2",
+          "tick": 600
+        },
+        {
+          "type": "swing",
+          "who": "335f56e22ada04b8957cfe0a",
+          "sid": 1,
+          "x": 640,
+          "y": 309,
+          "side": 1,
+          "tool": "poke",
+          "at": 600,
+          "tick": 600
+        },
+        {
+          "type": "poke",
+          "who": "335f56e22ada04b8957cfe0a",
+          "x": 645.2325667176635,
+          "y": 298.40878513900736,
+          "hit": true,
+          "buddy": true,
+          "kind": 0,
+          "sid": 1,
+          "at": 621,
+          "ct": 175,
+          "mallet": 1,
+          "tick": 621
+        },
+        {
+          "type": "hurt",
+          "m": [
+            1,
+            645,
+            298,
+            -42,
+            91,
+            96,
+            2,
+            2748960788,
+            0
+          ],
+          "epoch": 0,
+          "sid": 1,
+          "at": 621,
+          "ct": 175,
+          "mallet": 1,
+          "tick": 621
+        },
+        {
+          "type": "bounce",
+          "x": 967,
+          "y": 646,
+          "s": 0.21696636851537343,
+          "ball": true,
+          "tick": 641
+        }
+      ],
+      "trace": [
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [],
+          "events": {
+            "swing": 8,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 600,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 600.043956043432,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.0003663003619331917,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 601.5032967027727,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.012527472523105487,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 602.9626373621134,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.024688644684277783,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 604.6975088960966,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.039145907467471375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 607.0747330958892,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.058956109132410006,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 609.5572519091056,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.0796437659092133,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 612.0600000011921,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.10050000000993364,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 613.7300000011921,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.11441666667660133,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 615.4000000011922,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.12833333334326813,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 617.0718562888399,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.14226546907366533,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 619.0718562884831,
+          "mood": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "impact": 0,
+          "hurt": false,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": null,
+              "age": 0.1589321357373592,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 3,
+            "hurt": 2,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 621.0539956809754,
+          "mood": [
+            1,
+            1.3,
+            0,
+            0
+          ],
+          "impact": 1,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.17544996400812796,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 622.8682505401194,
+          "mood": [
+            1,
+            1.3,
+            0,
+            0
+          ],
+          "impact": 1,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.19056875450099575,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 624.6609071271309,
+          "mood": [
+            1,
+            1.3,
+            0,
+            0
+          ],
+          "impact": 1,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.20550755939275778,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 626.8129032246529,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.9,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.22344086020544118,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 629.6994818646208,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.24749568220517304,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 631.8626943001881,
+          "mood": [
+            1,
+            1.2,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.2655224525015676,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 634.0182370820636,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.2834853090171965,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 20,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 635.5319148933394,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.8,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.2960992907778284,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 637.0718562866984,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.308932135722487,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 639.0598802384395,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.3254990019869961,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 641.0903614440202,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.34241967870016854,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 643.5903614449179,
+          "mood": [
+            1,
+            1.1,
+            0,
+            0
+          ],
+          "impact": 0.7,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.3632530120409827,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        },
+        {
+          "tick": 646,
+          "mood": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "impact": 0.6,
+          "hurt": true,
+          "m": [
+            {
+              "sid": 1,
+              "at": 600,
+              "ct": 175,
+              "age": 0.38333333333333375,
+              "who": "335f56e22ada04b8957cfe0a"
+            }
+          ],
+          "events": {
+            "swing": 9,
+            "collect": 1,
+            "poke": 4,
+            "hurt": 3,
+            "bounce": 21,
+            "swingCancel": 1,
+            "grab": 1
+          }
+        }
+      ]
+    },
+    "disconnect": [
+      {
+        "type": "swing",
+        "who": "227a6c9a2720496390bb64c2",
+        "sid": 1,
+        "x": 640,
+        "y": 309,
+        "side": 1,
+        "tool": "poke",
+        "at": 600,
+        "tick": 600
+      },
+      {
+        "type": "swingCancel",
+        "who": "227a6c9a2720496390bb64c2",
+        "sid": 1,
+        "at": 600,
+        "tick": 600
+      }
+    ],
+    "rtc": [
+      {
+        "id": "bf63108d09846dafa349a417",
+        "connection": "connected",
+        "channels": [
+          {
+            "label": "bb-control",
+            "state": "open",
+            "ordered": true,
+            "maxRetransmits": null
+          },
+          {
+            "label": "bb-state",
+            "state": "open",
+            "ordered": false,
+            "maxRetransmits": 0
+          }
+        ],
+        "reports": [
+          {
+            "id": "CP17Qk3O/r_0lJS7cCZ",
+            "timestamp": 1789626257342.353,
+            "type": "candidate-pair",
+            "bytesDiscardedOnSend": 0,
+            "bytesReceived": 210222,
+            "bytesSent": 41690,
+            "consentRequestsSent": 6,
+            "currentRoundTripTime": 0.001,
+            "lastPacketReceivedTimestamp": 1789626257336,
+            "lastPacketSentTimestamp": 1789626257336,
+            "localCandidateId": "I17Qk3O/r",
+            "nominated": true,
+            "packetsDiscardedOnSend": 0,
+            "packetsReceived": 402,
+            "packetsSent": 337,
+            "priority": 72092774148620290,
+            "remoteCandidateId": "I0lJS7cCZ",
+            "requestsReceived": 7,
+            "requestsSent": 9,
+            "responsesReceived": 7,
+            "responsesSent": 7,
+            "state": "succeeded",
+            "totalRoundTripTime": 0.01,
+            "transportId": "T01",
+            "writable": true
+          },
+          {
+            "id": "D1",
+            "timestamp": 1789626257342.353,
+            "type": "data-channel",
+            "bytesReceived": 31729,
+            "bytesSent": 5383,
+            "dataChannelIdentifier": 1,
+            "label": "bb-control",
+            "messagesReceived": 87,
+            "messagesSent": 39,
+            "protocol": "",
+            "state": "open"
+          },
+          {
+            "id": "D2",
+            "timestamp": 1789626257342.353,
+            "type": "data-channel",
+            "bytesReceived": 154169,
+            "bytesSent": 16308,
+            "dataChannelIdentifier": 3,
+            "label": "bb-state",
+            "messagesReceived": 285,
+            "messagesSent": 112,
+            "protocol": "",
+            "state": "open"
+          },
+          {
+            "id": "I0lJS7cCZ",
+            "timestamp": 1789626257342.353,
+            "type": "remote-candidate",
+            "address": "127.0.0.1",
+            "candidateType": "relay",
+            "foundation": "1797656238",
+            "ip": "127.0.0.1",
+            "isRemote": true,
+            "port": 55901,
+            "priority": 16785407,
+            "protocol": "udp",
+            "transportId": "T01",
+            "usernameFragment": "ZtK+"
+          },
+          {
+            "id": "I17Qk3O/r",
+            "timestamp": 1789626257342.353,
+            "type": "local-candidate",
+            "address": "127.0.0.1",
+            "candidateType": "relay",
+            "foundation": "1797656238",
+            "ip": "127.0.0.1",
+            "isRemote": false,
+            "networkType": "unknown",
+            "port": 58923,
+            "priority": 16785407,
+            "protocol": "udp",
+            "relayProtocol": "tcp",
+            "transportId": "T01",
+            "url": "turn:127.0.0.1:34780?transport=tcp",
+            "usernameFragment": "u4T8"
+          }
+        ]
+      }
+    ],
+    "relay": {
+      "allocations": 6,
+      "tcp_clients": 6,
+      "forwarded_packets": 1372,
+      "forwarded_bytes": 466184,
+      "requests": {
+        "0x3": 12,
+        "0x8": 6,
+        "0x16": 36,
+        "0x9": 6,
+        "0x4": 1
+      }
+    }
+  }
+}

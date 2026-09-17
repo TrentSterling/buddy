@@ -1,0 +1,107 @@
+PASS Original railgun index / unlock bit preserved 
+PASS Existing tools preserved; exactly 31 tools 
+PASS New controls do not create extra physics bodies 
+PASS Clean snapshot round-trips / validates 
+PASS Bumper reverses incoming basketball velocity {'vy': -822.6426860429342, 'events': ['place', 'bounce', 'bumperHit']}
+PASS Bumper collision produces bounded contact cue 
+PASS Bumper does not add a dynamic/static physics node 
+PASS Bumper shot does not hurt untouched Buddy 
+PASS Bumper click toggles remove 
+PASS Bumper removed without stale collider 
+PASS Bumper launches Buddy as a connected body {'meanVy': -509.60623769536625}
+PASS Body stays finite on bumper launch 
+PASS Two clicks create Buddy-to-wall rope [[103, 0, -1, 640, 351.5, 670, 160, 193.9]]
+PASS Wall rope restrains the endpoint {'excess': 0.03479823501231749}
+PASS Rope has no segments or anchor bodies 
+PASS Tether snapshot round-trip 
+PASS Prop-to-prop tether creates correct endpoints 
+PASS Removing a prop removes its ropes 
+PASS Cancel clears pending tether 
+PASS Tethers capped at 12 {'count': 12}
+PASS Bumpers capped at 8 
+PASS Clear removes bumpers, ropes, toys, springs and candy 
+PASS Reset preserves railgun unlock and shared hat 
+PASS Workshop save/load preserves hat and purchases 
+PASS Hat round-trip 
+PASS Empty mallet has no wound, dizzy state or bonk cue 
+PASS Mallet causes no button-down damage 
+PASS Mallet lands exactly once after wind-up 
+PASS Basketball cap preserved 
+PASS Combined body ceiling preserved {'nodes': 80}
+PASS Candy cap preserved 
+PASS Full-cap snapshot under hard byte limit {'bytes': 2950}
+PASS Full-cap snapshot validates 
+PASS Full-cap collision/rope/bumper scene stays finite 
+PASS 3600-step mixed weapon soak stays finite 
+PASS Protocol upgraded to 6 None
+PASS Tool IDs preserve all 21 prior positions None
+PASS Tool runs finite: grab {'nodes': 16, 'events': ['grab', 'bounce', 'throw']}
+PASS Tool runs finite: poke {'nodes': 16, 'events': ['swing', 'poke', 'hurt', 'bounce']}
+PASS Tool runs finite: blaster {'nodes': 16, 'events': ['hurt', 'shot', 'collect', 'bounce']}
+PASS Tool runs finite: bomb {'nodes': 17, 'events': ['bomb', 'bounce']}
+PASS Tool runs finite: rocket {'nodes': 16, 'events': ['launch', 'bounce', 'hurt', 'explosion', 'collect']}
+PASS Tool runs finite: shock {'nodes': 16, 'events': ['zap', 'collect', 'bounce']}
+PASS Tool runs finite: magnet {'nodes': 16, 'events': ['bounce']}
+PASS Tool runs finite: ball {'nodes': 17, 'events': ['spawn', 'bounce']}
+PASS Tool runs finite: balloon {'nodes': 17, 'events': ['balloon', 'bounce']}
+PASS Tool runs finite: spring {'nodes': 16, 'events': ['place', 'spring', 'hurt', 'bounce']}
+PASS Tool runs finite: shotgun {'nodes': 16, 'events': ['hurt', 'scatter', 'collect', 'bounce']}
+PASS Tool runs finite: saw {'nodes': 16, 'events': ['hurt', 'collect', 'bounce']}
+PASS Tool runs finite: flame {'nodes': 16, 'events': ['hurt', 'collect', 'bounce']}
+PASS Tool runs finite: freeze {'nodes': 16, 'events': ['collect', 'bounce']}
+PASS Tool runs finite: dart {'nodes': 16, 'events': ['hurt', 'dart', 'collect', 'bounce']}
+PASS Tool runs finite: air {'nodes': 16, 'events': ['air', 'collect', 'bounce']}
+PASS Tool runs finite: duck {'nodes': 17, 'events': ['toy', 'bounce', 'squeak']}
+PASS Tool runs finite: bowling {'nodes': 17, 'events': ['toy', 'hurt', 'bounce']}
+PASS Tool runs finite: rail {'nodes': 16, 'events': ['hurt', 'rail', 'collect', 'bounce']}
+PASS Tool runs finite: tether {'nodes': 16, 'events': ['tetherStart', 'bounce']}
+PASS Tool runs finite: bumper {'nodes': 16, 'events': ['place', 'hurt', 'bounce']}
+PASS Tool runs finite: revolver {'nodes': 16, 'events': ['hurt', 'gunshot', 'collect', 'bounce']}
+PASS Tool runs finite: smg {'nodes': 16, 'events': ['hurt', 'gunshot', 'collect', 'bounce']}
+PASS Tool runs finite: burst {'nodes': 16, 'events': ['hurt', 'gunshot', 'collect', 'bounce']}
+PASS Tool runs finite: double {'nodes': 16, 'events': ['hurt', 'gunshot', 'collect', 'reload', 'bounce']}
+PASS Tool runs finite: minigun {'nodes': 16, 'events': ['hurt', 'gunshot', 'collect', 'bounce']}
+PASS Tool runs finite: grenade {'nodes': 18, 'events': ['launchGrenade', 'bounce']}
+PASS Tool runs finite: spear {'nodes': 17, 'events': ['bounce', 'spearThrow']}
+PASS Tool runs finite: shuriken {'nodes': 17, 'events': ['starThrow', 'hurt', 'throwHit', 'bounce', 'collect']}
+PASS Tool runs finite: pan {'nodes': 16, 'events': ['swing', 'poke', 'hurt', 'bounce']}
+PASS Tool runs finite: water {'nodes': 16, 'events': ['bounce']}
+PASS revolver has authoritative bullets and damage {'shots': 4}
+PASS smg has authoritative bullets and damage {'shots': 17}
+PASS burst has authoritative bullets and damage {'shots': 9}
+PASS double has authoritative bullets and damage {'shots': 2}
+PASS minigun has authoritative bullets and damage {'shots': 15}
+PASS Burst completes three rounds after a quick tap None
+PASS UI cancel stops unresolved burst shots None
+PASS Minigun genuinely spools before firing None
+PASS Minigun fires after spool None
+PASS Double barrel empties two shots then reloads None
+PASS Double barrel resumes after reload None
+PASS Charged spear does not spawn while held None
+PASS Release throws one physical spear None
+PASS Spear embeds on a host-resolved hit [{'x': 657.5898071163554, 'y': 371.67024317945675, 'stuck': {'id': 0, 'x': -17.81009898341262, 'y': -36.56293405279041, 'a': 1.1358307909945755}}]
+PASS Spear hit damages Buddy None
+PASS Cancelled spear charge does not throw None
+PASS Third spear recycles oldest of two None
+PASS Recycling does not steal a held or tethered spear None
+PASS Basketballs recycle at 32 instead of refusing new toys {'lastId': 223}
+PASS Held ball survives repeated automatic recycling None
+PASS Sweep preserves held toys, tethers, bumpers and springs None
+PASS Sweep does not erase live explosives None
+PASS Sweep actually removes loose clutter None
+PASS Cosmetics purchase and equip with shared cash {'cash': 660}
+PASS Purchased hand is room-unlocked but individually equipped None
+PASS Guest cannot replace the shared room None
+PASS Unbought cosmetic cannot be equipped for free None
+PASS Room cleanup/reset preserves hats, body, theme and unlocks None
+PASS Cosmetic ownership and theme survive save/load None
+PASS All cosmetic fields and per-player hand styles round-trip None
+PASS All 32 cosmetic unlock bits fit unsigned field None
+PASS Saturated snapshot remains under 6144 bytes None
+PASS Full-budget state validates None
+PASS Hard physics ceiling remains 88 None
+PASS Invalid room appearance rejected None
+PASS Water extinguishes Buddy and spot-cleans stains None
+PASS Water cleaning emits compact cue rather than stain snapshots {'type': 'washPatch', 'epoch': 0, 'x': 640, 'y': 341, 'radius': 105}
+PASS 9300-step all-weapon soak None
+METRICS {'fullSnapshotBytes': 2950, 'maxJointError': 3.8366222885804646, 'smallSnapshotBytes': 444, 'saturatedSnapshotBytes': 3557} ERRORS []

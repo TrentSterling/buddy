@@ -2,6 +2,14 @@
 
 Behavior changes on the live line. Protocol stays 06 unless noted.
 
+## v0.8.0, 2026-09-17
+
+- Merged the ChatGPT catalogue package onto the live line. 31 tools (adds SMG, burst rifle, double-barrel shotgun, minigun, grenade launcher, shuriken, frying pan, water pistol), the Toybox catalogue with Weapons, Toys, Buddy, Your hand and Room departments, six Buddy bodies, fourteen hats, six hand styles, six room themes, Sweep and More cleanup, shared gun magazine and reload logic, spears that embed, water that extinguishes and washes.
+- Everything from the live line survives: auto lobby with re-host, welcome dialog, physical mallet swing (now also the frying pan), hoop carry rule, input hardening, diagnostics pointer trace.
+- Protocol 07. The package changed the wire format (hand style, theme, looks) without bumping, so v0.8 rooms are isolated from stale v0.7 tabs via the Trystero room id. The Trystero appId stays on v4 because a renamed appId picked dead relays.
+- Package QA suites checked in under `qa/` with `evidence/`, made to run on Windows against the installed Chrome. Unit expectation updated to protocol 7.
+- Fixed a catalogue crash from the merge: thumbnail preview renderers skip the main constructor, so the swing state is allocated lazily.
+
 ## v0.7.1, 2026-09-17
 
 - Physical mallet hits are tick-stamped like the canned swing, so guests show the impact when their rendered mallet reaches Buddy rather than a network beat early.

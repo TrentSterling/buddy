@@ -1,0 +1,23 @@
+PASS Host and guest connected via actual WebRTC [{'id': '6f9a102fa80055a2735a1c3b', 'route': 'WebRTC / test TURN-TCP'}]
+PASS Guest can buy and equip a revolver through catalogue 
+PASS Guest hat preview is local until applied 
+PASS Guest cosmetic purchase updates shared hat and cash once 
+PASS Guest wears robot hand without changing host hand 
+PASS Room action clearly disabled for guest 
+PASS Host room and Buddy skin propagate to guest 
+PASS Four isolated contexts are connected 
+PASS Late join restores exact cosmetics and purchases 
+PASS Guest held charge creates no premature spear 
+PASS Guest release creates one host-owned spear 
+PASS Spear and wounds match on late-joined client 
+PASS Repeated guest spear throws recycle down to two 
+PASS Recycled spear IDs agree across all clients 
+PASS Guest Sweep preserves held ball and shared setup 
+PASS Sweep removals synchronise on every peer 
+PASS Guest clear-all is rejected by authority 
+PASS Four-client mixed cosmetics render without errors 
+PASS Two simultaneous grabs survive new UI and cosmetics 
+PASS Explicit disconnect releases and removes grabbing peer 
+PASS Explosion stress renderer stays in capped pools 
+PASS Abrupt page close removes guest lease 
+PASS No JS errors during multiplayer run 

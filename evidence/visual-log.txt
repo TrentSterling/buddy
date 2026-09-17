@@ -1,0 +1,2 @@
+ERRORS []
+state {'hat': 12, 'skin': 2, 'theme': 5, 'styles': [2]}

@@ -1,0 +1,15 @@
+<dialog id="shopDialog" aria-labelledby="shopTitle">
+ <header class="dialoghead"><h2 id="shopTitle">The Toybox</h2><div class="catalogue-money"><span>Room cash</span><b id="shopCash">$40</b></div><button class="close" id="closeShop" aria-label="Close toybox">×</button></header>
+ <nav class="catalogue-tabs" aria-label="Toybox departments">
+  <button data-category="weapons">Weapons</button><button data-category="toys">Toys</button><button data-category="buddy">Buddy</button><button data-category="hands">Your hand</button><button data-category="room">Room</button>
+ </nav>
+ <div class="catalogue-main">
+  <section class="catalogue-shelves" aria-label="Catalogue items"><div class="catalogue-filter"><div id="catalogueSubtabs"></div><label><input id="ownedOnly" type="checkbox">Owned only</label></div><div id="catalogueGrid"></div></section>
+  <section class="catalogue-preview" aria-label="Item preview"><canvas id="itemPreview" width="480" height="420" aria-label="Selected item preview"></canvas><h3 id="itemTitle"></h3><p id="itemDescription"></p><small id="itemScope"></small><button id="catalogueAction">Equip</button></section>
+ </div>
+ <footer class="catalogue-footer"><a href="https://tront.xyz/games/" target="_blank" rel="noopener noreferrer">More by Tront ↗</a><span id="shopNote">Room unlocks. Your style.</span><button id="modeBtn">Earn unlocks</button></footer>
+ <div hidden><span id="shopEarned"></span><span id="budgetHint"></span><span id="floorhint"></span></div>
+</dialog>
+<dialog id="sweepDialog" aria-labelledby="sweepTitle"><header class="dialoghead"><h2 id="sweepTitle">Make some room</h2><button id="closeSweep" class="close" aria-label="Close cleanup">×</button></header><div class="dialogbody">
+ <button data-sweep="sweep">Sweep loose toys &amp; stains</button><button data-sweep="clean">Wash stains only</button><button data-sweep="untie">Cut all ropes</button><button id="clearAllBtn">Hold to clear the entire room<small>Keeps money, purchases and looks. Host only.</small></button>
+</div></dialog>

@@ -1,0 +1,70 @@
+PASS grab: equips and shows label 
+PASS grab: runs and releases without NaN 
+PASS poke: equips and shows label 
+PASS poke: runs and releases without NaN 
+PASS blaster: equips and shows label 
+PASS blaster: runs and releases without NaN 
+PASS bomb: equips and shows label 
+PASS bomb: runs and releases without NaN 
+PASS rocket: equips and shows label 
+PASS rocket: runs and releases without NaN 
+PASS shock: equips and shows label 
+PASS shock: runs and releases without NaN 
+PASS magnet: equips and shows label 
+PASS magnet: runs and releases without NaN 
+PASS ball: equips and shows label 
+PASS ball: runs and releases without NaN 
+PASS balloon: equips and shows label 
+PASS balloon: runs and releases without NaN 
+PASS spring: equips and shows label 
+PASS spring: runs and releases without NaN 
+PASS shotgun: equips and shows label 
+PASS shotgun: runs and releases without NaN 
+PASS saw: equips and shows label 
+PASS saw: runs and releases without NaN 
+PASS flame: equips and shows label 
+PASS flame: runs and releases without NaN 
+PASS freeze: equips and shows label 
+PASS freeze: runs and releases without NaN 
+PASS dart: equips and shows label 
+PASS dart: runs and releases without NaN 
+PASS air: equips and shows label 
+PASS air: runs and releases without NaN 
+PASS duck: equips and shows label 
+PASS duck: runs and releases without NaN 
+PASS bowling: equips and shows label 
+PASS bowling: runs and releases without NaN 
+PASS rail: equips and shows label 
+PASS rail: runs and releases without NaN 
+PASS tether: equips and shows label 
+PASS tether: runs and releases without NaN 
+PASS bumper: equips and shows label 
+PASS bumper: runs and releases without NaN 
+PASS revolver: equips and shows label 
+PASS revolver: runs and releases without NaN 
+PASS smg: equips and shows label 
+PASS smg: runs and releases without NaN 
+PASS burst: equips and shows label 
+PASS burst: runs and releases without NaN 
+PASS double: equips and shows label 
+PASS double: runs and releases without NaN 
+PASS minigun: equips and shows label 
+PASS minigun: runs and releases without NaN 
+PASS grenade: equips and shows label 
+PASS grenade: runs and releases without NaN 
+PASS spear: equips and shows label 
+PASS spear: runs and releases without NaN 
+PASS shuriken: equips and shows label 
+PASS shuriken: runs and releases without NaN 
+PASS pan: equips and shows label 
+PASS pan: runs and releases without NaN 
+PASS water: equips and shows label 
+PASS water: runs and releases without NaN 
+PASS Custom cursor is hidden only over play surface 
+PASS Hovering dock releases input and restores native cursor 
+PASS Modal does not hide native cursor 
+PASS J equips tether 
+PASS Escape clears host pending tether via normal keyboard 
+PASS V equips bumper 
+PASS No JavaScript errors during all tools and UI input 
+LIMIT file URL navigation unavailable

@@ -1,0 +1,30 @@
+PASS All 31 equipment definitions boot 
+PASS Shop has five clearly labelled departments 
+PASS Hats are two visible clicks away from the Shop 
+PASS Selecting a hat previews without equipping 
+PASS Wear applies selected hat, not next-in-cycle 
+PASS Six body skins available in same shop 
+PASS Six hand styles available in same shop 
+PASS Six rendered room previews available 
+PASS Theme preview does not secretly change room or gravity 
+PASS Apply changes theme without changing gravity 
+PASS Current tool opens the same catalogue filtered to owned gear 
+PASS Owned equipment equips with one click in fast catalogue 
+PASS E opens and closes the catalogue without firing 
+PASS Settings no longer contains visible hat cycling controls 
+PASS Visible Sweep clears loose balls and preserves setup 
+PASS A casual click does not wipe constructed objects 
+PASS Deliberate hold clears room but keeps cash and theme 
+PASS Spear charge cancelled over UI does not throw 
+PASS Real mouse release throws a spear 
+PASS Postcard exports through visible menu action 
+PASS mobile catalogue stays in viewport with reachable action {'dialog': {'x': 19, 'y': 8, 'width': 352, 'height': 828}, 'action': {'x': 146.78125, 'y': 726.296875, 'width': 210.828125, 'height': 49.953125}}
+PASS mobile page has no horizontal overflow 
+PASS small-phone catalogue stays in viewport with reachable action {'dialog': {'x': 19, 'y': 8, 'width': 282, 'height': 724}, 'action': {'x': 122.78125, 'y': 628.5, 'width': 164.828125, 'height': 43.75}}
+PASS small-phone page has no horizontal overflow 
+PASS landscape catalogue stays in viewport with reachable action {'dialog': {'x': 19.046875, 'y': 12.03125, 'width': 861.890625, 'height': 405.921875}, 'action': {'x': 578.984375, 'y': 245.9375, 'width': 282.90625, 'height': 44.09375}}
+PASS landscape page has no horizontal overflow 
+PASS 4k catalogue stays in viewport with reachable action {'dialog': {'x': 1062, 'y': 521, 'width': 1716, 'height': 1118}, 'action': {'x': 2169.65625, 'y': 1436.28125, 'width': 579.328125, 'height': 80.71875}}
+PASS 4k page has no horizontal overflow 
+PASS Extra-large phone UI still exposes all category buttons 
+PASS No JS errors in catalogue / cleanup / export tests 

@@ -1,0 +1,795 @@
+{
+  "checks": [
+    {
+      "name": "Original railgun index / unlock bit preserved",
+      "pass": true
+    },
+    {
+      "name": "Existing tools preserved; exactly 31 tools",
+      "pass": true
+    },
+    {
+      "name": "New controls do not create extra physics bodies",
+      "pass": true
+    },
+    {
+      "name": "Clean snapshot round-trips / validates",
+      "pass": true
+    },
+    {
+      "name": "Bumper reverses incoming basketball velocity",
+      "pass": true,
+      "details": {
+        "vy": -822.6426860429342,
+        "events": [
+          "place",
+          "bounce",
+          "bumperHit"
+        ]
+      }
+    },
+    {
+      "name": "Bumper collision produces bounded contact cue",
+      "pass": true
+    },
+    {
+      "name": "Bumper does not add a dynamic/static physics node",
+      "pass": true
+    },
+    {
+      "name": "Bumper shot does not hurt untouched Buddy",
+      "pass": true
+    },
+    {
+      "name": "Bumper click toggles remove",
+      "pass": true
+    },
+    {
+      "name": "Bumper removed without stale collider",
+      "pass": true
+    },
+    {
+      "name": "Bumper launches Buddy as a connected body",
+      "pass": true,
+      "details": {
+        "meanVy": -509.60623769536625
+      }
+    },
+    {
+      "name": "Body stays finite on bumper launch",
+      "pass": true
+    },
+    {
+      "name": "Two clicks create Buddy-to-wall rope",
+      "pass": true,
+      "details": [
+        [
+          103,
+          0,
+          -1,
+          640,
+          351.5,
+          670,
+          160,
+          193.9
+        ]
+      ]
+    },
+    {
+      "name": "Wall rope restrains the endpoint",
+      "pass": true,
+      "details": {
+        "excess": 0.03479823501231749
+      }
+    },
+    {
+      "name": "Rope has no segments or anchor bodies",
+      "pass": true
+    },
+    {
+      "name": "Tether snapshot round-trip",
+      "pass": true
+    },
+    {
+      "name": "Prop-to-prop tether creates correct endpoints",
+      "pass": true
+    },
+    {
+      "name": "Removing a prop removes its ropes",
+      "pass": true
+    },
+    {
+      "name": "Cancel clears pending tether",
+      "pass": true
+    },
+    {
+      "name": "Tethers capped at 12",
+      "pass": true,
+      "details": {
+        "count": 12
+      }
+    },
+    {
+      "name": "Bumpers capped at 8",
+      "pass": true
+    },
+    {
+      "name": "Clear removes bumpers, ropes, toys, springs and candy",
+      "pass": true
+    },
+    {
+      "name": "Reset preserves railgun unlock and shared hat",
+      "pass": true
+    },
+    {
+      "name": "Workshop save/load preserves hat and purchases",
+      "pass": true
+    },
+    {
+      "name": "Hat round-trip",
+      "pass": true
+    },
+    {
+      "name": "Empty mallet has no wound, dizzy state or bonk cue",
+      "pass": true
+    },
+    {
+      "name": "Mallet causes no button-down damage",
+      "pass": true
+    },
+    {
+      "name": "Mallet lands exactly once after wind-up",
+      "pass": true
+    },
+    {
+      "name": "Basketball cap preserved",
+      "pass": true
+    },
+    {
+      "name": "Combined body ceiling preserved",
+      "pass": true,
+      "details": {
+        "nodes": 80
+      }
+    },
+    {
+      "name": "Candy cap preserved",
+      "pass": true
+    },
+    {
+      "name": "Full-cap snapshot under hard byte limit",
+      "pass": true,
+      "details": {
+        "bytes": 2950
+      }
+    },
+    {
+      "name": "Full-cap snapshot validates",
+      "pass": true
+    },
+    {
+      "name": "Full-cap collision/rope/bumper scene stays finite",
+      "pass": true
+    },
+    {
+      "name": "3600-step mixed weapon soak stays finite",
+      "pass": true
+    },
+    {
+      "name": "Protocol upgraded to 7 (v0.8 wire format: hand style, theme, looks)",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Tool IDs preserve all 21 prior positions",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Tool runs finite: grab",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "grab",
+          "bounce",
+          "throw"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: poke",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "swing",
+          "poke",
+          "hurt",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: blaster",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "shot",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: bomb",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "bomb",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: rocket",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "launch",
+          "bounce",
+          "hurt",
+          "explosion",
+          "collect"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: shock",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "zap",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: magnet",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: ball",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "spawn",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: balloon",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "balloon",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: spring",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "place",
+          "spring",
+          "hurt",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: shotgun",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "scatter",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: saw",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: flame",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: freeze",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: dart",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "dart",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: air",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "air",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: duck",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "toy",
+          "bounce",
+          "squeak"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: bowling",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "toy",
+          "hurt",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: rail",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "rail",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: tether",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "tetherStart",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: bumper",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "place",
+          "hurt",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: revolver",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "gunshot",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: smg",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "gunshot",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: burst",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "gunshot",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: double",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "gunshot",
+          "collect",
+          "reload",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: minigun",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "hurt",
+          "gunshot",
+          "collect",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: grenade",
+      "pass": true,
+      "details": {
+        "nodes": 18,
+        "events": [
+          "launchGrenade",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: spear",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "bounce",
+          "spearThrow"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: shuriken",
+      "pass": true,
+      "details": {
+        "nodes": 17,
+        "events": [
+          "starThrow",
+          "hurt",
+          "throwHit",
+          "bounce",
+          "collect"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: pan",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "swing",
+          "poke",
+          "hurt",
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "Tool runs finite: water",
+      "pass": true,
+      "details": {
+        "nodes": 16,
+        "events": [
+          "bounce"
+        ]
+      }
+    },
+    {
+      "name": "revolver has authoritative bullets and damage",
+      "pass": true,
+      "details": {
+        "shots": 4
+      }
+    },
+    {
+      "name": "smg has authoritative bullets and damage",
+      "pass": true,
+      "details": {
+        "shots": 17
+      }
+    },
+    {
+      "name": "burst has authoritative bullets and damage",
+      "pass": true,
+      "details": {
+        "shots": 9
+      }
+    },
+    {
+      "name": "double has authoritative bullets and damage",
+      "pass": true,
+      "details": {
+        "shots": 2
+      }
+    },
+    {
+      "name": "minigun has authoritative bullets and damage",
+      "pass": true,
+      "details": {
+        "shots": 15
+      }
+    },
+    {
+      "name": "Burst completes three rounds after a quick tap",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "UI cancel stops unresolved burst shots",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Minigun genuinely spools before firing",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Minigun fires after spool",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Double barrel empties two shots then reloads",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Double barrel resumes after reload",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Charged spear does not spawn while held",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Release throws one physical spear",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Spear embeds on a host-resolved hit",
+      "pass": true,
+      "details": [
+        {
+          "x": 657.5898071163554,
+          "y": 371.67024317945675,
+          "stuck": {
+            "id": 0,
+            "x": -17.81009898341262,
+            "y": -36.56293405279041,
+            "a": 1.1358307909945755
+          }
+        }
+      ]
+    },
+    {
+      "name": "Spear hit damages Buddy",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Cancelled spear charge does not throw",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Third spear recycles oldest of two",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Recycling does not steal a held or tethered spear",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Basketballs recycle at 32 instead of refusing new toys",
+      "pass": true,
+      "details": {
+        "lastId": 223
+      }
+    },
+    {
+      "name": "Held ball survives repeated automatic recycling",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Sweep preserves held toys, tethers, bumpers and springs",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Sweep does not erase live explosives",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Sweep actually removes loose clutter",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Cosmetics purchase and equip with shared cash",
+      "pass": true,
+      "details": {
+        "cash": 660
+      }
+    },
+    {
+      "name": "Purchased hand is room-unlocked but individually equipped",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Guest cannot replace the shared room",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Unbought cosmetic cannot be equipped for free",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Room cleanup/reset preserves hats, body, theme and unlocks",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Cosmetic ownership and theme survive save/load",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "All cosmetic fields and per-player hand styles round-trip",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "All 32 cosmetic unlock bits fit unsigned field",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Saturated snapshot remains under 6144 bytes",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Full-budget state validates",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Hard physics ceiling remains 88",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Invalid room appearance rejected",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Water extinguishes Buddy and spot-cleans stains",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Water cleaning emits compact cue rather than stain snapshots",
+      "pass": true,
+      "details": {
+        "type": "washPatch",
+        "epoch": 0,
+        "x": 640,
+        "y": 341,
+        "radius": 105
+      }
+    },
+    {
+      "name": "9300-step all-weapon soak",
+      "pass": true,
+      "details": null
+    }
+  ],
+  "metrics": {
+    "fullSnapshotBytes": 2950,
+    "maxJointError": 3.8366222885804646,
+    "smallSnapshotBytes": 444,
+    "saturatedSnapshotBytes": 3557
+  },
+  "errors": []
+}

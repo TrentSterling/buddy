@@ -1,0 +1,24 @@
+PASS Real mouse quick tap commits exactly one mallet hit 
+PASS System cursor remains visible and is never captured 
+PASS Escape cancels wind-up without a late hit 
+PASS Escape leaves no active grab or hidden cursor 
+PASS Menu crossing cancels wind-up without a late hit 
+PASS Menu crossing leaves no active grab or hidden cursor 
+PASS Canvas exit cancels wind-up without a late hit 
+PASS Canvas exit leaves no active grab or hidden cursor 
+PASS Window blur cancels wind-up without a late hit 
+PASS Window blur leaves no active grab or hidden cursor 
+PASS Tool shortcut cancels wind-up without a late hit 
+PASS Tool shortcut leaves no active grab or hidden cursor 
+PASS Right-drag still grabs with the mallet equipped 
+PASS Right release restores mallet without swinging it 
+PASS Optional game cursor hides only over the actual playfield {'pointer': {'inside': True, 'activeId': None, 'waiting': False, 'mode': 'game', 'type': 'mouse', 'cursor': 'none', 'capture': False, 'localHandVisible': True}, 'element': 'game', 'modal': False}
+PASS Hovering Shop immediately restores OS cursor 
+PASS On-demand weapon drawer still opens 
+PASS Selecting mallet closes drawer 
+PASS Quiet UI keeps its Show controls escape hatch 
+PASS Touch tap completes a mallet strike 
+PASS Committed touch swing remains visible after finger-up 
+PASS Mobile has no horizontal page overflow 
+PASS No JavaScript errors during UI and touch regression 
+CHECKS 23 FAILURES 0

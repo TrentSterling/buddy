@@ -1,0 +1,141 @@
+{
+  "checks": [
+    {
+      "name": "Real mouse quick tap commits exactly one mallet hit",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "System cursor remains visible and is never captured",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Escape cancels wind-up without a late hit",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Escape leaves no active grab or hidden cursor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Menu crossing cancels wind-up without a late hit",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Menu crossing leaves no active grab or hidden cursor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Canvas exit cancels wind-up without a late hit",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Canvas exit leaves no active grab or hidden cursor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Window blur cancels wind-up without a late hit",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Window blur leaves no active grab or hidden cursor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Tool shortcut cancels wind-up without a late hit",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Tool shortcut leaves no active grab or hidden cursor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Right-drag still grabs with the mallet equipped",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Right release restores mallet without swinging it",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Optional game cursor hides only over the actual playfield",
+      "pass": true,
+      "details": {
+        "pointer": {
+          "inside": true,
+          "activeId": null,
+          "waiting": false,
+          "mode": "game",
+          "type": "mouse",
+          "cursor": "none",
+          "capture": false,
+          "localHandVisible": true,
+          "trace": [
+            "pointerdown b0 bs1 mouse#1 press poke",
+            "pointerdown b0 bs1 mouse#1 press poke",
+            "pointerdown b0 bs1 mouse#1 press poke",
+            "pointerdown b0 bs1 mouse#1 press poke",
+            "pointerdown b2 bs2 mouse#1 press grab",
+            "pointerup b2 bs0 mouse#1 release"
+          ]
+        },
+        "element": "game",
+        "modal": false
+      }
+    },
+    {
+      "name": "Hovering Shop immediately restores OS cursor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "On-demand weapon drawer still opens",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Selecting mallet closes drawer",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Quiet UI keeps its Show controls escape hatch",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Touch tap completes a mallet strike",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Committed touch swing remains visible after finger-up",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "Mobile has no horizontal page overflow",
+      "pass": true,
+      "details": null
+    },
+    {
+      "name": "No JavaScript errors during UI and touch regression",
+      "pass": true,
+      "details": []
+    }
+  ],
+  "errors": []
+}
