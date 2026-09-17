@@ -2,6 +2,15 @@
 
 Behavior changes on the live line. Protocol stays 06 unless noted.
 
+## v0.8.2, 2026-09-17
+
+From a six-lens audit workflow. Three of twelve planned items shipped; the rest are in BACKLOG.md.
+
+- Save migration: a pre-merge v0.6/v0.7 workshop save (23-tool order, no `looks` field) has its unlock bitmask reindexed onto the current 31-tool order in `loadWorkshop`, so players who owned tools before the catalogue merge keep exactly those tools. v0.8.x saves are untouched.
+- Copy and controls sweep: removed the dead Reset button and its stale hint; host-left messages and the role label now agree with the auto lobby; Gravity and Sandbox toggles show their current state before you click; the bomb and balloon cap toasts stop telling you to Sweep (which never removed them); another player changing their hand style no longer toasts your room; SMG reads as SMG everywhere; removed the legacy hat/skin cycle commands that bypassed the cosmetic purchase mask.
+- Sound: per-type throttle instead of one global gate, so an explosion is never swallowed because a candy pickup just played; heavy cues (explosion, launch, spring, pop, hits) bypass the throttle entirely; the frying pan gets its own metallic clang.
+- Fixed the JSON-LD `softwareVersion` that still read 0.5.0.
+
 ## v0.8.1, 2026-09-17
 
 - Public discovery pins six measured relays (nos.lol, relay.primal.net, bucket.coracle.social, nostr.mom, nostr-relay.corb.net, nostr.sathoarder.com) instead of three hash-picked ones. Probe over forty relays, then an in-game run with relay warnings on; damus rate-limited and purplerelay was out of disk, so both were dropped. Six open instead of one, lobby pairs in about two seconds.

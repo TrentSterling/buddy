@@ -39,6 +39,10 @@ For animation or contact changes, look at consecutive frames of one action (hand
 
 The canned swing (wind-up, downswing, strike-face contact, hold, recoil, recovery) is untouched and fires on a stationary click for both mallet and frying pan. The physical swing reuses the same striking-face capsule at the rest pose, swept along the glove path each 120 Hz tick with sub-steps, so only the visible face can hit and damage happens on overlap. Whiffs produce nothing. Hits are tick-stamped so guests show them when their rendered mallet arrives. Per-node cooldown 160 ms; jumps over 200 px in one tick are teleports and ignored. Catalogue thumbnails draw the mallet through a preview renderer that skips the main constructor, so per-renderer state must be allocated lazily.
 
+## Backlog
+
+`BACKLOG.md` holds the nine unbuilt items (P4-P12) from the 2026-09-17 audit workflow, in dependency order, each with a scope and a test, plus the judge's deferred list with reasons. Resume there. A workflow rerun can pick up from the plan; the audit already reproduced the bugs.
+
 ## Open threads
 
 - Daver 2.0's "can't aim on Firefox, right click just does grab" (2026-09-16) never reproduced in Playwright Firefox. Another Firefox user reported it fine. The D panel logs the last six pointer decisions; ask for that.

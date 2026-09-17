@@ -27,7 +27,7 @@
 <meta name="twitter:image" content="https://tront.xyz/buddy/og-image.png?v=2">
 <meta name="twitter:image:alt" content="Buddy Bonk multiplayer ragdoll sandbox, actual gameplay.">
 <title>Buddy Bonk: Multiplayer Ragdoll Sandbox by Tront</title>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Buddy Bonk","url":"https://tront.xyz/buddy/","description":"A browser ragdoll sandbox by Tront for up to four players. One shared room, 31 tools, one Buddy who never learns.","author":{"@type":"Person","name":"Trent Sterling","alternateName":"Tront","url":"https://tront.xyz/"},"genre":["Physics sandbox","Multiplayer"],"gamePlatform":"Web browser","inLanguage":"en","softwareVersion":"0.5.0","numberOfPlayers":{"@type":"QuantitativeValue","minValue":1,"maxValue":4},"image":"https://tront.xyz/buddy/og-image.png?v=2"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Buddy Bonk","url":"https://tront.xyz/buddy/","description":"A browser ragdoll sandbox by Tront for up to four players. One shared room, 31 tools, one Buddy who never learns.","author":{"@type":"Person","name":"Trent Sterling","alternateName":"Tront","url":"https://tront.xyz/"},"genre":["Physics sandbox","Multiplayer"],"gamePlatform":"Web browser","inLanguage":"en","softwareVersion":"0.8.2","numberOfPlayers":{"@type":"QuantitativeValue","minValue":1,"maxValue":4},"image":"https://tront.xyz/buddy/og-image.png?v=2"}</script>
 <style>/* Buddy Bonk 0.3.2: the room first. No mini-dashboard, no global cursor hiding.
    CSS pixels/rem typography are independent of the Canvas world and its zoom. */
 :root{color-scheme:dark;--ink:#202f38;--deep:#13242d;--steel:#405c68;--paper:#f3e9ce;--yellow:#f6ca55;--red:#d85640;--muted:#bccbc9;--line:#152932;--dock-gap:1rem;font-size:clamp(16px,calc(12px + .45vw),26px)}
@@ -98,7 +98,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
 @media(max-width:360px){.catalogue-item b{font-size:.85rem}.catalogue-tabs button{font-size:.8rem}.playdock .currenttool{width:5.6rem}.currenttool #selectedIcon{display:none}.catalogue-preview{grid-template-columns:5rem minmax(0,1fr)}.catalogue-filter label{font-size:.8rem}.docksweep,.dockrepair{font-size:.76rem}}
 @media(max-height:520px) and (min-width:551px){#shopDialog{height:calc(100dvh - .8rem)}#shopDialog .dialoghead{padding:.4rem .8rem}#shopTitle{font-size:1.4rem}.catalogue-tabs button{min-height:2.1rem;padding:.35rem}.catalogue-preview{display:block}#itemPreview{float:left;width:45%;height:7rem;margin-right:.5rem;min-height:0}#itemTitle{font-size:1.1rem}#itemDescription{font-size:.82rem}#itemScope{display:none}#catalogueAction{width:100%;margin-top:.3rem;min-height:2.1rem;padding:.4rem}.catalogue-footer{padding:.25rem .7rem;min-height:2.1rem}.catalogue-item{min-height:6.5rem}.catalogue-item canvas{height:4rem}}
 /* Keep the current tool readable too: the new names must not become 'Fryin…'. */
-.playdock .currenttool{width:13rem}.currenttool #toolTitle{white-space:normal;text-overflow:clip;line-height:1.12;font-size:.96rem}.makercredit{color:#fff3d1;text-shadow:0 1px 2px #17303e,1px 0 2px #17303e}.menu-nav #resetBtn{display:none}
+.playdock .currenttool{width:13rem}.currenttool #toolTitle{white-space:normal;text-overflow:clip;line-height:1.12;font-size:.96rem}.makercredit{color:#fff3d1;text-shadow:0 1px 2px #17303e,1px 0 2px #17303e}
 @media(max-width:550px){.playdock .currenttool{width:6.6rem;max-width:30vw}.currenttool #selectedIcon{display:none}.currenttool #toolTitle{font-size:.83rem;overflow-wrap:normal}.currenttool .chevron{flex-shrink:0}.playdock{gap:1px}.makercredit{font-size:.8rem}}
 
 @media(max-width:550px){html[data-ui-scale="1.25"] .catalogue-tabs,html[data-ui-scale="1.5"] .catalogue-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}html[data-ui-scale="1.5"] #shopTitle{font-size:1.2rem}html[data-ui-scale="1.5"] .catalogue-money b{font-size:1.15rem}}
@@ -119,7 +119,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
 </main>
 <footer id="playDock" class="playdock" aria-label="Tools and shop">
  <button id="toolsBtn" class="currenttool" aria-expanded="false" aria-controls="toolDrawer" title="Choose a tool (E)"><span id="selectedIcon" aria-hidden="true"></span><span id="toolTitle">Grab</span><span class="chevron" aria-hidden="true">⌃</span></button>
- <button id="shopBtn" class="cashbutton" title="Shared cash and weapon shop (C)" aria-haspopup="dialog"><b id="cashCount">$40</b><span>Shop</span></button>
+ <button id="shopBtn" class="cashbutton" title="Room cash and the Toybox (C)" aria-haspopup="dialog"><b id="cashCount">$40</b><span>Shop</span></button>
  <button id="quickRepairBtn" class="dockrepair" title="Repair Buddy (H)"><span aria-hidden="true">✚</span><span class="repairword">Repair</span></button>
  <button id="quickSweepBtn" class="docksweep" title="Remove loose clutter, keep held toys and contraptions">Sweep</button><button id="sweepOptionsBtn" class="dockmore" title="More cleanup options">More</button>
  <button id="hideUIBtn" class="dockhide" title="Hide controls (U)" aria-label="Hide controls">Hide</button>
@@ -138,9 +138,9 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   <div class="menu-actions" hidden>
    <button id="healBtn" title="Repair Buddy (H)"><span aria-hidden="true">✚</span> Repair Buddy</button><button id="cleanBtn" title="Wash room (M)"><span aria-hidden="true">≈</span> Wash room</button>
    <button id="standBtn" title="Stand Buddy up (R)"><span aria-hidden="true">↥</span> Stand up</button><button id="gravityBtn" title="Toggle low gravity (G)"><span aria-hidden="true">☾</span> Low gravity</button>
-   <button id="hatBtn">Hat: none</button><button id="untieBtn">Cut all ropes</button><button id="skinBtn"><span aria-hidden="true">◈</span> Change outfit</button><button id="clearBtn"><span aria-hidden="true">⌫</span> Clear toys</button>
+   <button id="untieBtn">Cut all ropes</button><button id="clearBtn"><span aria-hidden="true">⌫</span> Clear toys</button>
   </div>
-  <div class="dialogbuttons"><button id="menuCleanBtn">Cleanup</button><button id="menuGravityBtn">Gravity</button></div><h3>Your settings</h3>
+  <div class="dialogbuttons"><button id="menuCleanBtn">Cleanup</button><button id="menuGravityBtn">Gravity: normal</button></div><h3>Your settings</h3>
   <div class="settings-list">
    <button id="soundBtn">Sound on</button><button id="bloodBtn">Blood: classic</button><button id="motionBtn">Screen shake on</button><button id="cursorBtn">Cursor: system</button>
    <label for="uiScale">UI size</label><select id="uiScale"><option value="1">Standard</option><option value="1.25">Large</option><option value="1.5">Extra large</option></select>
@@ -149,8 +149,8 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
    <p id="poolStats" class="small"></p><div class="roomstats"><span>Candy <b id="candyCount">0</b></span><span>Baskets <b id="score">0</b></span><span id="comboLabel"></span></div><div class="combo-track"><i id="comboFill"></i></div>
    <button class="stunt" id="challengeBtn" title="Next optional stunt"><span id="taskLabel">Air time</span><b id="taskValue">0 / 4s</b><span aria-hidden="true">↻</span><i id="taskFill"></i></button>
   </details>
-  <div class="menu-nav"><button id="customizeBtn">Hats, skins &amp; rooms</button><button id="postcardBtn">Save postcard</button><button id="menuRoomBtn">Players &amp; invites</button><button id="chatBtn">Chat</button><button id="creditsBtn">About &amp; credits</button><button id="resetBtn" class="danger">Reset room</button></div>
-  <p class="small">Reset keeps workshop purchases. <b>U</b> hides the controls. <b>E</b> opens tools.</p>
+  <div class="menu-nav"><button id="customizeBtn">Toybox: Buddy, hands &amp; rooms</button><button id="postcardBtn">Save postcard</button><button id="menuRoomBtn">Players &amp; invites</button><button id="chatBtn">Chat</button><button id="creditsBtn">About &amp; credits</button></div>
+  <p class="small"><b>U</b> hides the controls. <b>E</b> opens tools.</p>
  </div>
 </dialog>
 <dialog id="roomDialog" aria-labelledby="roomTitle">
@@ -165,7 +165,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
    <p id="connectionDetail" class="small">Starting discovery…</p><div class="dialogbuttons"><button id="retryBtn">Retry discovery</button><button id="debugBtn">Diagnostics (D)</button></div>
    <details id="advanced"><summary>Direct connection codes</summary><p class="small">When discovery fails: the host sends an offer; the guest sends an answer back. Some networks still need a TURN relay.</p><button id="offerBtn">1. Host: make offer</button><label for="signalOut">Outgoing code</label><textarea id="signalOut" rows="3" readonly placeholder="Your offer or answer appears here."></textarea><button id="copySignal">Copy code</button><label for="signalIn">Received code</label><textarea id="signalIn" rows="3" spellcheck="false" placeholder="Paste the other player’s code."></textarea><div class="dialogbuttons"><button id="answerBtn">2. Guest: answer</button><button id="finishBtn">3. Host: finish</button></div><p id="signalStatus" class="small"></p></details>
   </details>
-  <p class="fineprint">Buddy Bonk v0.8.1 · Protocol 07. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
+  <p class="fineprint">Buddy Bonk v0.8.2 · Protocol 07. No dedicated game server. Public discovery needs internet access; some connections need a relay. In the shared lobby another player takes over when the host leaves. An invited room ends with its host.</p>
   <div class="dialogbuttons"><button id="roomCreditsBtn">Credits</button><a href="https://tront.xyz/discord/" target="_blank" rel="noopener noreferrer">Feedback ↗</a></div>
  </div>
 </dialog>
@@ -178,7 +178,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   <section class="catalogue-shelves" aria-label="Catalogue items"><div class="catalogue-filter"><div id="catalogueSubtabs"></div><label><input id="ownedOnly" type="checkbox">Owned only</label></div><div id="catalogueGrid"></div></section>
   <section class="catalogue-preview" aria-label="Item preview"><canvas id="itemPreview" width="480" height="420" aria-label="Selected item preview"></canvas><h3 id="itemTitle"></h3><p id="itemDescription"></p><small id="itemScope"></small><button id="catalogueAction">Equip</button></section>
  </div>
- <footer class="catalogue-footer"><a href="https://tront.xyz/games/" target="_blank" rel="noopener noreferrer">More by Tront ↗</a><span id="shopNote">Room unlocks. Your style.</span><button id="modeBtn">Earn unlocks</button></footer>
+ <footer class="catalogue-footer"><a href="https://tront.xyz/games/" target="_blank" rel="noopener noreferrer">More by Tront ↗</a><span id="shopNote">Room unlocks. Your style.</span><button id="modeBtn">Sandbox: off</button></footer>
  <div hidden><span id="shopEarned"></span><span id="budgetHint"></span><span id="floorhint"></span></div>
 </dialog>
 <dialog id="sweepDialog" aria-labelledby="sweepTitle"><header class="dialoghead"><h2 id="sweepTitle">Make some room</h2><button id="closeSweep" class="close" aria-label="Close cleanup">×</button></header><div class="dialogbody">
@@ -200,9 +200,9 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
    <p>Made by <a href="https://tront.xyz/" target="_blank" rel="noopener noreferrer">Trent Sterling</a>, aka Tront. Network programmer by day, physics toy maker by night.</p>
    <nav class="chips" aria-label="More from Tront"><a href="https://tront.xyz/" target="_blank" rel="noopener noreferrer">tront.xyz</a><a href="https://tront.xyz/games/" target="_blank" rel="noopener noreferrer">More games</a><a href="https://tront.xyz/blog/" target="_blank" rel="noopener noreferrer">Dev blog</a><a href="https://tront.xyz/discord/" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://github.com/TrentSterling" target="_blank" rel="noopener noreferrer">GitHub</a></nav>
   </section>
-  <details class="creditsdetails"><summary>Controls</summary><p><b>E</b> tools · <b>U</b> hide controls · <b>1 to 0</b> toys · <b>Q / W / F / X / T</b> heavy tools · <b>Z / S / I / P / N</b> revolver, SMG, burst rifle, double barrel, minigun · <b>;</b> grenades · <b>,</b> spear · <b>Y</b> shuriken · <b>.</b> frying pan · <b>]</b> water pistol · <b>J</b> tether · <b>V</b> bumper · <b>C</b> workshop · <b>H</b> repair Buddy · <b>M</b> wash room · <b>B</b> basketball · <b>R</b> stand · <b>G</b> gravity · <b>Enter</b> chat · <b>D</b> diagnostics.</p><p>The host can switch to <b>Sandbox</b> in the workshop to open every tool. Purchases are shared with everyone in the room. On touch screens, tap your current tool to open the rack. Blood, sound, and screen shake are local preferences.</p></details>
-  <details class="creditsdetails"><summary>Credits and tech</summary><p>Inspired by <a href="https://www.newgrounds.com/portal/view/218014" target="_blank" rel="noopener noreferrer">Interactive Buddy</a> by Shock-Value. Buddy Bonk is an independent multiplayer sandbox, not an official sequel.</p><p>Networking uses <a href="https://github.com/dmotz/trystero" target="_blank" rel="noopener noreferrer">Trystero 0.25.4</a> by Dan Motzenbecker, under the <a href="https://github.com/dmotz/trystero/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Canvas 2D artwork, synthesized audio, and host-authoritative physics run in your browser. No server, no account, no analytics, no ads.</p><p>Workshop progress, player name, and local preferences are saved in this browser. Public discovery contacts third-party relays; room messages travel directly between players. If the host leaves a lobby, someone else takes over hosting.</p></details>
-  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.8.1 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
+  <details class="creditsdetails"><summary>Controls</summary><p><b>E</b> tools · <b>U</b> hide controls · <b>1 to 0</b> toys · <b>Q / W / F / X / T</b> heavy tools · <b>Z / S / I / P / N</b> revolver, SMG, burst rifle, double barrel, minigun · <b>;</b> grenades · <b>,</b> spear · <b>Y</b> shuriken · <b>.</b> frying pan · <b>]</b> water pistol · <b>J</b> tether · <b>V</b> bumper · <b>C</b> Toybox · <b>H</b> repair Buddy · <b>M</b> wash room · <b>B</b> basketball · <b>R</b> stand · <b>G</b> gravity · <b>Enter</b> chat · <b>D</b> diagnostics.</p><p>The host can switch to <b>Sandbox</b> in the Toybox to open every tool. Purchases are shared with everyone in the room. On touch screens, tap your current tool to open the rack. Blood, sound, and screen shake are local preferences.</p></details>
+  <details class="creditsdetails"><summary>Credits and tech</summary><p>Inspired by <a href="https://www.newgrounds.com/portal/view/218014" target="_blank" rel="noopener noreferrer">Interactive Buddy</a> by Shock-Value. Buddy Bonk is an independent multiplayer sandbox, not an official sequel.</p><p>Networking uses <a href="https://github.com/dmotz/trystero" target="_blank" rel="noopener noreferrer">Trystero 0.25.4</a> by Dan Motzenbecker, under the <a href="https://github.com/dmotz/trystero/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Canvas 2D artwork, synthesized audio, and host-authoritative physics run in your browser. No server, no account, no analytics, no ads.</p><p>Toybox progress, player name, and local preferences are saved in this browser. Public discovery contacts third-party relays; room messages travel directly between players. If the host leaves a lobby, someone else takes over hosting.</p></details>
+  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.8.2 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
  </div>
 </dialog>
 <noscript><section style="position:fixed;inset:0;z-index:100;background:#202932;color:#f2e9cf;padding:40px;font:18px/1.5 Arial"><h1>Buddy Bonk by Tront</h1><p>This multiplayer ragdoll sandbox needs JavaScript to play.</p><p><a href="https://tront.xyz/" style="color:#f6ca55">Trent Sterling (Tront)</a> · <a href="https://tront.xyz/games/" style="color:#f6ca55">More games</a></p></section></noscript>
@@ -401,7 +401,7 @@ class BuddyWorld {
   }
   if(this.nodes.filter(n=>n.kind===kind).length>=cap){
    const old=[1,4,5,6,7].includes(kind)?this.recycleCandidate(kind,owner):null;
-   if(!old){if(event)this.limit(PROP_NAMES[kind]+' are all in use. Sweep or release one.');return false;}this.removeNode(old.id);
+   if(!old){if(event)this.limit(kind===2?BB.MAX_BOMBS+' bombs are live. Wait for a fuse.':kind===3?BB.MAX_BALLOONS+' balloons are up. Pop one first.':PROP_NAMES[kind]+' are all in use. Sweep or release one.');return false;}this.removeNode(old.id);
   }
   const ceiling=[1,3,4,5].includes(kind)?BB.MAX_NODES-BB.PROP_RESERVE:BB.MAX_NODES;
   if(this.nodes.length>=ceiling){const old=this.recycleCandidate(null,owner);if(!old){if(event)this.limit('The room is busy with protected toys. Sweep or cut a rope.');return false;}this.removeNode(old.id);}
@@ -570,13 +570,11 @@ class BuddyWorld {
   if(d.c.startsWith('buy:')){this.buy(d.c.slice(4),id);return;}
   if(d.c==='heal'){this.repair();return;}
   if(d.c==='clean'){this.cleanStains();return;}
-  if(d.c==='hat'){this.hat=(this.hat+1)%HATS.length;return;}
   if(d.c==='untie'){this.tethers=[];for(const hand of this.hands.values())hand.tetherStart=null;this.onEvent({type:'untie'});return;}
   if(d.c==='cancelTether'){h.tetherStart=null;this.onEvent({type:'tetherEnd',who:id});return;}
   if(d.c==='ball')this.addBall(h.x,h.y);
   if(d.c==='stand')this.stand();
   if(d.c==='clear')this.clearProps();
-  if(d.c==='skin'){this.skin=(this.skin+1)%SKINS.length;this.onEvent({type:'skin',skin:this.skin});}
   if(d.c==='challenge'){this.taskIndex=(this.taskIndex+1)%TASKS.length;this.taskProgress=0;this.taskDone=false;this.taskBaseScore=this.score;this.taskPops=0;this.taskBlasts=0;this.airtime=0;}
 
   if(d.c==='gravity'){this.lowGravity=!this.lowGravity;this.onEvent({type:'gravity',enabled:this.lowGravity});}
@@ -739,6 +737,12 @@ class BuddyWorld {
  workshopSnapshot(){return {cash:this.cash,earned:this.earned,unlocked:this.unlocked,upgrades:this.upgrades?.slice(),sandbox:this.sandbox,hat:this.hat,skin:this.skin,theme:this.theme,looks:this.looks};}
  loadWorkshop(s){
   if(!s||!Number.isSafeInteger(s.cash)||s.cash<0||s.cash>1e9||!Number.isSafeInteger(s.earned)||s.earned<0||s.earned>4e9||!Number.isInteger(s.unlocked)||s.unlocked<0||s.unlocked>ALL_TOOL_MASK||!Array.isArray(s.upgrades)||s.upgrades.length!==3||!s.upgrades.every(n=>Number.isInteger(n)&&n>=0&&n<=3))return false;
+  if(s.looks===undefined){ // pre-merge v0.6/v0.7 save: 23-tool order, no looks field
+   // v0.8.0/v0.8.1 saves already rewritten with looks cannot be told apart from clean ones and stay as they are.
+   const OLD=['grab','poke','blaster','revolver','bomb','rocket','shock','magnet','ball','balloon','spring','shotgun','saw','flame','freeze','dart','spear','air','duck','bowling','rail','tether','bumper'];
+   let mask=0;OLD.forEach((id,i)=>{if(s.unlocked&(1<<i)){const j=TOOL_IDS.indexOf(id);if(j>=0)mask|=1<<j;}});
+   s={...s,unlocked:mask,skin:0,theme:0,hat:Number.isInteger(s.hat)&&s.hat>=0&&s.hat<4?s.hat:0};
+  }
   this.cash=s.cash;this.earned=s.earned;this.unlocked=s.unlocked|STARTER_MASK;this.upgrades=s.upgrades.slice();this.sandbox=!!s.sandbox;
   this.looks=Number.isInteger(s.looks)&&s.looks>=0&&s.looks<=0xffffffff?(s.looks|FREE_LOOKS)>>>0:FREE_LOOKS;
   for(const [key,items] of [['hat',HATS],['skin',SKINS],['theme',ROOMS]])this[key]=Number.isInteger(s[key])&&s[key]>=0&&s[key]<items.length?s[key]:0;
@@ -1265,7 +1269,7 @@ const TOOL_ART={
  spring:`<path d="m20 19 27 7-26 9 26 8-26 7" stroke="#d6e5d8" stroke-width="6" fill="none"/><path d="m20 19 27 7-26 9 26 8-26 7" stroke="#546e7d" stroke-width="2" fill="none"/><path d="M6 9h52v12H6zm0 40h52v12H6z" fill="#edc458"/><path d="m13 10 8 10m3-10 8 10m3-10 8 10m3-10 8 10" stroke-width="3"/><path d="M9 53h45" stroke="#ffdf8c" stroke-width="2"/>`
 };
 function toolSVG(tool){return `<svg viewBox="0 0 64 66" aria-hidden="true" fill="none" stroke="#22313c" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">${TOOL_ART[tool]}</svg>`;}
-const toolName=id=>id==='shock'?'Tesla':id==='freeze'?'Cryo':TOOLS[id].name.toLowerCase().replace(/^./,s=>s.toUpperCase());
+const toolName=id=>id==='shock'?'Tesla':id==='freeze'?'Cryo':id==='smg'?'SMG':TOOLS[id].name.toLowerCase().replace(/^./,s=>s.toUpperCase());
 const toolHelp=id=>TOOLS[id].hint.toLowerCase().replace(/buddy/g,'Buddy').replace(/tesla/g,'Tesla').replace(/^./,s=>s.toUpperCase());
 for(const [id,def] of Object.entries(TOOLS)){
  const b=document.createElement('button');b.className='tool'+(id==='grab'?' selected':'');b.dataset.tool=id;b.id=id+'Btn';b.title=toolName(id)+' ('+def.key.toUpperCase()+'): '+toolHelp(id);b.setAttribute('aria-label',toolName(id));b.setAttribute('aria-pressed',id==='grab'?'true':'false');b.hidden=!!def.cost;b.innerHTML=toolSVG(id)+`<span>${toolName(id)}</span><kbd>${def.key.toUpperCase()}</kbd>`+(def.cost?`<em class=price>$${def.cost}</em>`:'');document.getElementById('toolrack').append(b);
@@ -2392,7 +2396,7 @@ Object.assign(TOOL_ART,moreArt);
 /* Unified catalogue: local previews never change the shared room until Apply. */
 const catState={tab:'weapons',sub:'all',owned:false,fast:false,item:null,key:'',previewKey:''};
 const catItems=[];
-for(const [id,tool] of Object.entries(TOOLS))catItems.push({key:'tool:'+id,type:'tool',id,tab:TOY_SET.has(id)?'toys':'weapons',sub:'all',name:id==='smg'?'SMG':toolName(id),price:tool.cost||0,description:toolHelp(id),fresh:!!NEW_TOOLS[id]});
+for(const [id,tool] of Object.entries(TOOLS))catItems.push({key:'tool:'+id,type:'tool',id,tab:TOY_SET.has(id)?'toys':'weapons',sub:'all',name:toolName(id),price:tool.cost||0,description:toolHelp(id),fresh:!!NEW_TOOLS[id]});
 for(const [type,items] of Object.entries(LOOKS))items.forEach((v,i)=>catItems.push({key:type+':'+i,type,id:i,tab:type==='body'||type==='hat'?'buddy':type==='hand'?'hands':'room',sub:type,name:v.name,price:v.cost,description:type==='room'?v.info:type==='hat'?'Preview it on Buddy, then wear it. Everyone sees the same hat.':type==='body'?'A different look for the same indestructible Buddy. Hats work with every outfit.':'Your glove, your choice. Your player color stays visible.'}));
 UPGRADES.forEach((v,i)=>catItems.push({key:'upgrade:'+i,type:'upgrade',id:i,tab:'toys',sub:'upgrades',name:v.name.toLowerCase().replace(/^./,x=>x.toUpperCase()),price:v.prices[0],description:v.info}));
 function catWorld(){return isHost?world.snapshot(paused):latest;}
@@ -2409,7 +2413,7 @@ function openCatalogue({owned=false,tab=null,item=null,fast=false}={}){
 }
 function renderCatalogue(force=false){
  if(!$('shopDialog').open)return;const s=catWorld();if(!s)return;
- $('shopCash').textContent='$'+s.bank.toLocaleString();$('modeBtn').textContent=s.free?'Sandbox':'Earn unlocks';$('modeBtn').classList.toggle('free',s.free);$('modeBtn').disabled=!isHost;
+ $('shopCash').textContent='$'+s.bank.toLocaleString();$('modeBtn').textContent=s.free?'Sandbox: on':'Sandbox: off';$('modeBtn').title=isHost?'Open every tool and look for the whole room':'Only the host can switch sandbox';$('modeBtn').classList.toggle('free',s.free);$('modeBtn').disabled=!isHost;
  const key=[catState.tab,catState.sub,catState.owned,s.unlock,s.looks,s.free,s.skin,s.hat,s.theme,...s.upg,selectedTool,s.h.find(h=>h[0]===myId)?.[9]||0].join('/');
  if(!force&&catState.key===key){updateCatalogueAction(s);return;}catState.key=key;
  document.querySelectorAll('[data-category]').forEach(b=>{b.classList.toggle('active',b.dataset.category===catState.tab);b.setAttribute('aria-pressed',String(b.dataset.category===catState.tab));});
@@ -2536,7 +2540,7 @@ let lastSnapshot=0,lastInput=0,lastFrame=performance.now(),simAccum=0,eventSeq=0
 let snapshotSequence=0,lastSnapshotSequence=-1;
 let rtt=0,lastPing=0,toastTimer=0,rosterKey='',lastScore=-1,lastBounceEvent=0,interacted=false,debugVisible=false,activePointer=null;
 let selectedTool='grab',temporaryGrab=false;
-let soundOn=readStore('buddybay-sound','on')==='on',audio=null,lastSound=0,lastVoice=0,noiseBuffer=null;
+let soundOn=readStore('buddybay-sound','on')==='on',audio=null,lastSoundAt=new Map(),lastVoice=0,noiseBuffer=null;
 const stats={txRate:0,rxRate:0,eventBatches:0,steps:0,frames:0,invalidPackets:0,commands:0,hostInputs:0,assertErrors:[],snapBytes:0,events:{},started:performance.now(),rejectedSnapshots:0};
 const sentChatTimes=new Map();
 function toast(text){$('toast').textContent=String(text);$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2800);}
@@ -2547,6 +2551,7 @@ function noise(duration,volume=.1,cutoff=1000){
  if(!noiseBuffer){noiseBuffer=audio.createBuffer(1,audio.sampleRate,audio.sampleRate);const data=noiseBuffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=Math.random()*2-1;}const buf=noiseBuffer;
  const src=audio.createBufferSource(),filter=audio.createBiquadFilter(),gain=audio.createGain();src.buffer=buf;filter.type='lowpass';filter.frequency.value=cutoff;gain.gain.setValueAtTime(volume,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+duration);src.connect(filter);filter.connect(gain);gain.connect(audio.destination);src.start(0,Math.random()*.25,duration);src.onended=()=>{src.disconnect();filter.disconnect();gain.disconnect();};
 }
+const SOUND_GAP={swing:45,shot:30,zap:45,collect:35,bounce:60,grab:45,throw:45,spawn:45,bomb:45,balloon:45,place:45};
 function playEvent(e){
  if(e.type==='gunshot'){const big=['double','revolver'].includes(e.tool);beep(big?145:380,big?.14:.055,big?.07:.028,0,big?45:110);noise(big?.13:.04,big?.13:.04,big?2300:3700);return;}
  if(e.type==='reload'){beep(350,.045,.018,0,170);beep(440,.045,.018,e.duration*.75,230);return;}
@@ -2566,15 +2571,15 @@ function playEvent(e){
  if(e.type==='toy'||e.type==='squeak'){if(e.kind===4||e.type==='squeak'){beep(720,.11,.05,0,430);beep(920,.07,.025,.075,600);}else beep(110,.1,.04,0,50);return;}
  if(e.type==='dart'){beep(520,.065,.023,0,110);return;}
  if(e.type==='basket'||e.type==='challenge'){[523,659,784,1047].forEach((f,i)=>beep(f,.17,.045,i*.07));return;}
- const now=performance.now();if(now-lastSound<45)return;lastSound=now;
- if(e.type==='explosion'){beep(115,.38,.1,0,27);noise(.34,.2,900);}
+ if(e.type==='explosion'){beep(115,.38,.1,0,27);noise(.34,.2,900);return;}
+ if(e.type==='launch'){noise(.24,.10,2400);beep(140,.22,.025,0,410);return;}
+ if(e.type==='spring'){beep(150,.30,.075,0,780);beep(620,.16,.028,.12,270);return;}
+ if(e.type==='pop'){noise(.055,.16,2600);beep(450,.06,.03,0,95);return;}
+ if(e.type==='poke'&&e.hit){const tool=renderState?.h?.find(h=>h[0]===e.who)?.[7];if(tool==='pan'){[2300,3400,5100].forEach((f,i)=>beep(f,.28,.03/(i+1),0,f*.9));noise(.03,.07,3200);}else{beep(e.buddy?135:190,.12,.085,0,48);noise(.045,.12,e.buddy?1150:2000);}return;}
+ const now=performance.now(),gap=SOUND_GAP[e.type]??45;if(now-(lastSoundAt.get(e.type)||0)<gap)return;lastSoundAt.set(e.type,now);
  if(e.type==='swing'){noise(.08,.025,2300);}
- if(e.type==='poke'&&e.hit){beep(e.buddy?135:190,.12,.085,0,48);noise(.045,.12,e.buddy?1150:2000);}
  if(e.type==='shot'){beep(620,.06,.035,0,140);noise(.045,.07,3500);}
- if(e.type==='launch'){noise(.24,.10,2400);beep(140,.22,.025,0,410);}
  if(e.type==='zap'){beep(1750,.04,.018,0,200);noise(.035,.045,4700);}
- if(e.type==='spring'){beep(150,.30,.075,0,780);beep(620,.16,.028,.12,270);}
- if(e.type==='pop'){noise(.055,.16,2600);beep(450,.06,.03,0,95);}
  if(e.type==='bumperHit'){beep(470,.15,.06,0,920);beep(690,.12,.03,.04,350);return;}
  if(e.type==='tether'||e.type==='ropeCut'){noise(.045,.04,2100);beep(350,.09,.03,0,160);return;}
  if(e.type==='collect')beep(980+e.value*140,.07,.026,0,1450);
@@ -2585,7 +2590,7 @@ function playEvent(e){
 }
 function showEvent(e){
  if(e.type==='purchaseDenied'){if(e.who===myId)toast(e.text);return;}
- if(e.type==='purchase'||e.type==='look'){toast(e.text);shopKey='';}
+ if(e.type==='purchase'||e.type==='look'){if(!(e.type==='look'&&e.kind==='hand'&&e.who!==myId))toast(e.text);shopKey='';}
  if(e.type==='swept'){toast(e.text);}
  if(e.type==='clean')toast('ROOM WASHED');
  if(e.type==='drop'&&e.who===myId)releasePointer();
@@ -2634,7 +2639,7 @@ function onOpen(id,route){
 function onClose(id){
  sentChatTimes.delete(id);
  if(isHost){const h=world.hands.get(id);if(h){toast(h.name+' DISCONNECTED');world.removeHand(id);}sendSnapshot(true);}
- else if(id===hostId){hostGone=true;welcomed=false;local.down=false;local.grip=null;if(autoLobby){toast('The host left. You are hosting now.');rehostSoon();}else toast('The host disconnected. This session has ended.');}
+ else if(id===hostId){hostGone=true;welcomed=false;local.down=false;local.grip=null;if(autoLobby){toast('The host left. You are hosting now.');rehostSoon();}else toast('The host left this room.');}
  updateUI();
 }
 let rehostTimer=0;function rehostSoon(){clearTimeout(rehostTimer);rehostTimer=setTimeout(()=>{if(!isHost&&hostGone&&autoLobby){releasePointer();world.reset();renderer.resetEffects();net.rehost();}},400+Math.random()*600);}
@@ -2699,7 +2704,7 @@ function pickRendered(x,y){
  for(let i=nodes.length-1;i>=0;i--){const n=nodes[i];if(n[6]===6){const q=segmentPoint(x,y,{x:n[1],y:n[2]},{x:n[1]-Math.cos(n[7])*110,y:n[2]-Math.sin(n[7])*110});if(Math.hypot(x-q.x,y-q.y)<12)return {a:n[0],b:n[0],t:0};}if(Math.hypot(x-n[1],y-n[2])<=n[5]+10)return {a:n[0],b:n[0],t:0};}
  let best=null,bd=Infinity;for(const [a,b,r] of [...LIMBS,[0,1,17],[1,2,27],[3,6,20]]){if(!by.has(a)||!by.has(b))continue;const q=segmentPoint(x,y,by.get(a),by.get(b)),d=Math.hypot(q.x-x,q.y-y);if(d<r+10&&d<bd){bd=d;best={a,b,t:q.t};}}return best;
 }
-function canAct(){if(!isHost&&!welcomed){toast(hostGone?(autoLobby?'Reconnecting to the lobby…':'This session ended. Start a new playroom.'):'Waiting for the host. Invite links must match.');return false;}if(!isHost&&remotePaused){toast('The host tab is paused. Ask them to return.');return false;}return true;}
+function canAct(){if(!isHost&&!welcomed){toast(hostGone?(autoLobby?'Reconnecting to the lobby…':'The host left this room. Open Players to start a new room.'):'Waiting for the host. Invite links must match.');return false;}if(!isHost&&remotePaused){toast('The host tab is paused. Ask them to return.');return false;}return true;}
 function markInteraction(){if(!interacted){interacted=true;$('welcome').classList.add('dim');}}
 // Input is deliberately not captured by the canvas and never pointer-locked.
 // System cursor is the default. An optional game cursor is scoped to a real
@@ -2821,8 +2826,7 @@ for(const button of document.querySelectorAll('[data-tool]'))button.onclick=()=>
 $('quickRepairBtn').onclick=()=>{suspendPointer();command('heal');};
 $('standBtn').onclick=()=>command('stand');$('gravityBtn').onclick=()=>command('gravity');
 $('healBtn').onclick=()=>command('heal');$('cleanBtn').onclick=()=>command('clean');
-$('skinBtn').onclick=()=>command('skin');$('hatBtn').onclick=()=>command('hat');$('untieBtn').onclick=()=>command('untie');$('clearBtn').onclick=()=>command('clear');$('challengeBtn').onclick=()=>command('challenge');
-$('resetBtn').onclick=()=>{if(!isHost){toast('Only the host can reset the room.');return;}releasePointer();world.reset();renderer.resetEffects();world.input(myId,{x:local.x,y:local.y,s:++local.seq,down:false,tool:local.tool});sendSnapshot(true);toast('ROOM RESET');};
+$('untieBtn').onclick=()=>command('untie');$('clearBtn').onclick=()=>command('clear');$('challengeBtn').onclick=()=>command('challenge');
 // The catalogue extends protocol 6; existing purchase/save keys are retained.
 $('creditsLogo').src=$('brandLogo').src;
 const logoFallback=()=>{$('brandLogo').hidden=true;$('brand').querySelector('.brand-fallback').hidden=false;};
@@ -2840,7 +2844,7 @@ $('creditsInvite').onclick=async()=>{if(location.protocol==='file:'){toast('Uplo
 /* First visit: the about card doubles as the welcome screen. Never on pair/test popups. */
 if(!readStore('buddybay-welcomed','')&&!query.get('pair')&&query.get('test')!=='1')setTimeout(()=>{if(!$('creditsDialog').open)openCredits();},350);
 $('settingsBtn').onclick=()=>showDialog('menuDialog');$('closeMenu').onclick=()=>$('menuDialog').close();
-$('menuCleanBtn').onclick=()=>{showDialog('sweepDialog');$('clearAllBtn').disabled=!isHost;};$('menuGravityBtn').onclick=()=>{command('gravity');$('menuGravityBtn').textContent=catWorld().low?'Gravity: low':'Gravity: normal';};
+$('menuCleanBtn').onclick=()=>{showDialog('sweepDialog');$('clearAllBtn').disabled=!isHost;};$('menuGravityBtn').onclick=()=>{command('gravity');};
 for(const d of document.querySelectorAll('dialog')){
  d.addEventListener('close',()=>{if(!modalOpen()&&$('chatwrap').hidden&&$('toolDrawer').hidden)canvas.focus({preventScroll:true});const hit=pointerType!=='touch'&&gameHit(pointerClient.x,pointerClient.y);if(hit)Object.assign(local,renderer.toWorld(pointerClient.x,pointerClient.y));setPointerHover(hit);});
  d.addEventListener('cancel',()=>suspendPointer());
@@ -2981,10 +2985,10 @@ function connectionText(){
 }
 function updateUI(){
  if(!net)return;const s=isHost?world.snapshot(paused):latest;const count=isHost?world.hands.size:(welcomed?s.h.length:1);
- $('headcount').innerHTML=count+'<span>/4</span>';$('roleLabel').textContent=isHost?'HOST':welcomed?'GUEST':hostGone?'ENDED':'JOINING';
+ $('headcount').innerHTML=count+'<span>/4</span>';$('roleLabel').textContent=isHost?'HOST':welcomed?'GUEST':hostGone?(autoLobby?'REHOSTING':'ENDED'):'JOINING';
  $('netLabel').textContent=isHost?(count>1?'CONNECTED':'SOLO'):welcomed?(net.route(hostId)||'WebRTC')+(rtt?' · '+Math.round(rtt)+' ms':''):hostGone?'Host left':'Connecting…';
  $('led').className='led '+(welcomed?'on':hostGone?'error':'');
- $('connectionDetail').textContent=connectionText();$('resetBtn').disabled=!isHost;
+ $('connectionDetail').textContent=connectionText();
  const nscore=s?.score||0;if(lastScore!==nscore){lastScore=nscore;$('score').textContent=String(nscore).padStart(2,'0');}
  updateWorkshop(s);
  $('cashCount').textContent='$'+(s?.bank||0).toLocaleString();$('candyCount').textContent=String(s?.candy||0).padStart(3,'0');
@@ -2994,10 +2998,10 @@ function updateUI(){
  $('taskLabel').textContent=task[2]?'STUNT COMPLETE':def.title;
  $('taskValue').textContent=task[2]?'✓':(task[0]===0?task[1].toFixed(1):Math.floor(task[1]))+' / '+def.goal+def.unit;
  $('taskFill').style.width=clamp(task[1]/def.goal*100,0,100)+'%';$('challengeBtn').classList.toggle('complete',!!task[2]);
- if($('hatBtn'))$('hatBtn').textContent='Hat: '+(HATS[s?.hat||0]?.name||'none');
  if($('poolStats'))$('poolStats').textContent=`Toys ${Math.max(0,(s?.n.length||13)-13)}/${BB.MAX_NODES-13} · Candy ${s?.c.length||0}/${BB.MAX_CANDY} · Rockets ${s?.p.length||0}/${BB.MAX_ROCKETS} · Springs ${s?.pads.length||0}/${BB.MAX_PADS}`;
  $('gravityBtn').classList.toggle('active',!!s?.low);
- let notice='';if(hostGone)notice='The host disconnected. This session ended. Open room settings to start a new playroom.';else if(!isHost&&!welcomed)notice='Waiting for your host. They need this playroom open. Open the ☰ room menu for connection tools.';else if(remotePaused)notice='The host tab is paused. Ask them to bring Buddy Bonk back into view.';else if(!isHost&&performance.now()-lastSnapshot>2300)notice='Waiting for the host’s next snapshot…';
+ $('menuGravityBtn').textContent=s?.low?'Gravity: low':'Gravity: normal';
+ let notice='';if(hostGone)notice=autoLobby?'The host left. You are taking over hosting…':'The host left this room. Open Players to start a new room.';else if(!isHost&&!welcomed)notice='Waiting for your host. They need this playroom open. Open Players for connection tools.';else if(remotePaused)notice='The host tab is paused. Ask them to bring Buddy Bonk back into view.';else if(!isHost&&performance.now()-lastSnapshot>2300)notice='Waiting for the host’s next snapshot…';
  $('pauseNotice').hidden=!notice;$('pauseNotice').textContent=notice;
  const players=isHost?world.snapshot().h:welcomed?s.h:[[myId,local.name,local.color,0,0,false,null,'grab']];
  const key=players.map(h=>h[0]+h[1]+h[2]).join('|');if(key!==rosterKey){rosterKey=key;$('roster').replaceChildren();for(const h of players){const el=document.createElement('div');el.className='person';el.style.setProperty('--color',h[2]);const dot=document.createElement('i');el.append(dot,document.createTextNode(h[1]));const small=document.createElement('small');small.textContent=h[0]===hostId?'HOST':h[0]===myId?'YOU':'FRIEND';el.append(small);$('roster').append(el);}}
@@ -3051,7 +3055,7 @@ initCatalogue();requestAnimationFrame(frame);updateUI();
 window.addEventListener('beforeunload',()=>{releasePointer();if(isHost)net.broadcast('end',{});else net.send(hostId,'goodbye',{});net.dispose();clearInterval(simTimer);clearInterval(snapshotTimer);clearInterval(uiTimer);});
 // Read-only observability plus deliberate harness controls. These are not network APIs.
 window.__buddy={
- title:'Buddy Bonk',version:'0.8.1',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
+ title:'Buddy Bonk',version:'0.8.2',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
  get state(){return isHost?world.snapshot(paused):latest;},get renderState(){return renderState;},get hand(){return {...local};},get connected(){return welcomed&&!hostGone;},
  get pointer(){return {inside:pointerInside,activeId:activePointer,waiting:waitForRelease,mode:cursorMode,type:pointerType,cursor:getComputedStyle(canvas).cursor,capture:activePointer!==null&&canvas.hasPointerCapture(activePointer),localHandVisible:renderer.localHandVisible,trace:inputTrace.slice()};},
  get ui(){return {quiet:uiQuiet,drawerOpen:$('shopDialog').open,catalogue:{...catState},scale:uiFactor};},
