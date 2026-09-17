@@ -118,7 +118,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
    <p id="connectionDetail" class="small">Starting discovery…</p><div class="dialogbuttons"><button id="retryBtn">Retry discovery</button><button id="debugBtn">Diagnostics (D)</button></div>
    <details id="advanced"><summary>Direct connection codes</summary><p class="small">When discovery fails: the host sends an offer; the guest sends an answer back. Some networks still need a TURN relay.</p><button id="offerBtn">1. Host: make offer</button><label for="signalOut">Outgoing code</label><textarea id="signalOut" rows="3" readonly placeholder="Your offer or answer appears here."></textarea><button id="copySignal">Copy code</button><label for="signalIn">Received code</label><textarea id="signalIn" rows="3" spellcheck="false" placeholder="Paste the other player’s code."></textarea><div class="dialogbuttons"><button id="answerBtn">2. Guest: answer</button><button id="finishBtn">3. Host: finish</button></div><p id="signalStatus" class="small"></p></details>
   </details>
-  <p class="fineprint">Buddy Bonk v0.6.0 · Protocol 06. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
+  <p class="fineprint">Buddy Bonk v0.7.0 · Protocol 06. No dedicated game server. Public discovery needs internet access; some connections need a relay. Host departure ends the room.</p>
   <div class="dialogbuttons"><button id="roomCreditsBtn">Credits</button><a href="https://tront.xyz/discord/" target="_blank" rel="noopener noreferrer">Feedback ↗</a></div>
  </div>
 </dialog>
@@ -149,7 +149,7 @@ dialog{padding:0;border:3px solid var(--line);border-radius:0;background:var(--p
   </section>
   <details class="creditsdetails"><summary>Controls</summary><p><b>E</b> tools · <b>U</b> hide controls · <b>1 to 0</b> toys · <b>Q / W / F / X / T</b> heavy tools · <b>J</b> tether · <b>V</b> bumper · <b>C</b> workshop · <b>H</b> repair Buddy · <b>M</b> wash room · <b>B</b> basketball · <b>R</b> stand · <b>G</b> gravity · <b>Enter</b> chat · <b>D</b> diagnostics.</p><p>The host can switch to <b>Sandbox</b> in the workshop to open every tool. Purchases are shared with everyone in the room. On touch screens, tap your current tool to open the rack. Blood, sound, and screen shake are local preferences.</p></details>
   <details class="creditsdetails"><summary>Credits and tech</summary><p>Inspired by <a href="https://www.newgrounds.com/portal/view/218014" target="_blank" rel="noopener noreferrer">Interactive Buddy</a> by Shock-Value. Buddy Bonk is an independent multiplayer sandbox, not an official sequel.</p><p>Networking uses <a href="https://github.com/dmotz/trystero" target="_blank" rel="noopener noreferrer">Trystero 0.25.4</a> by Dan Motzenbecker, under the <a href="https://github.com/dmotz/trystero/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT license</a>. Canvas 2D artwork, synthesized audio, and host-authoritative physics run in your browser. No server, no account, no analytics, no ads.</p><p>Workshop progress, player name, and local preferences are saved in this browser. Public discovery contacts third-party relays; room messages travel directly between players. If the host leaves a lobby, someone else takes over hosting.</p></details>
-  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.6.0 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
+  <div class="creditsbottom"><span>© 2026 Trent Sterling (Tront) · v0.7.0 · <a href="https://tront.xyz/buddy/" target="_blank" rel="noopener noreferrer">tront.xyz/buddy</a></span></div>
  </div>
 </dialog>
 <noscript><section style="position:fixed;inset:0;z-index:100;background:#202932;color:#f2e9cf;padding:40px;font:18px/1.5 Arial"><h1>Buddy Bonk by Tront</h1><p>This multiplayer ragdoll sandbox needs JavaScript to play.</p><p><a href="https://tront.xyz/" style="color:#f6ca55">Trent Sterling (Tront)</a> · <a href="https://tront.xyz/games/" style="color:#f6ca55">More games</a></p></section></noscript>
@@ -168,7 +168,7 @@ const PALETTE=['#ef6548','#42bbc3','#be80ef','#efc843'];
 // These are game tools, not independent client-side effects. The host executes all uses.
 const TOOLS=Object.freeze({
  grab:{name:'GRAB',key:'1',hint:'DRAG TO GRAB · RELEASE TO THROW',rate:0},
- poke:{name:'MALLET',key:'2',hint:'HOLD TO SWING · HIT BALLS, BOMBS OR BUDDY',rate:.46},
+ poke:{name:'MALLET',key:'2',hint:'WHIP IT THROUGH BUDDY · CLICK TO TAP',rate:.46},
  blaster:{name:'BLASTER',key:'3',hint:'HOLD TO FIRE AT THE CROSSHAIR',rate:.105},
  revolver:{name:'REVOLVER',key:'e',hint:'STEADY SHOTS · MORE KICK THAN THE BLASTER',rate:.24,cost:55},
  bomb:{name:'BOMB',key:'4',hint:'CLICK TO DROP · RIGHT-DRAG TO THROW BEFORE IT BLOWS',rate:.48},
@@ -229,6 +229,9 @@ const segmentPoint=(x,y,a,b)=>{const dx=b.x-a.x,dy=b.y-a.y,l=dx*dx+dy*dy;const t
 // One mallet definition for BOTH animation and contact. No simulated hammer body.
 // Times are seconds; action cues carry integer authority ticks, not rounded snapshot time.
 const MALLET=Object.freeze({WIND:.100,ACTIVE:.108,CONTACT:.185,END:.46,HOLD:.027,FACE_R:3.5,REST:-.18,BACK:.48,STRIKE:-.98});
+// Physics swing: the idle mallet rides the glove, so whipping the cursor through
+// Buddy is a hit. Speeds are world px/s of the smoothed glove velocity.
+const SWING=Object.freeze({MIN:430,MAX:1500,LEAN:.00042,COOLDOWN:.16,SMOOTH:.035,JUMP:200});
 const smooth01=t=>{t=clamp(t,0,1);return t*t*(3-2*t);};
 function malletAngle(age,contactAge=null,cancelAge=null){
  const travel=a=>a<MALLET.WIND?lerp(MALLET.REST,MALLET.BACK,smooth01(a/MALLET.WIND)):
@@ -244,8 +247,8 @@ function malletAngle(age,contactAge=null,cancelAge=null){
  if(age<.250)return lerp(MALLET.STRIKE,-1.40,smooth01((age-MALLET.CONTACT)/(.250-MALLET.CONTACT)));
  return lerp(-1.40,MALLET.REST,smooth01((age-.250)/.18));
 }
-function malletPose(x,y,side,age,contactAge=null,cancelAge=null){
- const a=malletAngle(age,contactAge,cancelAge),c=Math.cos(a),sn=Math.sin(a),hit=MALLET.STRIKE;
+function malletPose(x,y,side,age,contactAge=null,cancelAge=null,lean=0){
+ const a=malletAngle(age,contactAge,cancelAge)+lean,c=Math.cos(a),sn=Math.sin(a),hit=MALLET.STRIKE;
  // The RED END of the barrel lands at the aim point, not the handle or centre.
  const px=x-side*(-33*Math.cos(hit)+73*Math.sin(hit)),py=y-(-33*Math.sin(hit)-73*Math.cos(hit));
  const point=(u,v)=>({x:px+side*(u*c-v*sn),y:py+u*sn+v*c});
@@ -279,7 +282,7 @@ class BuddyWorld {
   BASE_POSE.forEach(([x,y,r,m],id)=>this.nodes.push({id,x,y,vx:0,vy:0,r,m,im:1/m,kind:0,a:0,lastBounce:-1,lastScore:-5,ox:x,oy:y}));
   this.joints=JOINT_DEFS.map(([a,b])=>({a,b,l:dist(this.nodes[a],this.nodes[b])}));
   this.bends=BEND_DEFS.map(([a,b,c,angle])=>{const ab=dist(this.nodes[a],this.nodes[b]),bc=dist(this.nodes[b],this.nodes[c]);return {a,b:c,l:Math.sqrt(ab*ab+bc*bc-2*ab*bc*Math.cos(angle*Math.PI/180))};});
-  for(const h of this.hands.values()){h.grip=null;h.down=false;h.seq=-1;h.blockDown=false;h.nextFire=0;h.cooldowns={};h.lastUse=-10;h.lastCmd=-10;h.mallet=null;h.tetherStart=null;}
+  for(const h of this.hands.values()){h.grip=null;h.down=false;h.seq=-1;h.blockDown=false;h.nextFire=0;h.cooldowns={};h.lastUse=-10;h.lastCmd=-10;h.mallet=null;h.tetherStart=null;h.svx=0;h.svy=0;h.sx=undefined;h.sy=undefined;}
   this.addBall(401,530,false);this.addBall(865,545,false);this.addBall(967,578,false);
  }
  node(id){return this.nodes.find(n=>n.id===id);}
@@ -307,7 +310,7 @@ class BuddyWorld {
  upsertHand(id,name,color){
   let h=this.hands.get(id);
   if(!h&&this.hands.size>=BB.MAX_PLAYERS)return null;
-  if(!h){h={id,name:String(name).slice(0,20),color,x:400,y:320,tx:400,ty:320,down:false,grip:null,blockDown:false,tool:'grab',seq:-1,seen:performance.now(),lastMove:0,dx:0,dy:0,lastCmd:-10,nextFire:0,lastUse:-10};this.hands.set(id,h);}
+  if(!h){h={id,name:String(name).slice(0,20),color,x:400,y:320,tx:400,ty:320,down:false,grip:null,blockDown:false,tool:'grab',seq:-1,seen:performance.now(),lastMove:0,dx:0,dy:0,svx:0,svy:0,lastCmd:-10,nextFire:0,lastUse:-10};this.hands.set(id,h);}
   h.name=String(name||h.name).slice(0,20);h.color=color||h.color;return h;
  }
  removeHand(id){const h=this.hands.get(id);if(h)this.cancelMallet(h);this.hands.delete(id);}
@@ -414,6 +417,31 @@ class BuddyWorld {
   }
   if(age>=MALLET.CONTACT)m.resolved=true; // A whiff gets follow-through, NEVER hit FX.
  }
+ // Smoothed glove velocity for every hand, then a swept mallet face for the held mallet.
+ sweepMallet(h,dt){
+  const px=h.sx??h.x,py=h.sy??h.y;h.sx=h.x;h.sy=h.y;
+  // A glove that re-enters the room somewhere else teleported; it did not swing.
+  if(Math.hypot(h.x-px,h.y-py)>SWING.JUMP){h.svx=0;h.svy=0;return;}
+  const k=1-Math.exp(-dt/SWING.SMOOTH);h.svx=lerp(h.svx||0,(h.x-px)/dt,k);h.svy=lerp(h.svy||0,(h.y-py)/dt,k);
+  if(h.tool!=='poke'||h.mallet||!this.canUse('poke'))return;
+  const speed=Math.hypot(h.svx,h.svy);if(speed<SWING.MIN)return;
+  const side=h.x<BB.W/2?-1:1,lean=clamp(-side*h.svx*SWING.LEAN,-.55,.55),steps=Math.min(4,Math.max(1,Math.ceil(Math.hypot(h.x-px,h.y-py)/22)));
+  for(let i=1;i<=steps;i++){
+   const hit=this.malletHit(malletPose(lerp(px,h.x,i/steps),lerp(py,h.y,i/steps),side,0,null,null,lean));
+   if(hit&&this.swingHit(h,hit,speed))return;
+  }
+ }
+ swingHit(h,hit,speed){
+  const n=this.node(hit.t<.5?hit.a:hit.b);if(!n||this.time-(n.swungAt??-10)<SWING.COOLDOWN)return false;
+  n.swungAt=this.time;const who=h.id,dx=h.svx/speed,dy=h.svy/speed,power=clamp((speed-SWING.MIN)/(SWING.MAX-SWING.MIN),0,1),boost=this.power();
+  this.lastTouch=this.time;this.onEvent({type:'poke',who,x:hit.x,y:hit.y,hit:true,buddy:hit.kind===0,kind:hit.kind,swing:1});
+  if(hit.kind===3){this.popBalloon(n,who);return true;}
+  const a=this.node(hit.a),b=this.node(hit.b),u=1-hit.t,t=hit.t,w=hit.a===hit.b?a.im:a.im*u*u+b.im*t*t,impulse=lerp(380,1500,power)*boost;
+  if(a===b){a.vx+=dx*impulse;a.vy+=dy*impulse;}
+  else{a.vx+=dx*impulse*a.im*u/w;a.vy+=dy*impulse*a.im*u/w;b.vx+=dx*impulse*b.im*t/w;b.vy+=dy*impulse*b.im*t/w;}
+  if(hit.kind===0){this.hurt(n,hit.x,hit.y,dx,dy,lerp(.22,1,power)*(hit.a===0?1:.78),DAMAGE.blunt,who);this.reward(hit.x,hit.y,who,'poke',power>.55?3:1);}
+  return true;
+ }
 
  command(id,d){
   const h=this.hands.get(id);if(!h||!d||typeof d.c!=='string')return;
@@ -455,7 +483,7 @@ class BuddyWorld {
   h.nextFire=this.time+TOOLS[h.tool].rate;(h.cooldowns||(h.cooldowns={}))[h.tool]=h.nextFire;h.lastUse=this.time;
   const x=h.x,y=h.y,who=h.id;this.lastTouch=this.time;
   if(TOOLS[h.tool].cost){this.heavyTool(h,g);return;}
-  if(h.tool==='poke'){this.startMallet(h);return;}
+  if(h.tool==='poke'){if(Math.hypot(h.svx||0,h.svy||0)<SWING.MIN)this.startMallet(h);return;}
   if(h.tool==='ball'){this.addBall(x,y);return;}
   if(h.tool==='duck'||h.tool==='bowling'){this.addToy(h.tool==='duck'?4:5,x,y,who);return;}
   if(h.tool==='air'){this.airBlast(x,y,who);return;}
@@ -882,10 +910,10 @@ class BuddyWorld {
   const now=performance.now(),held=[...this.hands.values()].some(h=>h.grip&&this.node(h.grip.a)?.kind===0);
   for(const h of this.hands.values()){
    if(now-h.seen>1400){this.cancelMallet(h);h.grip=null;h.down=false;}
-   if(h.grip){const dx=h.x-h.tx,dy=h.y-h.ty,d=Math.hypot(dx,dy),k=Math.min(1,3800*dt/(d||1));h.tx+=dx*k;h.ty+=dy*k;}
+   if(h.grip){const dx=h.x-h.tx,dy=h.y-h.ty,d=Math.hypot(dx,dy),k=Math.min(1,3800*dt/(d||1));h.tx+=dx*k;h.ty+=dy*k;const held=this.node(h.grip.a);if(held)held.heldAt=this.time;}
   }
   for(const h of this.hands.values())if(h.down&&h.tool!=='grab'&&h.tool!=='balloon'&&h.tool!=='ball'&&h.tool!=='bomb'&&h.tool!=='spring'&&h.tool!=='duck'&&h.tool!=='bowling'&&h.tool!=='tether'&&h.tool!=='bumper')this.useTool(h,null);
-  for(const h of this.hands.values())this.updateMallet(h);
+  for(const h of this.hands.values()){this.updateMallet(h);this.sweepMallet(h,dt);}
   this.updateProjectiles(dt);this.updateCandy(dt);
   for(const n of [...this.nodes])if(n.kind===2&&this.time>=n.fuse){this.removeNode(n.id);this.explode(n.x,n.y,n.owner,1);}
   if(this.time>this.comboUntil)this.combo=0;
@@ -927,7 +955,8 @@ this.impact=Math.max(this.impact,!n.kind?clamp(-old/1200,0,1):0);this.onEvent({t
    if(n.kind===4||n.kind===5)n.a=(n.a+n.vx*dt/n.r)%(Math.PI*2);
    if(n.kind===1){
     n.a=(n.a+n.vx*dt/n.r)%(Math.PI*2);
-    if(n.oy<331&&n.y>=331&&n.vy>30&&n.x>1073&&n.x<1126&&this.time-n.lastScore>1.3){
+    // A ball still in a glove, or released a blink ago, is being carried, not shot.
+    if(n.oy<331&&n.y>=331&&n.vy>30&&n.x>1073&&n.x<1126&&this.time-n.lastScore>1.3&&this.time-(n.heldAt??-10)>.25){
      n.lastScore=this.time;this.score++;this.onEvent({type:'basket',x:1100,y:325,score:this.score});this.dropCandy(1100,325,8);
     }
    }
@@ -1326,11 +1355,11 @@ class BloodFX {
 const INK='#263842',PAPER='#f4e9cc';
 class BuddyRenderer {
  constructor(canvas){
-  this.canvas=canvas;this.ctx=canvas.getContext('2d',{alpha:false});this.particles=[];this.rings=[];this.beams=[];this.blasts=[];this.trails=new Map();this.speech=new Map();this.scuffs=[];this.blood=new BloodFX();this.flyingDarts=[];this.motion=true;this.localHandVisible=false;this.mallets=new Map();this.timeline=0;this.airwaves=[];this.tetherPreviews=new Map();this.shells=[];this.bumperPulses=new Map();
+  this.canvas=canvas;this.ctx=canvas.getContext('2d',{alpha:false});this.particles=[];this.rings=[];this.beams=[];this.blasts=[];this.trails=new Map();this.speech=new Map();this.scuffs=[];this.blood=new BloodFX();this.flyingDarts=[];this.motion=true;this.localHandVisible=false;this.mallets=new Map();this.swings=new Map();this.timeline=0;this.airwaves=[];this.tetherPreviews=new Map();this.shells=[];this.bumperPulses=new Map();
   this.last=performance.now();this.frame=0;this.fps=60;this.shake=0;this.rimKick=0;this.flash=0;
   this.resize();new ResizeObserver(()=>this.resize()).observe(canvas);
  }
- resetEffects(){this.tetherPreviews.clear();this.shells=[];this.bumperPulses.clear();this.airwaves=[];this.mallets.clear();this.blood.clear();this.flyingDarts=[];this.particles=[];this.rings=[];this.beams=[];this.blasts=[];this.scuffs=[];this.trails.clear();this.shake=0;this.flash=0;this.rimKick=0;}
+ resetEffects(){this.tetherPreviews.clear();this.shells=[];this.bumperPulses.clear();this.airwaves=[];this.mallets.clear();this.swings.clear();this.blood.clear();this.flyingDarts=[];this.particles=[];this.rings=[];this.beams=[];this.blasts=[];this.scuffs=[];this.trails.clear();this.shake=0;this.flash=0;this.rimKick=0;}
  resize(){const r=this.canvas.getBoundingClientRect();this.w=Math.max(1,r.width);this.h=Math.max(1,r.height);this.dpr=Math.min(devicePixelRatio||1,2);this.canvas.width=Math.round(this.w*this.dpr);this.canvas.height=Math.round(this.h*this.dpr);this.scale=Math.min(this.w/BB.W,this.h/BB.H);this.ox=(this.w-BB.W*this.scale)/2;this.oy=(this.h-BB.H*this.scale)/2;}
  toWorld(x,y){const r=this.canvas.getBoundingClientRect();return {x:clamp((x-r.left-this.ox)/this.scale,BB.LEFT,BB.RIGHT),y:clamp((y-r.top-this.oy)/this.scale,BB.TOP,BB.FLOOR)};}
  toScreen(x,y){return {x:this.ox+x*this.scale,y:this.oy+y*this.scale};}
@@ -1515,6 +1544,11 @@ class BuddyRenderer {
   if(this.mallets.size>=BB.MAX_PLAYERS&&!old)this.mallets.delete(this.mallets.keys().next().value);
   this.mallets.set(e.who,{...e,side:e.side===-1?-1:1,ct:finite(e.ct)?e.ct:null,cancelAge:null});
  }
+ handSwing(id,x,y,t){
+  let v=this.swings.get(id);if(!v){v={x,y,t,vx:0,vy:0,speed:0,trail:[]};this.swings.set(id,v);if(this.swings.size>BB.MAX_PLAYERS)this.swings.delete(this.swings.keys().next().value);return v;}
+  const dt=t-v.t;if(dt>0){const k=1-Math.exp(-dt/SWING.SMOOTH);v.vx=lerp(v.vx,(x-v.x)/dt,k);v.vy=lerp(v.vy,(y-v.y)/dt,k);v.x=x;v.y=y;v.t=t;v.speed=Math.hypot(v.vx,v.vy);}
+  return v;
+ }
  drawMallet(h,worldTime){
   const c=this.ctx,[id,name,color,x,y]=h,m=this.mallets.get(id),age=m?worldTime-m.at/BB.HZ:99;
   const active=m&&age>=0&&age<MALLET.END,side=active?m.side:(x<BB.W/2?-1:1);
@@ -1522,7 +1556,15 @@ class BuddyRenderer {
   let ax=active?m.x:x,ay=active?m.y:y;
   // Let the last part of recovery return to the live cursor. The strike itself stays planted.
   if(active&&age>.33){const k=smooth01((age-.33)/.13);ax=lerp(ax,x,k);ay=lerp(ay,y,k);}
-  const p=malletPose(ax,ay,side,active?age:0,contact,cancel);
+  // Idle mallet leans against glove motion and streaks when whipped (host hits from the same pose).
+  const v=this.handSwing(id,x,y,worldTime),lean=active?0:clamp(-side*v.vx*SWING.LEAN,-.55,.55);
+  const p=malletPose(ax,ay,side,active?age:0,contact,cancel,lean);
+  v.trail.push({a:p.A,b:p.B,t:worldTime});while(v.trail.length>6||(v.trail.length&&worldTime-v.trail[0].t>.09))v.trail.shift();
+  if(!active&&v.speed>SWING.MIN&&v.trail.length>2){
+   c.save();c.globalAlpha=.45;c.lineCap='round';
+   for(const [key,w,col] of [['a',4,color],['b',2,'#fff5d4']]){c.beginPath();v.trail.forEach((q,i)=>i?c.lineTo(q[key].x,q[key].y):c.moveTo(q[key].x,q[key].y));c.strokeStyle=col;c.lineWidth=w;c.stroke();}
+   c.restore();
+  }
   // Two restrained speed arcs only on a REAL downswing, not on wind-up/recovery.
   if(active&&cancel===null&&age>MALLET.WIND&&age<(contact??MALLET.CONTACT)){
    c.save();c.globalAlpha=.5;
@@ -2092,9 +2134,14 @@ let cursorMode=readStore('buddybonk-cursor','system')==='game'?'game':'system';
 let pointerInside=false,pointerType='mouse',pressedMask=0,waitForRelease=false;
 let pointerClient={x:-1,y:-1};
 const modalOpen=()=>!!document.querySelector('dialog[open]');
-function gameHit(x,y){
+// Last few pointer decisions, for the diagnostics panel (D) and bug reports.
+const inputTrace=[];let staleMoves=0;
+function traceInput(e,verdict){inputTrace.push(`${e.type} b${e.button} bs${e.buttons} ${e.pointerType||'?'}#${e.pointerId} ${e.isPrimary===false?'secondary ':''}${verdict}`);if(inputTrace.length>6)inputTrace.shift();}
+function gameHit(x,y,target=null){
  if(!finite(x)||!finite(y)||document.hidden||modalOpen()||!$('chatwrap').hidden)return false;
- if(document.elementFromPoint(x,y)!==canvas)return false;
+ // A real canvas event was already hit-tested by the browser. Only hover and synthetic
+ // checks need elementFromPoint, which some browsers answer differently during transitions.
+ if(target!==canvas&&document.elementFromPoint(x,y)!==canvas)return false;
  const r=canvas.getBoundingClientRect(),wx=(x-r.left-renderer.ox)/renderer.scale,wy=(y-r.top-renderer.oy)/renderer.scale;
  return wx>=BB.LEFT&&wx<=BB.RIGHT&&wy>=BB.TOP&&wy<=BB.FLOOR;
 }
@@ -2134,7 +2181,13 @@ window.addEventListener('pointerdown',e=>{
  if(e.target!==canvas)suspendPointer();
 },true);
 canvas.addEventListener('pointerdown',e=>{
- if(e.isPrimary===false||![0,2].includes(e.button)||activePointer!==null||waitForRelease||!gameHit(e.clientX,e.clientY)||!canAct())return;
+ const mask=e.button===2?2:1;
+ // Nothing else is held, so whatever gesture we were waiting out has ended (a release
+ // we never saw). Do not let a stale latch eat every click from here on.
+ if(e.isPrimary!==false&&(e.buttons&~mask)===0){if(waitForRelease){waitForRelease=false;traceInput(e,'cleared stale wait');}if(activePointer!==null&&activePointer===e.pointerId){releasePointer();traceInput(e,'cleared stale pointer');}}
+ const reason=e.isPrimary===false?'secondary pointer':![0,2].includes(e.button)?'button':activePointer!==null?'another pointer active':waitForRelease?'waiting for release':!gameHit(e.clientX,e.clientY,e.target)?'outside room':!canAct()?'cannot act':null;
+ if(reason){traceInput(e,'refused: '+reason);return;}
+ traceInput(e,'press '+(e.button===2?'grab':local.tool));
  e.preventDefault();pointerType=e.pointerType||'mouse';pointerClient={x:e.clientX,y:e.clientY};activePointer=e.pointerId;pressedMask=e.button===2?2:1;
  // Touch browsers may implicitly capture. Release that as well; global up/move
  // handles the gesture while elementFromPoint keeps UI hittable.
@@ -2149,13 +2202,15 @@ window.addEventListener('pointermove',e=>{
  if(e.buttons===0)waitForRelease=false;
  const hit=gameHit(e.clientX,e.clientY);
  if(!hit){if(local.down||activePointer!==null)waitForRelease=!!e.buttons;releasePointer();setPointerHover(false);return;}
- // Recover a missed mouse-up (e.g. released outside the browser).
- if(local.down&&pointerType!=='touch'&&(e.buttons&pressedMask)===0)releasePointer();
+ // Recover a missed mouse-up (e.g. released outside the browser). Three moves in a row
+ // without our button, so a single odd buttons field cannot drop a real hold.
+ if(local.down&&pointerType!=='touch'&&(e.buttons&pressedMask)===0){if(++staleMoves>=3){staleMoves=0;traceInput(e,'release: buttons went 0');releasePointer();}}else staleMoves=0;
  Object.assign(local,renderer.toWorld(e.clientX,e.clientY));setPointerHover(true);
  if(isHost||performance.now()-lastInput>=1000/60)sendInput(false);
 },{passive:true});
 window.addEventListener('pointerup',e=>{
  if(activePointer!==null&&e.pointerId!==activePointer)return;
+ if(local.down)traceInput(e,'release');
  releasePointer(e);waitForRelease=!!e.buttons;
  setPointerHover(e.pointerType!=='touch'&&gameHit(e.clientX,e.clientY));
 },true);
@@ -2405,7 +2460,7 @@ function updateUI(){
  $('pauseNotice').hidden=!notice;$('pauseNotice').textContent=notice;
  const players=isHost?world.snapshot().h:welcomed?s.h:[[myId,local.name,local.color,0,0,false,null,'grab']];
  const key=players.map(h=>h[0]+h[1]+h[2]).join('|');if(key!==rosterKey){rosterKey=key;$('roster').replaceChildren();for(const h of players){const el=document.createElement('div');el.className='person';el.style.setProperty('--color',h[2]);const dot=document.createElement('i');el.append(dot,document.createTextNode(h[1]));const small=document.createElement('small');small.textContent=h[0]===hostId?'HOST':h[0]===myId?'YOU':'FRIEND';el.append(small);$('roster').append(el);}}
- if(debugVisible){const ns=net.stats();$('diagnostics').textContent=[`BUDDY BONK / ${isHost?'AUTHORITY':'GUEST'}`,`render     ${Math.round(renderer.fps)} fps`,`simulation ${isHost?'120 Hz · local':'host snapshots only'}`,`snapshots  ${receivedSnapshots} received`,`players    ${count} / 4`,`bodies     ${s?.n.length||0} / ${BB.MAX_NODES}`,`candy      ${s?.c.length||0} / ${BB.MAX_CANDY}`,`rockets    ${s?.p.length||0} / ${BB.MAX_ROCKETS}`,`springs    ${s?.pads.length||0} / ${BB.MAX_PADS}`,`snapshotHz ${(stats.snapshotHz||30).toFixed(1)} target`, `grabs      ${s?.h.filter(h=>h[6]).length||0}`,`ping       ${Math.round(rtt)} ms`,`received   ${(ns.rx/1024).toFixed(1)} KiB`,`sent       ${(ns.tx/1024).toFixed(1)} KiB`,`wire/peer  ${(stats.txRate/Math.max(1,net.peers().length)/1024).toFixed(1)} KiB/s out`,`receive    ${(stats.rxRate/1024).toFixed(1)} KiB/s in`,`snapshot   ${stats.snapBytes} B · binary`,`local FX   ${renderer.particles.length+renderer.blood.drops.length} particles`,`stain cues ${renderer.blood.marks.length} / 96`,`skipped    ${ns.dropped} queued updates`,...ns.routes.map(r=>r.route),`${ns.public}`].join('\n');}
+ if(debugVisible){const ns=net.stats();$('diagnostics').textContent=[`BUDDY BONK / ${isHost?'AUTHORITY':'GUEST'}`,`render     ${Math.round(renderer.fps)} fps`,`simulation ${isHost?'120 Hz · local':'host snapshots only'}`,`snapshots  ${receivedSnapshots} received`,`players    ${count} / 4`,`bodies     ${s?.n.length||0} / ${BB.MAX_NODES}`,`candy      ${s?.c.length||0} / ${BB.MAX_CANDY}`,`rockets    ${s?.p.length||0} / ${BB.MAX_ROCKETS}`,`springs    ${s?.pads.length||0} / ${BB.MAX_PADS}`,`snapshotHz ${(stats.snapshotHz||30).toFixed(1)} target`, `grabs      ${s?.h.filter(h=>h[6]).length||0}`,`ping       ${Math.round(rtt)} ms`,`received   ${(ns.rx/1024).toFixed(1)} KiB`,`sent       ${(ns.tx/1024).toFixed(1)} KiB`,`wire/peer  ${(stats.txRate/Math.max(1,net.peers().length)/1024).toFixed(1)} KiB/s out`,`receive    ${(stats.rxRate/1024).toFixed(1)} KiB/s in`,`snapshot   ${stats.snapBytes} B · binary`,`local FX   ${renderer.particles.length+renderer.blood.drops.length} particles`,`stain cues ${renderer.blood.marks.length} / 96`,`skipped    ${ns.dropped} queued updates`,`pointer    ${pointerType} · ${pointerInside?'in room':'out'} · ${activePointer===null?'idle':'held'}${waitForRelease?' · waiting':''}`,...inputTrace.map(t=>'  '+t),...ns.routes.map(r=>r.route),`${ns.public}`].join('\n');}
 }
 let lastStateSend=-Infinity,nextStateSend=0;
 function sendSnapshot(force=false){
@@ -2455,9 +2510,9 @@ requestAnimationFrame(frame);updateUI();
 window.addEventListener('beforeunload',()=>{releasePointer();if(isHost)net.broadcast('end',{});else net.send(hostId,'goodbye',{});net.dispose();clearInterval(simTimer);clearInterval(snapshotTimer);clearInterval(uiTimer);});
 // Read-only observability plus deliberate harness controls. These are not network APIs.
 window.__buddy={
- title:'Buddy Bonk',version:'0.6.0',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
+ title:'Buddy Bonk',version:'0.7.0',get role(){return isHost?'host':'guest';},get id(){return myId;},get hostId(){return hostId;},get room(){return roomCode;},
  get state(){return isHost?world.snapshot(paused):latest;},get renderState(){return renderState;},get hand(){return {...local};},get connected(){return welcomed&&!hostGone;},
- get pointer(){return {inside:pointerInside,activeId:activePointer,waiting:waitForRelease,mode:cursorMode,type:pointerType,cursor:getComputedStyle(canvas).cursor,capture:activePointer!==null&&canvas.hasPointerCapture(activePointer),localHandVisible:renderer.localHandVisible};},
+ get pointer(){return {inside:pointerInside,activeId:activePointer,waiting:waitForRelease,mode:cursorMode,type:pointerType,cursor:getComputedStyle(canvas).cursor,capture:activePointer!==null&&canvas.hasPointerCapture(activePointer),localHandVisible:renderer.localHandVisible,trace:inputTrace.slice()};},
  get ui(){return {quiet:uiQuiet,drawerOpen:!$('toolDrawer').hidden,scale:uiFactor};},
  get stats(){return {...stats,fx:{...renderer.blood.stats(),particles:renderer.particles.length,beams:renderer.beams.length,rings:renderer.rings.length},perf:{render:perfSamples.render.slice(),physics:perfSamples.physics.slice()},receivedSnapshots,rtt,paused,remotePaused,net:net.stats(),fps:renderer.fps};},
  screen:(x,y)=>{const p=renderer.toScreen(x,y),r=canvas.getBoundingClientRect();return {x:p.x+r.left,y:p.y+r.top};},
