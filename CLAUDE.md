@@ -42,5 +42,4 @@ The canned swing (wind-up, downswing, strike-face contact, hold, recoil, recover
 ## Open threads
 
 - Daver 2.0's "can't aim on Firefox, right click just does grab" (2026-09-16) never reproduced in Playwright Firefox. Another Firefox user reported it fine. The D panel logs the last six pointer decisions; ask for that.
-- Add the game to the games page on tront.xyz.
 - Contraption mode (Daver's Rube Goldberg idea) is parked in the README.
