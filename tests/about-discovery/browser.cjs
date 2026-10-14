@@ -14,7 +14,7 @@ try{for(const mode of ['desktop','touch','reduced-motion','save-data']){
  if(!process.env.ABOUT_LIVE_URL)await page.route('**/games/media/**',async route=>{try{const u=new URL(route.request().url());if(process.env.ABOUT_MEDIA_DIR){await route.fulfill({path:path.join(process.env.ABOUT_MEDIA_DIR,path.basename(u.pathname))});return;}const response=await context.request.get('https://tront.xyz'+u.pathname+u.search);await route.fulfill({response});}catch{await route.abort();}});
  await page.goto(base+(repo==='inkride'?'#solo':''),{waitUntil:'domcontentloaded'});await page.waitForTimeout(1800);
  if(repo==='senddudes')await page.waitForFunction(()=>window.SendDudes&&document.getElementById('boot').hidden,null,{timeout:60000});
- if(repo==='buddy'){await page.locator('#creditsDialog[open]').waitFor({state:'visible',timeout:30000});await page.locator('#closeCredits').click();}
+ if(repo==='buddy'){await page.locator('#creditsDialog[open]').waitFor({state:'visible',timeout:30000});await page.evaluate(()=>document.getElementById('creditsDialog').addEventListener('close',()=>{window.__aboutWelcomeClosed=true},{once:true}));await page.locator('#closeCredits').click();await page.waitForFunction(()=>window.__aboutWelcomeClosed);}
  const about=page.locator('#trontAbout'),summary=about.locator(':scope>summary'),panel=about.locator('.tront-about-panel');
  await check(mode+': closed initially, no discovery images or video requests',async()=>{assert.equal(await about.getAttribute('open'),null);assert.equal(await about.locator('img').count(),0);assert.equal(media.length,0)});
  // SEND DUDES intentionally hides site chrome while its native campaign menu is open.
