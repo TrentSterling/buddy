@@ -5,8 +5,8 @@ const out='.about-live-evidence';fs.mkdirSync(out,{recursive:true});
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex'),report=[];
 (async()=>{const browser=await chromium.launch({channel:'chrome',args:['--mute-audio','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 try{for(const repo of repos){const row={repo,url:'https://tront.xyz/'+repo+'/',status:'running'};report.push(row);
-try{let html;for(let attempt=0;attempt<20;attempt++){const response=await fetch(row.url+'?three-card-check='+Date.now());assert.ok(response.ok);html=(await response.text()).replace(/\r\n/g,'\n');if(html.includes('fcda637550b9237140c89f9e42465ddd1cb07bf0'))break;await new Promise(r=>setTimeout(r,15000));}
-row.htmlSha256=sha(html);assert.ok(html.includes('fcda637550b9237140c89f9e42465ddd1cb07bf0'),'shared pin served');
+try{let html;for(let attempt=0;attempt<1;attempt++){const response=await fetch(row.url+'?three-card-check='+Date.now(),{signal:AbortSignal.timeout(30000)});assert.ok(response.ok);html=(await response.text()).replace(/\r\n/g,'\n');if(html.includes('fcda637550b9237140c89f9e42465ddd1cb07bf0'))break;await new Promise(r=>setTimeout(r,15000));}
+row.htmlSha256=sha(html);assert.ok(html.includes('fcda637550b9237140c89f9e42465ddd1cb07bf0'),'shared pin served: '+html.slice(0,500));
 for(const type of ['css','js']){const match=html.match(new RegExp('<'+(type==='css'?'style':'script')+' data-tront-discovery-'+type+'>\\n([\\s\\S]*?)<\\/'));assert.ok(match,'inline '+type);row[type+'Sha256']=sha(match[1]);assert.equal(row[type+'Sha256'],type==='css'?'70723556209736cc1d9e8dff2aa2fb5e68157d6ab0de2983406376baad85a8d0':'cb5935a8e19c692c26fb8df302396138393528b0272d4cf00d72a906019248f0');}
 const context=await browser.newContext({viewport:{width:1280,height:800},reducedMotion:'reduce'}),page=await context.newPage();
 await page.goto(row.url+'?three-card-render='+Date.now(),{waitUntil:'domcontentloaded',timeout:90000});await page.waitForSelector('#trontAbout',{state:'attached'});
