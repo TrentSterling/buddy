@@ -1,0 +1,31 @@
+name: Verify published three-card rollout
+on:
+  push:
+    branches: [codex/verify-public-about-20261014]
+permissions:
+  contents: read
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/about-tests" --no-save --package-lock=false --ignore-scripts playwright@1.62.0
+          node "$RUNNER_TEMP/about-tests/node_modules/playwright/cli.js" install --with-deps chrome
+          echo "NODE_PATH=$RUNNER_TEMP/about-tests/node_modules" >> "$GITHUB_ENV"
+      - name: Verify public hashes and rendered cards on all 22 games
+        run: node tests/about-discovery/live-rollout.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: published-three-card-evidence
+          path: .about-live-evidence/
+          include-hidden-files: true
+          retention-days: 7
