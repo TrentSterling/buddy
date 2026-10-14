@@ -3076,7 +3076,7 @@ window.__buddy={
 
 })();</script>
 <!-- tront-about:start -->
-<!-- Shared discovery: TrentSterling/trentsterling.github.io@83dbfb4d8241501012c5ec22be49d79f28ccf6b7 -->
+<!-- Shared discovery: TrentSterling/trentsterling.github.io@fcda637550b9237140c89f9e42465ddd1cb07bf0 -->
 <style data-tront-discovery-css>
 .tront-discovery {
     --td-surface: var(--item-bg, var(--te-panel-fill, #171c25));
@@ -3285,6 +3285,7 @@ window.__buddy={
 #trontAbout .tront-discovery__games-title{font-size:16px}
 @media(max-width:520px){#trontAbout>.tront-about-panel{width:calc(100vw - 24px);padding:0 12px 12px;max-height:62dvh}#trontAbout .tront-discovery__grid{grid-template-columns:1fr}#trontAbout .tront-discovery__card{display:grid;grid-template-columns:38% minmax(0,1fr)}#trontAbout .tront-discovery__media{align-self:center}#trontAbout .tront-discovery__description{font-size:12px}#trontAbout .tront-discovery__content{padding:9px}}
 
+@media(max-width:900px){#trontAbout{bottom:max(80px,calc(env(safe-area-inset-bottom) + 72px))}}
 #trontAbout{--ta-bg:#f3e6c9;--ta-text:#243b46;--ta-muted:#405a64;--ta-line:#6b8082;--ta-link:#245978;}
 </style>
 <details class="tront-about" id="trontAbout"><summary aria-controls="trontAboutPanel" aria-expanded="false">About + games</summary>
@@ -3302,7 +3303,7 @@ window.__buddy={
     var STORAGE_KEY = 'tront-about-discovery-session-v2';
     var FIXED_IDS = ['craftmine', 'smear'];
     var RANDOM_IDS = ['inkride', 'tinytreads', 'tinyrise'];
-    var RANDOM_COUNT = 2;
+    var RANDOM_COUNT = 1;
     var MAX_PREVIEWS = 3;
     var GAMES = [
         {
@@ -3402,9 +3403,12 @@ window.__buddy={
         return RANDOM_IDS.indexOf(id) !== -1;
     }
 
-    function validChoicePair(value) {
+    function validChoices(value) {
         if (!Array.isArray(value) || value.length !== RANDOM_COUNT) return false;
-        return isRandomId(value[0]) && isRandomId(value[1]) && value[0] !== value[1];
+        for (var i = 0; i < value.length; i += 1) {
+            if (!isRandomId(value[i]) || value.indexOf(value[i]) !== i) return false;
+        }
+        return true;
     }
 
     function stableSessionChoices(storage, random) {
@@ -3412,13 +3416,13 @@ window.__buddy={
         if (saved) {
             try {
                 var parsed = JSON.parse(saved);
-                if (validChoicePair(parsed)) {
+                if (validChoices(parsed)) {
                     memoryChoices = parsed.slice();
                     return memoryChoices.slice();
                 }
             } catch (_) { /* A stale or malformed session value is replaced below. */ }
         }
-        if (validChoicePair(memoryChoices)) {
+        if (validChoices(memoryChoices)) {
             safeWrite(storage, STORAGE_KEY, JSON.stringify(memoryChoices));
             return memoryChoices.slice();
         }
@@ -3431,10 +3435,7 @@ window.__buddy={
             roll = Math.max(0, Math.min(0.999999999, roll));
             firstIndex = Math.floor(roll * RANDOM_IDS.length);
         }
-        memoryChoices = [
-            RANDOM_IDS[firstIndex],
-            RANDOM_IDS[(firstIndex + 1) % RANDOM_IDS.length]
-        ];
+        memoryChoices = [RANDOM_IDS[firstIndex]];
         safeWrite(storage, STORAGE_KEY, JSON.stringify(memoryChoices));
         if (!legacyChoice) safeWrite(storage, LEGACY_STORAGE_KEY, memoryChoices[0]);
         return memoryChoices.slice();
@@ -3801,7 +3802,7 @@ window.__buddy={
             var lift = Math.max(0, window.innerHeight - view.height - view.offsetTop);
             about.style.transform = lift > 1 ? 'translateY(-' + lift + 'px)' : '';
             panel.style.maxWidth = Math.max(180, view.width - 24) + 'px';
-            panel.style.maxHeight = Math.min(620, view.height * .62) + 'px';
+            panel.style.maxHeight = Math.max(80, Math.min(620, view.height * .62, summary.getBoundingClientRect().top - view.offsetTop - 20)) + 'px';
         }
         window.visualViewport.addEventListener('resize', fitVisibleViewport);
         window.visualViewport.addEventListener('scroll', fitVisibleViewport);

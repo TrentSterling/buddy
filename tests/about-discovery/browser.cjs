@@ -19,11 +19,11 @@ try{for(const mode of ['desktop','touch','reduced-motion','save-data']){
  await check(mode+': closed initially, no discovery images or video requests',async()=>{assert.equal(await about.getAttribute('open'),null);assert.equal(await about.locator('img').count(),0);assert.equal(media.length,0)});
  // SEND DUDES intentionally hides site chrome while its native campaign menu is open.
  if(!await summary.isVisible()&&repo==='senddudes'){const back=page.getByRole('button',{name:/resume|back to battle|close/i}).first();if(await back.isVisible())await back.click();else await page.keyboard.press('Escape');await page.waitForTimeout(300);}
- await check(mode+': open through the native disclosure',async()=>{if(mode==='touch')await summary.tap();else{await summary.focus();await page.keyboard.press('Enter');}await page.waitForTimeout(150);assert.notEqual(await about.getAttribute('open'),null);assert.equal(await about.locator('[data-tront-discovery-game]').count(),4);});
+ await check(mode+': open through the native disclosure',async()=>{if(mode==='touch')await summary.tap();else{await summary.focus();await page.keyboard.press('Enter');}await page.waitForTimeout(150);assert.notEqual(await about.getAttribute('open'),null);assert.equal(await about.locator('[data-tront-discovery-game]').count(),3);});
  await check(mode+': bounded scroll panel and accessible links',async()=>{const b=await panel.boundingBox();assert.ok(b.x>=-1&&b.y>=-1&&b.x+b.width<=await page.evaluate(()=>innerWidth)+1);assert.ok(b.height<=await page.evaluate(()=>innerHeight)*.66+1);assert.equal(await about.locator('[data-tront-discovery-game="'+repo+'"]').count(),0);assert.equal(await about.locator('[data-tront-discovery-game="smear"] video').count(),0);assert.ok(await about.locator('a[href]').count()>=10);assert.equal(await about.locator('.tront-discovery__status').count(),0)});
  await page.screenshot({path:path.join(out,mode+'-about.png')});
  await panel.evaluate(e=>{e.scrollTop=e.scrollHeight});await page.waitForTimeout(250);
- await check(mode+': current posters load',async()=>{await page.waitForFunction(()=>[...document.querySelectorAll('.tront-discovery__poster')].length===4&&[...document.querySelectorAll('.tront-discovery__poster')].every(i=>i.complete&&i.naturalWidth>0),null,{timeout:20000});});
+ await check(mode+': current posters load',async()=>{await page.waitForFunction(()=>[...document.querySelectorAll('.tront-discovery__poster')].length===3&&[...document.querySelectorAll('.tront-discovery__poster')].every(i=>i.complete&&i.naturalWidth>0),null,{timeout:20000});});
  await page.screenshot({path:path.join(out,mode+'-discovery.png')});
  const craft=about.locator('[data-tront-discovery-game="craftmine"]');
  const host=about.locator('[data-tront-discovery]'),lightweight=await host.getAttribute('data-tront-discovery-mode')==='lightweight';
@@ -36,6 +36,20 @@ try{for(const mode of ['desktop','touch','reduced-motion','save-data']){
  assert.ok((await craft.locator('a').first().getAttribute('href')).includes('/craftmine/'));
  await check(mode+': Escape closes and releases preview source',async()=>{await about.locator('.tront-about-close').focus();await page.keyboard.press('Escape');await page.waitForTimeout(150);assert.equal(await about.getAttribute('open'),null);assert.equal(await about.locator('video[src]').count(),0);assert.equal(await summary.evaluate(e=>e===document.activeElement),true)});
  await check(mode+': input reaches game again after close',async()=>{await page.keyboard.press('F8');assert.equal(await page.evaluate(()=>window.__aboutInput),1)});
+
+ if(repo==='buddy'&&mode==='desktop'){
+  for(const [width,height] of [[320,568],[390,844],[768,800],[900,800],[1280,800],[568,320]]){
+   await page.setViewportSize({width,height});
+   await check('viewport '+width+'x'+height+': About clears native dock and Shop remains usable',async()=>{
+    const boxes=await page.evaluate(()=>{const rect=s=>document.querySelector(s).getBoundingClientRect().toJSON();return {about:rect('#trontAbout>summary'),dock:rect('#playDock')};});
+    const {about:a,dock:d}=boxes;assert.ok(a.right<=d.left||a.left>=d.right||a.bottom<=d.top||a.top>=d.bottom,JSON.stringify(boxes));
+    await page.locator('#shopBtn').click();assert.ok(await page.locator('#shopDialog').evaluate(e=>e.open));await page.locator('#closeShop').click();
+    await summary.click();const box=await panel.boundingBox();assert.ok(box.x>=-1&&box.y>=-1&&box.x+box.width<=width+1&&box.y+box.height<=height+1,JSON.stringify(box));await about.locator('.tront-about-close').click();
+   });
+  }
+  await page.setViewportSize({width:1280,height:800});
+ }
+
  const frames=await page.evaluate(()=>window.__aboutFrames);await page.mouse.move(900,350);await page.mouse.click(900,350);await page.waitForTimeout(300);report[mode+'Frames']={before:frames,after:await page.evaluate(()=>window.__aboutFrames)};
  if(mode==='desktop'){
   if(repo==='wolfenstein'){const before=await page.locator('#gameScreen').textContent();await page.keyboard.down('q');await page.waitForTimeout(250);await page.keyboard.up('q');assert.notEqual(await page.locator('#gameScreen').textContent(),before);report.checks.push('gameplay: Q turns the ASCII view after closing');}
