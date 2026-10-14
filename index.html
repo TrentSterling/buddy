@@ -3802,7 +3802,7 @@ window.__buddy={
             var lift = Math.max(0, window.innerHeight - view.height - view.offsetTop);
             about.style.transform = lift > 1 ? 'translateY(-' + lift + 'px)' : '';
             panel.style.maxWidth = Math.max(180, view.width - 24) + 'px';
-            panel.style.maxHeight = Math.min(620, view.height * .62) + 'px';
+            panel.style.maxHeight = Math.max(80, Math.min(620, view.height * .62, summary.getBoundingClientRect().top - view.offsetTop - 20)) + 'px';
         }
         window.visualViewport.addEventListener('resize', fitVisibleViewport);
         window.visualViewport.addEventListener('scroll', fitVisibleViewport);
